@@ -1,0 +1,3 @@
+Här ska vi ha de DAO klasserna som tillhörs varje Entity klass som vi skapar
+t.ex:
+Klassen Address kommer att få en AddressDao osv ...

@@ -1,0 +1,3 @@
+Designmönstret Observer:
+
+här skapar vi klasser/interface där hanterar vi Events som tillhörs FXML filerna
