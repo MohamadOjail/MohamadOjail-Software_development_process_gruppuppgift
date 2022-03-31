@@ -2,19 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="se.ya.videobutik.ui.controller.LogInController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.LogInController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <Label text="Välj butik" />
-      <ComboBox fx:id="cb_store" prefWidth="150.0" />
-      <Label text="Välj medarbetare" />
-      <ComboBox fx:id="cb_staff" prefWidth="150.0" />
-      <Button fx:id="btn_ok" mnemonicParsing="false" text="OK" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+         <children>
+            <Button fx:id="btn_admin" mnemonicParsing="false" text="Admin" />
+            <Button fx:id="btn_salesman" mnemonicParsing="false" text="Säljare" />
+         </children>
+      </HBox>
    </children>
 </VBox>

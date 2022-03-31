@@ -1,8 +1,15 @@
 Label {
     -fx-font-size: 20;
     -fx-cursor: hand;
+    -fx-min-width: 200;
+    -fx-min-height: 60;
+    -fx-padding: 10;
 }
 
 Label:hover {
-    -fx-background-color: #612f2f;
+    -fx-background-color: rgba(21, 172, 230, 0.2);
+}
+
+VBox{
+    -fx-padding: 20;
 }
