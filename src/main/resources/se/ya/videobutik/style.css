@@ -1,0 +1,8 @@
+Label {
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+}
+
+Label:hover {
+    -fx-background-color: #612f2f;
+}
