@@ -1,4 +1,6 @@
-Label {
+
+
+#btn_roll{
     -fx-font-size: 20;
     -fx-cursor: hand;
     -fx-min-width: 200;
@@ -6,10 +8,6 @@ Label {
     -fx-padding: 10;
 }
 
-Label:hover {
+#btn_roll:hover{
     -fx-background-color: rgba(21, 172, 230, 0.2);
-}
-
-VBox{
-    -fx-padding: 20;
 }
