@@ -1,13 +1,66 @@
 
-
 #btn_roll{
     -fx-font-size: 20;
     -fx-cursor: hand;
     -fx-min-width: 200;
-    -fx-min-height: 60;
-    -fx-padding: 10;
+    -fx-min-height: 80;
+    -fx-padding: 20;
+    -fx-background-insets: -2, -2, -2;
+    -fx-background-radius: 2, 0, 0;
+    -fx-border-color: transparent;
+    -fx-text-fill: #14487e;
+    -fx-font-weight: bold;
 }
 
 #btn_roll:hover{
     -fx-background-color: rgba(21, 172, 230, 0.2);
+}
+
+#btn_home{
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+    -fx-min-width: 200;
+    -fx-min-height: 80;
+    -fx-padding: 20;
+    -fx-background-insets: -2, -2, -2;
+    -fx-background-radius: 2, 0, 0;
+    -fx-border-color: transparent;
+    -fx-text-fill: #7e143e;
+    -fx-font-weight: bold;
+}
+
+#btn_home:hover{
+    -fx-background-color: rgba(230, 206, 21, 0.2);
+}
+
+#info, ComboBox, TextField {
+    -fx-font-size: 20;
+    -fx-min-width: 200;
+}
+#title{
+    -fx-font-size: 28;
+    -fx-text-fill: #8e0a32;
+}
+
+#loginBtn{
+    -fx-font-size: 20;
+    -fx-cursor: hand;
+    -fx-min-width: 200;
+    -fx-min-height: 60;
+    -fx-padding: 20;
+
+    -fx-background-color: rgba(125, 125, 125, 0.075);
+    -fx-background-radius: 10;
+    -fx-border-color: black;
+    -fx-border-radius: 10;
+    -fx-border-width: 0.2;
+
+    -fx-text-fill: #14487e;
+    -fx-font-weight: bold;
+}
+#loginBtn:hover{
+    -fx-background-color: rgba(171, 255, 4, 0.2);
+}
+#loginBtn:pressed{
+    -fx-background-color: rgba(255, 4, 71, 0.2);
 }

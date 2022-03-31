@@ -1,9 +1,8 @@
 package se.ya.videobutik.ui.observer.main;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
-import se.ya.videobutik.ui.BorderPaneLoader;
+import se.ya.videobutik.ui.Switcher;
 import se.ya.videobutik.ui.controller.MainController;
 
 public class ActionObserver implements EventHandler<MouseEvent> {
@@ -16,16 +15,25 @@ public class ActionObserver implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent e) {
+
+        if (e.getSource() == ctrlr.getLbl_uthyrning()){
+            Switcher.get().loadScene(0, ctrlr.getMain_pane());
+        }
+
         if (e.getSource() == ctrlr.getLbl_film()){
-            BorderPaneLoader.get().loadScene(2);
+            Switcher.get().loadScene(2, ctrlr.getMain_pane());
         }
 
         if (e.getSource() == ctrlr.getLbl_customer()){
-            BorderPaneLoader.get().loadScene(1);
+            Switcher.get().loadScene(1, ctrlr.getMain_pane());
         }
 
         if (e.getSource() == ctrlr.getLbl_address()){
-            BorderPaneLoader.get().loadScene(3);
+            Switcher.get().loadScene(3, ctrlr.getMain_pane());
+        }
+
+        if (e.getSource() == ctrlr.getLbl_home()){
+            Switcher.get().backToMain(ctrlr.getLbl_home());
         }
     }
 }
