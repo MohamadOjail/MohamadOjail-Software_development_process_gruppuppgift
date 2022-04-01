@@ -8,7 +8,7 @@ public class Film {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "address_id")
+    @Column(name = "film_id")
     private int filmId;
 
     @Column(name = "title")
@@ -19,7 +19,9 @@ public class Film {
 
     @Column(name = "release_year")
     private int releaseYear;
-    //private datatype rentalDuration;
+
+    @Column(name = "rental_duration")
+    private int rentalDuration;
 
     @Column(name = "rental_rate")
     private double rentalRate;
@@ -30,26 +32,19 @@ public class Film {
     @Column(name = "replacement_cost")
     private double replacement_cost;
 
-    //private datatype rating
-    //private special_feautures
-
     @Column(name = "last_update")
     private Date lastUpdate;
 
-    public Film() {
-    }
-
-    public Film(String title, String description, int releaseYear, double rentalRate, int length, double replacement_cost) {
-        this.title = title;
-        this.description = description;
-        this.releaseYear = releaseYear;
-        this.rentalRate = rentalRate;
-        this.length = length;
-        this.replacement_cost = replacement_cost;
-    }
-
     public int getFilmId() {
         return filmId;
+    }
+
+    public int getRentalDuration() {
+        return rentalDuration;
+    }
+
+    public void setRentalDuration(int rentalDuration) {
+        this.rentalDuration = rentalDuration;
     }
 
     public void setFilmId(int filmId) {

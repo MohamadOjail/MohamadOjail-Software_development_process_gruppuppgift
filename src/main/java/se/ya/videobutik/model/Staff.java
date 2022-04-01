@@ -6,7 +6,6 @@ import java.sql.Date;
 @Entity
 public class Staff {
 
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "staff_id")
@@ -22,14 +21,11 @@ public class Staff {
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
-   /* @Column(picture = "picture")
-    private blob picture; */
-
     @Column(name = "email")
     private String email;
 
-    @ManyToMany
-    private Store store;
+    @Column(name = "store_id")
+    private int storeId;
 
     @Column(name = "active")
     private boolean active;
@@ -37,23 +33,12 @@ public class Staff {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
-    private String password;
+//    @Column(name = "password")
+//    private String password;
 
     @Column(name = "last_update")
     private Date lastUpdate;
 
-    public Staff() {
-    }
-
-    public Staff(String first_name, String lastName, Address address, String email, Store store, boolean active) {
-        this.first_name = first_name;
-        this.lastName = lastName;
-        this.address = address;
-        this.email = email;
-        this.store = store;
-        this.active = active;
-    }
 
     public int getStaff_id() {
         return staff_id;
@@ -95,12 +80,12 @@ public class Staff {
         this.email = email;
     }
 
-    public Store getStore() {
-        return store;
+    public int getStoreId() {
+        return storeId;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
     }
 
     public boolean isActive() {
@@ -117,14 +102,6 @@ public class Staff {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Date getLastUpdate() {

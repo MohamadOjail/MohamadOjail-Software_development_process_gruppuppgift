@@ -33,7 +33,8 @@ public class Customer {
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     private Address address;
 
-    @ManyToMany()
+    @ManyToOne
+    @JoinColumn(name = "store_id", referencedColumnName = "store_id")
     private Store store;
 
     public Customer() {
@@ -119,4 +120,5 @@ public class Customer {
     public void setStore(Store store) {
         this.store = store;
     }
+
 }

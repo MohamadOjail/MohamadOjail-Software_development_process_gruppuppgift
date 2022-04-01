@@ -11,7 +11,8 @@ public class Store {
     @Column(name = "store_id")
     private int store_id;
 
-    // @Column(name = "manager_staff_id")
+    @Column(name = "manager_staff_id")
+    private int managerStaffId;
 
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")

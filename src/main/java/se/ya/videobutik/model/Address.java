@@ -1,5 +1,7 @@
 package se.ya.videobutik.model;
 
+import se.ya.videobutik.temp.City;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
@@ -35,9 +37,9 @@ public class Address {
     @OneToMany(mappedBy = "address")
     private Collection<Customer> customers;
 
-    //@OneToOne
-    //private City city;
-
+    @ManyToOne
+    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
+    private City city;
 
     public Address() {
     }
@@ -113,4 +115,13 @@ public class Address {
     public void setCustomers(Collection<Customer> customers) {
         this.customers = customers;
     }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
 }
