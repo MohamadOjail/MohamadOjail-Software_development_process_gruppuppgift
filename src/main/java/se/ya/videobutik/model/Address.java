@@ -1,103 +1,44 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-
+import java.time.Instant;
 
 @Entity
+@Table(name = "address")
 public class Address {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "address_id")
-    private int addressId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false, length = 50)
     private String address;
 
-    @Column(name = "address2")
+    @Column(name = "address2", length = 50)
     private String address2;
 
-    @Column(name = "district")
+    @Column(name = "district", nullable = false, length = 20)
     private String district;
 
-    @Column(name = "city_id")
-    private int cityId;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "city_id", nullable = false)
+    private City city;
 
-    @Column(name = "postal_code")
+    @Column(name = "postal_code", length = 10)
     private String postalCode;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
-    @Column(name = "location")
-    private String location;
+    @Column(name = "last_update", nullable = false)
+    private Instant lastUpdate;
 
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
-
-    @ManyToMany()
-    private Collection<City> cities = new ArrayList<>();
-
-    @OneToMany(mappedBy = "address")
-    private Collection<Customer> customers = new ArrayList<>();
-
-    @OneToMany(mappedBy = "address")
-    private Collection<Staff> staff = new ArrayList<>();
-
-    @OneToOne()
-    private Store store;
-
-
-
-    public int getAddressId() {
-        return addressId;
+    public Instant getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setLastUpdate(Instant lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public String getPhone() {
@@ -108,51 +49,51 @@ public class Address {
         this.phone = phone;
     }
 
-    public String getLocation() {
-        return location;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
+    public City getCity() {
+        return city;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setCity(City city) {
+        this.city = city;
     }
 
-    public Collection<City> getCities() {
-        return cities;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setCities(Collection<City> cities) {
-        this.cities = cities;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public Collection<Customer> getCustomers() {
-        return customers;
+    public String getAddress2() {
+        return address2;
     }
 
-    public void setCustomers(Collection<Customer> customers) {
-        this.customers = customers;
+    public void setAddress2(String address2) {
+        this.address2 = address2;
     }
 
-    public Collection<Staff> getStaff() {
-        return staff;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStaff(Collection<Staff> staff) {
-        this.staff = staff;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Store getStore() {
-        return store;
+    public Integer getId() {
+        return id;
     }
 
-    public void setStore(Store store) {
-        this.store = store;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

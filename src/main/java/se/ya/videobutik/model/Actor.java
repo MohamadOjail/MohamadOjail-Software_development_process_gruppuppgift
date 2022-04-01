@@ -1,39 +1,31 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.Instant;
 
 @Entity
+@Table(name = "actor")
 public class Actor {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "actor_id")
-    private int actorId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "actor_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Column(name = "last_update")
-    private Date lastUpdate;
+    @Column(name = "last_update", nullable = false)
+    private Instant lastUpdate;
 
-    public int getActorId() {
-        return actorId;
+    public Instant getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setActorId(int actorId) {
-        this.actorId = actorId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setLastUpdate(Instant lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public String getLastName() {
@@ -44,11 +36,19 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    public Date getLastUpdate() {
-        return lastUpdate;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

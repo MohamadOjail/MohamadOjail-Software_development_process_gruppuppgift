@@ -1,39 +1,53 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "city")
 public class City {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "city_id", nullable = false)
-    private int cityId;
-    @Basic
+    private Integer id;
+
     @Column(name = "city", nullable = false, length = 50)
     private String city;
-    @Basic
-    @Column(name = "country_id", nullable = false)
-    private int countryId;
-    @Basic
-    @Column(name = "last_update", nullable = false)
-    private Timestamp lastUpdate;
 
-    @ManyToMany(mappedBy = "cities", fetch = FetchType.EAGER)
-    private Collection<Address> addresses = new ArrayList<>();
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
-    public int getCityId() {
-        return cityId;
+    @Column(name = "last_update", nullable = false)
+    private Instant lastUpdate;
+
+    @OneToMany(mappedBy = "city")
+    private Set<Address> addresses = new LinkedHashSet<>();
+
+    public Set<Address> getAddresses() {
+        return addresses;
     }
 
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Instant getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Instant lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getCity() {
@@ -44,35 +58,13 @@ public class City {
         this.city = city;
     }
 
-    public int getCountryId() {
-        return countryId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public Collection<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Collection<Address> addresses) {
-        this.addresses = addresses;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+    //TODO Reverse Engineering! Migrate other columns to the entity
 }

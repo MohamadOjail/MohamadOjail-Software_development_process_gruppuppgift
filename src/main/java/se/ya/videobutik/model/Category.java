@@ -2,33 +2,20 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
-@Table(name = "country")
-public class Country {
+@Table(name = "category")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "country_id", nullable = false)
+    @Column(name = "category_id", nullable = false)
     private Integer id;
 
-    @Column(name = "country", nullable = false, length = 50)
-    private String country;
+    @Column(name = "name", nullable = false, length = 25)
+    private String name;
 
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
-
-    @OneToMany(mappedBy = "country")
-    private Set<City> cities = new LinkedHashSet<>();
-
-    public Set<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
-    }
 
     public Instant getLastUpdate() {
         return lastUpdate;
@@ -38,12 +25,12 @@ public class Country {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getCountry() {
-        return country;
+    public String getName() {
+        return name;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getId() {

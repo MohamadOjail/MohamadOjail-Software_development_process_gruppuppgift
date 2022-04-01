@@ -23,6 +23,12 @@ public class DataManagement {
             .addAnnotatedClass(City.class)
             .addAnnotatedClass(Country.class)
             .addAnnotatedClass(Language.class)
+            .addAnnotatedClass(Payment.class)
+            .addAnnotatedClass(Rental.class)
+            .addAnnotatedClass(Inventory.class)
+            .addAnnotatedClass(FilmActor.class)
+            .addAnnotatedClass(FilmCategory.class)
+            .addAnnotatedClass(Category.class)
             .buildSessionFactory();
     private Session session = null;
 

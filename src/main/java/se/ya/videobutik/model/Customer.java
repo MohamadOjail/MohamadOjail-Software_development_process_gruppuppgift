@@ -1,77 +1,96 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "customer_id")
-    private int customerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "store_id")
-    private int storeId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", length = 50)
     private String email;
 
-    @Column(name = "address_id")
-    private int addressId;
-
-    @Column(name = "active")
-    private boolean active;
-
-    @Column(name = "create_date")
-    private Date createDate;
-
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
-
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
+    @Column(name = "active", nullable = false)
+    private Boolean active = false;
 
-    public int getCustomerId() {
-        return customerId;
+    @Column(name = "create_date", nullable = false)
+    private Instant createDate;
+
+    @Column(name = "last_update")
+    private Instant lastUpdate;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Payment> payments = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Rental> rentals = new LinkedHashSet<>();
+
+    public Set<Rental> getRentals() {
+        return rentals;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setRentals(Set<Rental> rentals) {
+        this.rentals = rentals;
     }
 
-    public int getStoreId() {
-        return storeId;
+    public Set<Payment> getPayments() {
+        return payments;
     }
 
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Instant getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setLastUpdate(Instant lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
-    public String getLastName() {
-        return lastName;
+    public Instant getCreateDate() {
+        return createDate;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setCreateDate(Instant createDate) {
+        this.createDate = createDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getEmail() {
@@ -82,43 +101,37 @@ public class Customer {
         this.email = email;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Store getStore() {
+        return store;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setStore(Store store) {
+        this.store = store;
     }
 
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
+    //TODO Reverse Engineering! Migrate other columns to the entity
 }

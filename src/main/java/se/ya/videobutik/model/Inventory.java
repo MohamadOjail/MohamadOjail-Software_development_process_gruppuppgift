@@ -2,33 +2,25 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 @Entity
-@Table(name = "country")
-public class Country {
+@Table(name = "inventory")
+public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "country_id", nullable = false)
+    @Column(name = "inventory_id", nullable = false)
     private Integer id;
 
-    @Column(name = "country", nullable = false, length = 50)
-    private String country;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "film_id")
+    private Film film;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
 
     @Column(name = "last_update", nullable = false)
     private Instant lastUpdate;
-
-    @OneToMany(mappedBy = "country")
-    private Set<City> cities = new LinkedHashSet<>();
-
-    public Set<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
-    }
 
     public Instant getLastUpdate() {
         return lastUpdate;
@@ -38,12 +30,20 @@ public class Country {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getCountry() {
-        return country;
+    public Store getStore() {
+        return store;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
     public Integer getId() {

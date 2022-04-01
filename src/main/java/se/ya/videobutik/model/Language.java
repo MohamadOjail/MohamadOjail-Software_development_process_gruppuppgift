@@ -1,32 +1,28 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.Instant;
 
 @Entity
+@Table(name = "language")
 public class Language {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "language_id", nullable = false)
-    private int languageId;
-    @Basic
+    private Integer id;
+
     @Column(name = "name", nullable = false, length = 20)
     private String name;
-    @Basic
+
     @Column(name = "last_update", nullable = false)
-    private Timestamp lastUpdate;
+    private Instant lastUpdate;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "language")
-    private Collection<Film> films = new ArrayList<>();
-
-    public int getLanguageId() {
-        return languageId;
+    public Instant getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setLanguageId(int languageId) {
-        this.languageId = languageId;
+    public void setLastUpdate(Instant lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public String getName() {
@@ -37,19 +33,13 @@ public class Language {
         this.name = name;
     }
 
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Collection<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(Collection<Film> films) {
-        this.films = films;
-    }
+    //TODO Reverse Engineering! Migrate other columns to the entity
 }

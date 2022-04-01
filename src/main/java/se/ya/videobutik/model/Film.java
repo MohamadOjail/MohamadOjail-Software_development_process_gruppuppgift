@@ -1,61 +1,171 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "film")
 public class Film {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "film_id")
-    private int filmId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "film_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "title")
+    @Column(name = "title", nullable = false, length = 128)
     private String title;
 
+    @Lob
     @Column(name = "description")
     private String description;
 
     @Column(name = "release_year")
-    private int releaseYear;
+    private Integer releaseYear;
 
-    @Column(name = "language_id")
-    private int languageId;
-
-    @Column(name = "rental_duration")
-    private int rentalDuration;
-
-    @Column(name = "rental_rate")
-    private double rentalRate;
-
-    @Column(name = "length")
-    private int length;
-
-    @Column(name = "replacement_cost")
-    private double replacement_cost;
-
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "language_id", nullable = false)
     private Language language;
 
-    public int getFilmId() {
-        return filmId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "original_language_id")
+    private Language originalLanguage;
+
+    @Column(name = "rental_duration", nullable = false)
+    private Integer rentalDuration;
+
+    @Column(name = "rental_rate", nullable = false, precision = 4, scale = 2)
+    private BigDecimal rentalRate;
+
+    @Column(name = "length")
+    private Integer length;
+
+    @Column(name = "replacement_cost", nullable = false, precision = 5, scale = 2)
+    private BigDecimal replacementCost;
+
+    @Lob
+    @Column(name = "rating")
+    private String rating;
+
+    @Lob
+    @Column(name = "special_features")
+    private String specialFeatures;
+
+    @Column(name = "last_update", nullable = false)
+    private Instant lastUpdate;
+
+    @OneToMany(mappedBy = "film")
+    private Set<Inventory> inventories = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "film")
+    private Set<FilmActor> filmActors = new LinkedHashSet<>();
+
+    @OneToMany(mappedBy = "film")
+    private Set<FilmCategory> filmCategories = new LinkedHashSet<>();
+
+    public Set<FilmCategory> getFilmCategories() {
+        return filmCategories;
     }
 
-    public void setFilmId(int filmId) {
-        this.filmId = filmId;
+    public void setFilmCategories(Set<FilmCategory> filmCategories) {
+        this.filmCategories = filmCategories;
     }
 
-    public String getTitle() {
-        return title;
+    public Set<FilmActor> getFilmActors() {
+        return filmActors;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setFilmActors(Set<FilmActor> filmActors) {
+        this.filmActors = filmActors;
+    }
+
+    public Set<Inventory> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(Set<Inventory> inventories) {
+        this.inventories = inventories;
+    }
+
+    public Instant getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Instant lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public String getSpecialFeatures() {
+        return specialFeatures;
+    }
+
+    public void setSpecialFeatures(String specialFeatures) {
+        this.specialFeatures = specialFeatures;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public BigDecimal getReplacementCost() {
+        return replacementCost;
+    }
+
+    public void setReplacementCost(BigDecimal replacementCost) {
+        this.replacementCost = replacementCost;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public BigDecimal getRentalRate() {
+        return rentalRate;
+    }
+
+    public void setRentalRate(BigDecimal rentalRate) {
+        this.rentalRate = rentalRate;
+    }
+
+    public Integer getRentalDuration() {
+        return rentalDuration;
+    }
+
+    public void setRentalDuration(Integer rentalDuration) {
+        this.rentalDuration = rentalDuration;
+    }
+
+    public Language getOriginalLanguage() {
+        return originalLanguage;
+    }
+
+    public void setOriginalLanguage(Language originalLanguage) {
+        this.originalLanguage = originalLanguage;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public Integer getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(Integer releaseYear) {
+        this.releaseYear = releaseYear;
     }
 
     public String getDescription() {
@@ -66,67 +176,19 @@ public class Film {
         this.description = description;
     }
 
-    public int getReleaseYear() {
-        return releaseYear;
+    public String getTitle() {
+        return title;
     }
 
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getLanguageId() {
-        return languageId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLanguageId(int languageId) {
-        this.languageId = languageId;
-    }
-
-    public int getRentalDuration() {
-        return rentalDuration;
-    }
-
-    public void setRentalDuration(int rentalDuration) {
-        this.rentalDuration = rentalDuration;
-    }
-
-    public double getRentalRate() {
-        return rentalRate;
-    }
-
-    public void setRentalRate(double rentalRate) {
-        this.rentalRate = rentalRate;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public double getReplacement_cost() {
-        return replacement_cost;
-    }
-
-    public void setReplacement_cost(double replacement_cost) {
-        this.replacement_cost = replacement_cost;
-    }
-
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
