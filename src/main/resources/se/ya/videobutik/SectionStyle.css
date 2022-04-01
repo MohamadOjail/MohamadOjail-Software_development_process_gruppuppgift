@@ -1,0 +1,16 @@
+*{
+    -fx-font-family: SansSerif;
+    -fx-font-size: 20;
+}
+
+#section_btn{
+    -fx-min-width: 300;
+}
+
+TextField{
+    -fx-max-width: 300;
+}
+
+ComboBox{
+    -fx-min-width: 300;
+}
