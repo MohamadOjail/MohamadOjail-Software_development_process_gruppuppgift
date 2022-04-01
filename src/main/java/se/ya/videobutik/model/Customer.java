@@ -2,6 +2,7 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Customer {
@@ -10,6 +11,9 @@ public class Customer {
     @Id
     @Column(name = "customer_id")
     private int customerId;
+
+    @Column(name = "store_id")
+    private int storeId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -20,34 +24,17 @@ public class Customer {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "address_id")
+    private int addressId;
+
     @Column(name = "active")
     private boolean active;
-
-    @Column(name = "last_update")
-    private Date lastUpdate;
 
     @Column(name = "create_date")
     private Date createDate;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Address address;
-
-    @ManyToOne
-    @JoinColumn(name = "store_id", referencedColumnName = "store_id")
-    private Store store;
-
-    public Customer() {
-    }
-
-    public Customer(String firstName, String lastName, String email, boolean active, Address address, Store store) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.active = active;
-        this.address = address;
-        this.store = store;
-    }
+    @Column(name = "last_update")
+    private Timestamp lastUpdate;
 
     public int getCustomerId() {
         return customerId;
@@ -55,6 +42,14 @@ public class Customer {
 
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
+    }
+
+    public int getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
     }
 
     public String getFirstName() {
@@ -81,20 +76,20 @@ public class Customer {
         this.email = email;
     }
 
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
     public boolean isActive() {
         return active;
     }
 
     public void setActive(boolean active) {
         this.active = active;
-    }
-
-    public Date getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
     }
 
     public Date getCreateDate() {
@@ -105,20 +100,11 @@ public class Customer {
         this.createDate = createDate;
     }
 
-    public Address getAddress() {
-        return address;
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
-    }
-
 }

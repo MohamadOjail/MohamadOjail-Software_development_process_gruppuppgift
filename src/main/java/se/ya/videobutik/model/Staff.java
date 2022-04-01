@@ -2,6 +2,7 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Staff {
@@ -17,9 +18,8 @@ public class Staff {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Address address;
+    @Column(name = "address_id")
+    private int addressId;
 
     @Column(name = "email")
     private String email;
@@ -33,12 +33,8 @@ public class Staff {
     @Column(name = "username")
     private String username;
 
-//    @Column(name = "password")
-//    private String password;
-
     @Column(name = "last_update")
-    private Date lastUpdate;
-
+    private Timestamp lastUpdate;
 
     public int getStaff_id() {
         return staff_id;
@@ -64,12 +60,12 @@ public class Staff {
         this.lastName = lastName;
     }
 
-    public Address getAddress() {
-        return address;
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     public String getEmail() {
@@ -104,11 +100,11 @@ public class Staff {
         this.username = username;
     }
 
-    public Date getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 }

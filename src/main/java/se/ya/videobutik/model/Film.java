@@ -2,6 +2,7 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Film {
@@ -20,6 +21,9 @@ public class Film {
     @Column(name = "release_year")
     private int releaseYear;
 
+    @Column(name = "language_id")
+    private int languageId;
+
     @Column(name = "rental_duration")
     private int rentalDuration;
 
@@ -33,18 +37,10 @@ public class Film {
     private double replacement_cost;
 
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
     public int getFilmId() {
         return filmId;
-    }
-
-    public int getRentalDuration() {
-        return rentalDuration;
-    }
-
-    public void setRentalDuration(int rentalDuration) {
-        this.rentalDuration = rentalDuration;
     }
 
     public void setFilmId(int filmId) {
@@ -75,6 +71,22 @@ public class Film {
         this.releaseYear = releaseYear;
     }
 
+    public int getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(int languageId) {
+        this.languageId = languageId;
+    }
+
+    public int getRentalDuration() {
+        return rentalDuration;
+    }
+
+    public void setRentalDuration(int rentalDuration) {
+        this.rentalDuration = rentalDuration;
+    }
+
     public double getRentalRate() {
         return rentalRate;
     }
@@ -99,11 +111,11 @@ public class Film {
         this.replacement_cost = replacement_cost;
     }
 
-    public Date getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 }

@@ -1,10 +1,10 @@
 package se.ya.videobutik.model;
 
-import se.ya.videobutik.temp.City;
-
 import javax.persistence.*;
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Collection;
+
 
 @Entity
 public class Address {
@@ -23,34 +23,23 @@ public class Address {
     @Column(name = "district")
     private String district;
 
+    @Column(name = "city_id")
+    private int cityId;
+
     @Column(name = "postal_code")
     private String postalCode;
 
     @Column(name = "phone")
     private String phone;
 
-    // LOCATION?
+    @Column(name = "location")
+    private Object location;
 
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "address")
-    private Collection<Customer> customers;
-
-    @ManyToOne
-    @JoinColumn(name = "city_id", referencedColumnName = "city_id")
-    private City city;
-
-    public Address() {
-    }
-
-    public Address(String address, String address2, String district, String postalCode, String phone) {
-        this.address = address;
-        this.address2 = address2;
-        this.district = district;
-        this.postalCode = postalCode;
-        this.phone = phone;
-    }
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Collection<City> cities = new ArrayList<>();
 
     public int getAddressId() {
         return addressId;
@@ -84,6 +73,14 @@ public class Address {
         this.district = district;
     }
 
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
     public String getPostalCode() {
         return postalCode;
     }
@@ -100,28 +97,19 @@ public class Address {
         this.phone = phone;
     }
 
-    public Date getLastUpdate() {
+    public Object getLocation() {
+        return location;
+    }
+
+    public void setLocation(Object location) {
+        this.location = location;
+    }
+
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
-
-    public Collection<Customer> getCustomers() {
-        return customers;
-    }
-
-    public void setCustomers(Collection<Customer> customers) {
-        this.customers = customers;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
 }

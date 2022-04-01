@@ -2,6 +2,7 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Store {
@@ -14,21 +15,11 @@ public class Store {
     @Column(name = "manager_staff_id")
     private int managerStaffId;
 
-    @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    private Address address;
+    @Column(name = "address_id")
+    private int addressId;
 
     @Column(name = "last_update")
-    private Date lastUpdate;
-
-    public Store() {
-    }
-
-    public Store(int store_id, Address address, Date lastUpdate) {
-        this.store_id = store_id;
-        this.address = address;
-        this.lastUpdate = lastUpdate;
-    }
+    private Timestamp lastUpdate;
 
     public int getStore_id() {
         return store_id;
@@ -38,19 +29,27 @@ public class Store {
         this.store_id = store_id;
     }
 
-    public Address getAddress() {
-        return address;
+    public int getManagerStaffId() {
+        return managerStaffId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setManagerStaffId(int managerStaffId) {
+        this.managerStaffId = managerStaffId;
     }
 
-    public Date getLastUpdate() {
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 }
