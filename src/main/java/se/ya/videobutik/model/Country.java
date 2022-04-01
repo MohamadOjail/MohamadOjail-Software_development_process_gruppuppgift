@@ -2,6 +2,8 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Country {
@@ -15,6 +17,9 @@ public class Country {
     @Basic
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "country")
+    private Collection<City> cities = new ArrayList<>();
 
     public int getCountryId() {
         return countryId;
@@ -38,5 +43,13 @@ public class Country {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Collection<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(Collection<City> cities) {
+        this.cities = cities;
     }
 }

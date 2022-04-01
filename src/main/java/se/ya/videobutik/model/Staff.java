@@ -36,6 +36,9 @@ public class Staff {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @ManyToOne()
+    private Address address;
+
     public int getStaff_id() {
         return staff_id;
     }
@@ -106,5 +109,13 @@ public class Staff {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

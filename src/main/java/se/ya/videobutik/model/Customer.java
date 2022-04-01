@@ -3,6 +3,8 @@ package se.ya.videobutik.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Customer {
@@ -35,6 +37,10 @@ public class Customer {
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
+
+    @ManyToOne()
+    private Address address;
+
 
     public int getCustomerId() {
         return customerId;
@@ -106,5 +112,13 @@ public class Customer {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

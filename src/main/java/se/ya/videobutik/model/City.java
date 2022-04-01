@@ -25,6 +25,9 @@ public class City {
     @ManyToMany(mappedBy = "cities", fetch = FetchType.EAGER)
     private Collection<Address> addresses = new ArrayList<>();
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Country country;
+
     public int getCityId() {
         return cityId;
     }
@@ -55,5 +58,21 @@ public class City {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Collection<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Collection<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

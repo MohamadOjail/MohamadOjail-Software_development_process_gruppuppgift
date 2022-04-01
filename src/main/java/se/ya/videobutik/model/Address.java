@@ -33,13 +33,24 @@ public class Address {
     private String phone;
 
     @Column(name = "location")
-    private Object location;
+    private String location;
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany()
     private Collection<City> cities = new ArrayList<>();
+
+    @OneToMany(mappedBy = "address")
+    private Collection<Customer> customers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "address")
+    private Collection<Staff> staff = new ArrayList<>();
+
+    @OneToOne()
+    private Store store;
+
+
 
     public int getAddressId() {
         return addressId;
@@ -97,11 +108,11 @@ public class Address {
         this.phone = phone;
     }
 
-    public Object getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Object location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
@@ -111,5 +122,37 @@ public class Address {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Collection<City> getCities() {
+        return cities;
+    }
+
+    public void setCities(Collection<City> cities) {
+        this.cities = cities;
+    }
+
+    public Collection<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Collection<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public Collection<Staff> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(Collection<Staff> staff) {
+        this.staff = staff;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 }

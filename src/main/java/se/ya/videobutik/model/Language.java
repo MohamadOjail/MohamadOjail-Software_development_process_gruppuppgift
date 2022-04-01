@@ -2,6 +2,8 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 public class Language {
@@ -15,6 +17,9 @@ public class Language {
     @Basic
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "language")
+    private Collection<Film> films = new ArrayList<>();
 
     public int getLanguageId() {
         return languageId;
@@ -38,5 +43,13 @@ public class Language {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Collection<Film> getFilms() {
+        return films;
+    }
+
+    public void setFilms(Collection<Film> films) {
+        this.films = films;
     }
 }

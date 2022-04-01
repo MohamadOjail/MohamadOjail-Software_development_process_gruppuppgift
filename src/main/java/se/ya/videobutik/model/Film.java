@@ -39,6 +39,9 @@ public class Film {
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Language language;
+
     public int getFilmId() {
         return filmId;
     }
@@ -117,5 +120,13 @@ public class Film {
 
     public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 }
