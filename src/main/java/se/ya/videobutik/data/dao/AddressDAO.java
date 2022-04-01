@@ -10,7 +10,7 @@ public class AddressDAO {
 
     public void AddAddress(Address address){
         DataManagement data = new DataManagement();
-        data.setData(Address.class);
+        data.setData(address);
     }
     public Address findAddress(int id){
         DataManagement data = new DataManagement();
@@ -22,7 +22,7 @@ public class AddressDAO {
     }
     public void updateAddress(Address address){
         DataManagement data = new DataManagement();
-        data.updateData(Address.class);
+        data.updateData(address);
     }
     public Collection<Address> getAddressList(){
 
