@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MainController">
+<BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1000.0" minWidth="1600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MainController">
    <left>
       <VBox spacing="20.0" BorderPane.alignment="CENTER">
          <children>

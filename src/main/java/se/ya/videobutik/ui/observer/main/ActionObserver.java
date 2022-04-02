@@ -1,6 +1,7 @@
 package se.ya.videobutik.ui.observer.main;
 
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import se.ya.videobutik.ui.Switcher;
 import se.ya.videobutik.ui.controller.MainController;
@@ -35,5 +36,18 @@ public class ActionObserver implements EventHandler<MouseEvent> {
         if (e.getSource() == ctrlr.getLbl_home()){
             Switcher.get().backToMain(ctrlr.getLbl_home());
         }
+
+        setStyle(e);
+    }
+
+    private void setStyle(MouseEvent e){
+        styleIt(ctrlr.getLbl_address(), e.getSource() == ctrlr.getLbl_address());
+        styleIt(ctrlr.getLbl_customer(), e.getSource() == ctrlr.getLbl_customer());
+        styleIt(ctrlr.getLbl_film(), e.getSource() == ctrlr.getLbl_film());
+        styleIt(ctrlr.getLbl_uthyrning(), e.getSource() == ctrlr.getLbl_uthyrning());
+    }
+    private void styleIt(Node node, boolean selected){
+        if (selected) node.setStyle("-fx-background-color: rgba(13,235,83,0.2);");
+        else node.setStyle("-fx-background-color: transparent;");
     }
 }

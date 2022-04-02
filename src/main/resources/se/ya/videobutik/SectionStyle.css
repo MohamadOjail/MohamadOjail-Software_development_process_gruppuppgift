@@ -4,7 +4,18 @@
 }
 
 #section_btn{
+    -fx-cursor: hand;
     -fx-min-width: 300;
+    -fx-background-color: rgba(255, 150, 4, 0.2);
+}
+
+#section_btn:hover{
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(174, 238, 133, 0.3);
+}
+
+#section_btn:pressed{
+    -fx-background-color: rgba(133, 189, 238, 0.3);
 }
 
 TextField{
@@ -13,4 +24,10 @@ TextField{
 
 ComboBox{
     -fx-min-width: 300;
+}
+
+#title{
+    -fx-text-fill: #0b58ae;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
 }
