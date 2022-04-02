@@ -2,9 +2,9 @@
 #btn_roll{
     -fx-font-size: 20;
     -fx-cursor: hand;
-    -fx-min-width: 200;
+    -fx-min-width: 300;
     -fx-min-height: 80;
-    -fx-padding: 20;
+    -fx-padding: 0 0 0 30;
     -fx-background-insets: -2, -2, -2;
     -fx-background-radius: 2, 0, 0;
     -fx-border-color: transparent;
@@ -19,9 +19,9 @@
 #btn_home{
     -fx-font-size: 20;
     -fx-cursor: hand;
-    -fx-min-width: 200;
+    -fx-min-width: 300;
     -fx-min-height: 80;
-    -fx-padding: 20;
+    -fx-padding: 0 0 0 30;
     -fx-background-insets: -2, -2, -2;
     -fx-background-radius: 2, 0, 0;
     -fx-border-color: transparent;

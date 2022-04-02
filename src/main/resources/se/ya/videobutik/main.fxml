@@ -1,19 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1000.0" minWidth="1600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MainController">
    <left>
-      <VBox spacing="20.0" BorderPane.alignment="CENTER">
+      <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label id="btn_roll" fx:id="lbl_uthyrning" text="Uthyrning" />
-            <Label id="btn_roll" fx:id="lbl_customer" text="Kunder" />
-            <Label id="btn_roll" fx:id="lbl_film" text="Filmer" />
-            <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
-            <Label id="btn_home" fx:id="lbl_home" text="Back to main menu" />
+            <VBox spacing="20.0">
+               <children>
+                  <Label id="btn_roll" fx:id="lbl_uthyrning" text="Uthyrning" />
+                  <Separator prefWidth="200.0" />
+                  <Label id="btn_roll" fx:id="lbl_customer" text="Kunder" />
+                  <Separator prefWidth="200.0" />
+                  <Label id="btn_roll" fx:id="lbl_film" text="Filmer" />
+                  <Separator prefWidth="200.0" />
+                  <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
+                  <Separator prefWidth="200.0" />
+                  <Label id="btn_home" fx:id="lbl_home" text="Back to main menu" />
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
          </children>
-      </VBox>
+      </HBox>
    </left>
+   <top>
+      <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Sakila Video store alpha" textFill="#1338eb">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+   </top>
 </BorderPane>
