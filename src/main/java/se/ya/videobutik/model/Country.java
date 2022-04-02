@@ -1,6 +1,7 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class Country {
     private String country;
 
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
     @OneToMany(mappedBy = "country")
     private Set<City> cities = new LinkedHashSet<>();
@@ -30,11 +31,11 @@ public class Country {
         this.cities = cities;
     }
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -54,5 +55,4 @@ public class Country {
         this.id = id;
     }
 
-    //TODO Reverse Engineering! Migrate other columns to the entity
 }

@@ -1,6 +1,7 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.time.Instant;
 
 @Entity
@@ -41,13 +42,13 @@ public class Staff {
     private String password;
 
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -130,6 +131,4 @@ public class Staff {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    //TODO Reverse Engineering! Migrate other columns to the entity
 }

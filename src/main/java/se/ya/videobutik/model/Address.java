@@ -1,9 +1,7 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.Instant;
 
 @Entity
 @Table(name = "address")
@@ -35,6 +33,9 @@ public class Address {
     @Column(name = "location", nullable = true)
     private String location;
 
+    @Column(name = "last_update", nullable = false)
+    private Timestamp lastUpdate;
+
     public String getLocation() {
         return location;
     }
@@ -42,9 +43,6 @@ public class Address {
     public void setLocation(String location) {
         this.location = location;
     }
-
-    @Column(name = "last_update", nullable = false)
-    private Timestamp lastUpdate;
 
     public Timestamp getLastUpdate() {
         return lastUpdate;

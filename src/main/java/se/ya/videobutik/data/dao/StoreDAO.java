@@ -10,7 +10,7 @@ public class StoreDAO {
 
     public void AddStore(Store store){
         DataManagement data = new DataManagement();
-        data.setData(Store.class);
+        data.setData(store);
     }
     public Store findStore(int id){
         DataManagement data = new DataManagement();
@@ -22,7 +22,7 @@ public class StoreDAO {
     }
     public void updateStore(Store store){
         DataManagement data = new DataManagement();
-        data.updateData(Store.class);
+        data.updateData(store);
     }
     public Collection<Store> getStoreList(){
 

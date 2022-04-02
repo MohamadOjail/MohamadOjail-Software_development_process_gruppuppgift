@@ -1,8 +1,8 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.time.Instant;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "payment")
@@ -25,35 +25,35 @@ public class Payment {
     private Rental rental;
 
     @Column(name = "amount", nullable = false, precision = 5, scale = 2)
-    private BigDecimal amount;
+    private double amount;
 
     @Column(name = "payment_date", nullable = false)
-    private Instant paymentDate;
+    private LocalDateTime paymentDate;
 
     @Column(name = "last_update")
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public Instant getPaymentDate() {
+    public LocalDateTime getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Instant paymentDate) {
+    public void setPaymentDate(LocalDateTime paymentDate) {
         this.paymentDate = paymentDate;
     }
 
-    public BigDecimal getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

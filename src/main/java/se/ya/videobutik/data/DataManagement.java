@@ -84,8 +84,6 @@ public class DataManagement {
         try {
             session = factory.openSession();
             session.beginTransaction();
-            //Actor actor = session.get(Actor.class, 2);
-            //actor.setFirstName("anna");
             session.update(object);
             session.getTransaction().commit();
         } catch (HibernateException e) {
@@ -131,12 +129,11 @@ public class DataManagement {
         String queryString = "";
 
         switch (tableClass.getSimpleName().toLowerCase(Locale.ROOT)){
-          case "actor" -> queryString = "SELECT * FROM actor WHERE actor.last_name LIKE '" + parameterText + "%'";
-            case  "address" -> queryString = "SELECT * FROM address WHERE address.address LIKE '" + parameterText + "%'";
-            case  "customer" -> queryString = "SELECT * FROM customer WHERE last_name LIKE '" + parameterText + "%'";
-            case  "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
-            case  "staff" -> queryString = "SELECT * FROM staff WHERE staff.last_name LIKE '" + parameterText + "%'";
-
+            case "actor" -> queryString = "SELECT * FROM actor WHERE actor.last_name LIKE '" + parameterText + "%'";
+            case "address" -> queryString = "SELECT * FROM address WHERE address.address LIKE '" + parameterText + "%'";
+            case "customer" -> queryString = "SELECT * FROM customer WHERE last_name LIKE '" + parameterText + "%'";
+            case "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
+            case "staff" -> queryString = "SELECT * FROM staff WHERE staff.last_name LIKE '" + parameterText + "%'";
         }
 
         Collection<Object> outputList = new ArrayList<>();

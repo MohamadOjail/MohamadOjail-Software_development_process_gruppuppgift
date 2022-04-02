@@ -2,6 +2,7 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -36,13 +37,13 @@ public class Film {
     private Integer rentalDuration;
 
     @Column(name = "rental_rate", nullable = false, precision = 4, scale = 2)
-    private BigDecimal rentalRate;
+    private double rentalRate;
 
     @Column(name = "length")
     private Integer length;
 
     @Column(name = "replacement_cost", nullable = false, precision = 5, scale = 2)
-    private BigDecimal replacementCost;
+    private double replacementCost;
 
     @Lob
     @Column(name = "rating")
@@ -53,7 +54,7 @@ public class Film {
     private String specialFeatures;
 
     @Column(name = "last_update", nullable = false)
-    private Instant lastUpdate;
+    private Timestamp lastUpdate;
 
     @OneToMany(mappedBy = "film")
     private Set<Inventory> inventories = new LinkedHashSet<>();
@@ -88,11 +89,11 @@ public class Film {
         this.inventories = inventories;
     }
 
-    public Instant getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Instant lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
@@ -112,11 +113,11 @@ public class Film {
         this.rating = rating;
     }
 
-    public BigDecimal getReplacementCost() {
+    public double getReplacementCost() {
         return replacementCost;
     }
 
-    public void setReplacementCost(BigDecimal replacementCost) {
+    public void setReplacementCost(double replacementCost) {
         this.replacementCost = replacementCost;
     }
 
@@ -128,11 +129,11 @@ public class Film {
         this.length = length;
     }
 
-    public BigDecimal getRentalRate() {
+    public double getRentalRate() {
         return rentalRate;
     }
 
-    public void setRentalRate(BigDecimal rentalRate) {
+    public void setRentalRate(double rentalRate) {
         this.rentalRate = rentalRate;
     }
 
