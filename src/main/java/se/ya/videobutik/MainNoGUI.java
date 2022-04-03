@@ -7,7 +7,13 @@ public class MainNoGUI {
     public static void main(String[] args) {
 
         AddressDAO addressDAO = new AddressDAO();
-        Address address = addressDAO.findAddress(2);
-        System.out.println(address.getLocation());
+        Object[] objectData = {
+                "GatoGatan",
+                "distictooo",
+                5,
+                "123",
+                "123"
+        };
+        addressDAO.AddAddress(objectData);
     }
 }
