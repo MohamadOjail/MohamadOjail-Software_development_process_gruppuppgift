@@ -10,7 +10,7 @@ public class FilmDAO {
 
     public void AddFilm(Film film){
         DataManagement data = new DataManagement();
-        data.setData(Film.class);
+        data.setData(film);
     }
     public Film findFilm(int id){
         DataManagement data = new DataManagement();
@@ -22,7 +22,7 @@ public class FilmDAO {
     }
     public void updateFilm(Film film){
         DataManagement data = new DataManagement();
-        data.updateData(Film.class);
+        data.updateData(film);
     }
     public Collection<Film> getFilmList(){
 

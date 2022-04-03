@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 @Entity
-@Table(name = "language")
-public class Language {
+@Table(name = "category")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "language_id", nullable = false)
+    @Column(name = "category_id", nullable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 20)
+    @Column(name = "name", nullable = false, length = 25)
     private String name;
 
     @Column(name = "last_update", nullable = false)

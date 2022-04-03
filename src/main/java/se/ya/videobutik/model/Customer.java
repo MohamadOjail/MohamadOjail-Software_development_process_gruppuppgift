@@ -1,109 +1,66 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "customer_id")
-    private int customerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "store_id")
-    private int storeId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false, length = 45)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", length = 50)
     private String email;
 
-    @Column(name = "address_id")
-    private int addressId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
+    private Address address;
 
-    @Column(name = "active")
-    private boolean active;
+    @Column(name = "active", nullable = false)
+    private Boolean active = false;
 
-    @Column(name = "create_date")
-    private Date createDate;
+    @Column(name = "create_date", nullable = false)
+    private LocalDateTime createDate;
 
     @Column(name = "last_update")
     private Timestamp lastUpdate;
 
-    @ManyToOne()
-    private Address address;
+    @OneToMany(mappedBy = "customer")
+    private Set<Payment> payments = new LinkedHashSet<>();
 
+    @OneToMany(mappedBy = "customer")
+    private Set<Rental> rentals = new LinkedHashSet<>();
 
-    public int getCustomerId() {
-        return customerId;
+    public Set<Rental> getRentals() {
+        return rentals;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setRentals(Set<Rental> rentals) {
+        this.rentals = rentals;
     }
 
-    public int getStoreId() {
-        return storeId;
+    public Set<Payment> getPayments() {
+        return payments;
     }
 
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
     }
 
     public Timestamp getLastUpdate() {
@@ -114,6 +71,22 @@ public class Customer {
         this.lastUpdate = lastUpdate;
     }
 
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -121,4 +94,45 @@ public class Customer {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }

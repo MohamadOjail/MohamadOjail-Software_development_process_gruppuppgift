@@ -10,7 +10,7 @@ public class CustomerDAO {
 
     public void AddCustomer(Customer customer){
         DataManagement data = new DataManagement();
-        data.setData(Customer.class);
+        data.setData(customer);
     }
     public Customer findCustomer(int id){
         DataManagement data = new DataManagement();
@@ -22,7 +22,7 @@ public class CustomerDAO {
     }
     public void updateCustomer(Customer customer){
         DataManagement data = new DataManagement();
-        data.updateData(Customer.class);
+        data.updateData(customer);
     }
     public Collection<Customer> getCustomerList(){
 

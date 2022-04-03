@@ -2,39 +2,33 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.Instant;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
+@Table(name = "country")
 public class Country {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_id", nullable = false)
-    private int countryId;
-    @Basic
+    private Integer id;
+
     @Column(name = "country", nullable = false, length = 50)
     private String country;
-    @Basic
+
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "country")
-    private Collection<City> cities = new ArrayList<>();
+    @OneToMany(mappedBy = "country")
+    private Set<City> cities = new LinkedHashSet<>();
 
-    public int getCountryId() {
-        return countryId;
+    public Set<City> getCities() {
+        return cities;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCities(Set<City> cities) {
+        this.cities = cities;
     }
 
     public Timestamp getLastUpdate() {
@@ -45,11 +39,20 @@ public class Country {
         this.lastUpdate = lastUpdate;
     }
 
-    public Collection<City> getCities() {
-        return cities;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCities(Collection<City> cities) {
-        this.cities = cities;
+    public void setCountry(String country) {
+        this.country = country;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }

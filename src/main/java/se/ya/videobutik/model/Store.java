@@ -1,55 +1,27 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.Instant;
 
 @Entity
+@Table(name = "store")
 public class Store {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "store_id")
-    private int store_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "store_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "manager_staff_id")
-    private int managerStaffId;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "manager_staff_id", nullable = false)
+    private Staff managerStaff;
 
-    @Column(name = "address_id")
-    private int addressId;
-
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
-
-    @OneToOne(fetch = FetchType.EAGER,mappedBy = "store")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-
-    public int getStore_id() {
-        return store_id;
-    }
-
-    public void setStore_id(int store_id) {
-        this.store_id = store_id;
-    }
-
-    public int getManagerStaffId() {
-        return managerStaffId;
-    }
-
-    public void setManagerStaffId(int managerStaffId) {
-        this.managerStaffId = managerStaffId;
-    }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
+    @Column(name = "last_update", nullable = false)
+    private Timestamp lastUpdate;
 
     public Timestamp getLastUpdate() {
         return lastUpdate;
@@ -65,5 +37,21 @@ public class Store {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Staff getManagerStaff() {
+        return managerStaff;
+    }
+
+    public void setManagerStaff(Staff managerStaff) {
+        this.managerStaff = managerStaff;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

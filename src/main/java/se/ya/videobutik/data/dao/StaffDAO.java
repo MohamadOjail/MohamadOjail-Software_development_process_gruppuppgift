@@ -10,7 +10,7 @@ public class StaffDAO {
 
     public void AddStaff(Staff staff){
         DataManagement data = new DataManagement();
-        data.setData(Staff.class);
+        data.setData(staff);
     }
     public Staff findStaff(int id){
         DataManagement data = new DataManagement();
@@ -22,7 +22,7 @@ public class StaffDAO {
     }
     public void updateStaff(Staff staff){
         DataManagement data = new DataManagement();
-        data.updateData(Staff.class);
+        data.updateData(staff);
     }
     public Collection<Staff> getStaffList(){
 

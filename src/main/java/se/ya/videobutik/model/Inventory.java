@@ -5,15 +5,20 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 @Entity
-@Table(name = "language")
-public class Language {
+@Table(name = "inventory")
+public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "language_id", nullable = false)
+    @Column(name = "inventory_id", nullable = false)
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 20)
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "film_id")
+    private Film film;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
 
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
@@ -26,12 +31,20 @@ public class Language {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getName() {
-        return name;
+    public Store getStore() {
+        return store;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public Film getFilm() {
+        return film;
+    }
+
+    public void setFilm(Film film) {
+        this.film = film;
     }
 
     public Integer getId() {

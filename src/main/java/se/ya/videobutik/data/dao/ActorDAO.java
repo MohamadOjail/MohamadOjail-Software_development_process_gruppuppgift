@@ -10,7 +10,7 @@ public class ActorDAO {
 
     public void AddActor(Actor actor){
         DataManagement data = new DataManagement();
-        data.setData(Actor.class);
+        data.setData(actor);
     }
     public Actor findActor(int id){
         DataManagement data = new DataManagement();
@@ -22,7 +22,7 @@ public class ActorDAO {
     }
     public void updateActor(Actor actor){
         DataManagement data = new DataManagement();
-        data.updateData(Actor.class);
+        data.updateData(actor);
     }
     public Collection<Actor> getActorList(){
 

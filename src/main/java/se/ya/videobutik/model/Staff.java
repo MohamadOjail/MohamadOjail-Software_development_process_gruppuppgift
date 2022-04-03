@@ -1,98 +1,63 @@
 package se.ya.videobutik.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
+@Table(name = "staff")
 public class Staff {
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "staff_id")
-    private int staff_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "staff_id", nullable = false)
+    private Integer id;
 
-    @Column(name = "first_name")
-    private String first_name;
+    @Column(name = "first_name", nullable = false, length = 45)
+    private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Column(name = "address_id")
-    private int addressId;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "store_id")
-    private int storeId;
-
-    @Column(name = "active")
-    private boolean active;
-
-    @Column(name = "username")
-    private String username;
-
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
-
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
-    public int getStaff_id() {
-        return staff_id;
+    @Column(name = "picture")
+    private byte[] picture;
+
+    @Column(name = "email", length = 50)
+    private String email;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id", nullable = false)
+    private Store store;
+
+    @Column(name = "active", nullable = false)
+    private Boolean active = false;
+
+    @Column(name = "username", nullable = false, length = 16)
+    private String username;
+
+    @Column(name = "password", length = 40)
+    private String password;
+
+    @Column(name = "last_update", nullable = false)
+    private Timestamp lastUpdate;
+
+    public Timestamp getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setStaff_id(int staff_id) {
-        this.staff_id = staff_id;
+    public void setLastUpdate(Timestamp lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(int storeId) {
-        this.storeId = storeId;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {
@@ -103,12 +68,36 @@ public class Staff {
         this.username = username;
     }
 
-    public Timestamp getLastUpdate() {
-        return lastUpdate;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setLastUpdate(Timestamp lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     public Address getAddress() {
@@ -117,5 +106,29 @@ public class Staff {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

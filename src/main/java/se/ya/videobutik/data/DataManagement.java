@@ -23,6 +23,12 @@ public class DataManagement {
             .addAnnotatedClass(City.class)
             .addAnnotatedClass(Country.class)
             .addAnnotatedClass(Language.class)
+            .addAnnotatedClass(Payment.class)
+            .addAnnotatedClass(Rental.class)
+            .addAnnotatedClass(Inventory.class)
+            .addAnnotatedClass(FilmActor.class)
+            .addAnnotatedClass(FilmCategory.class)
+            .addAnnotatedClass(Category.class)
             .buildSessionFactory();
     private Session session = null;
 
@@ -123,12 +129,11 @@ public class DataManagement {
         String queryString = "";
 
         switch (tableClass.getSimpleName().toLowerCase(Locale.ROOT)){
-//            case "actor" -> queryString = "SELECT * FROM actor";
-//            case  "address" -> queryString = "SELECT * FROM address";
-            case  "customer" -> queryString = "SELECT * FROM customer WHERE last_name LIKE '" + parameterText + "%'";
-            case  "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
-//            case  "staff" -> queryString = "SELECT * FROM staff";
-//            case  "store" -> queryString = "SELECT * FROM store";
+            case "actor" -> queryString = "SELECT * FROM actor WHERE actor.last_name LIKE '" + parameterText + "%'";
+            case "address" -> queryString = "SELECT * FROM address WHERE address.address LIKE '" + parameterText + "%'";
+            case "customer" -> queryString = "SELECT * FROM customer WHERE last_name LIKE '" + parameterText + "%'";
+            case "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
+            case "staff" -> queryString = "SELECT * FROM staff WHERE staff.last_name LIKE '" + parameterText + "%'";
         }
 
         Collection<Object> outputList = new ArrayList<>();
@@ -136,7 +141,6 @@ public class DataManagement {
         try {
             session = factory.openSession();
             session.beginTransaction();
-            session.createNativeQuery(queryString, tableClass).getResultList();
             outputList.addAll(session.createNativeQuery(queryString, tableClass).getResultList());
             session.getTransaction().commit();
         } catch (HibernateException e) {
