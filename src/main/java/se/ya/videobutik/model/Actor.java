@@ -18,7 +18,7 @@ public class Actor {
     private String lastName;
 
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private  Date lastUpdate;
 
     public int getActorId() {
         return actorId;
