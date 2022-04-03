@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -22,19 +22,19 @@
                   <VBox>
                      <children>
                         <Label text="First Name" />
-                        <TextField />
+                        <TextField fx:id="tf_add_first_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Last Name" />
-                        <TextField />
+                        <TextField fx:id="tf_add_last_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="e-mail" />
-                        <TextField />
+                        <Label text="E-mail" />
+                        <TextField fx:id="tf_add_email" />
                      </children>
                   </VBox>
                   <VBox spacing="20.0">
@@ -42,38 +42,38 @@
                         <Label text="Customer address" textFill="#e88709" />
                         <VBox>
                            <children>
-                              <Label text="address" />
-                              <TextField />
+                              <Label text="Address" />
+                              <TextField fx:id="tf_add_address" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="district" />
-                              <TextField />
+                              <Label text="District" />
+                              <TextField fx:id="tf_add_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="city" />
-                              <ComboBox prefWidth="150.0" />
+                              <Label text="City" />
+                              <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="postal code" />
-                              <TextField />
+                              <Label text="Postal code" />
+                              <TextField fx:id="tf_add_postal_code" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="phone" />
-                              <TextField />
+                              <Label text="Phone" />
+                              <TextField fx:id="tf_add_phone" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <CheckBox mnemonicParsing="false" text="Active" />
-                  <Button id="section_btn" mnemonicParsing="false" text="Add new" />
+                  <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Active" />
+                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Add Costumer" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -85,17 +85,17 @@
                         <VBox>
                            <children>
                               <Label text="Last Name" />
-                              <TextField />
+                              <TextField fx:id="tf_find_last_name" />
                            </children>
                         </VBox>
-                        <TableView prefHeight="660.0" prefWidth="382.0">
+                        <TableView fx:id="tv_customers" prefHeight="660.0" prefWidth="382.0">
                           <columns>
                             <TableColumn minWidth="80.0" text="id" />
                             <TableColumn minWidth="150.0" prefWidth="150.0" text="First Name" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Last Name" />
                           </columns>
                         </TableView>
-                        <Button id="section_btn" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Delete Customer" />
+                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Delete Customer" />
                      </children>
                   </VBox>
                </children>
@@ -107,19 +107,19 @@
                   <VBox>
                      <children>
                         <Label text="First Name" />
-                        <TextField />
+                        <TextField fx:id="tf_edit_first_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Last Name" />
-                        <TextField />
+                        <TextField fx:id="tf_edit_last_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="e-mail" />
-                        <TextField />
+                        <Label text="E-mail" />
+                        <TextField fx:id="tf_edit_email" />
                      </children>
                   </VBox>
                   <VBox spacing="20.0">
@@ -127,38 +127,38 @@
                         <Label text="Customer address" textFill="#e88709" />
                         <VBox>
                            <children>
-                              <Label text="address" />
-                              <TextField />
+                              <Label text="Address" />
+                              <TextField fx:id="tf_edit_address" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="district" />
-                              <TextField />
+                              <Label text="District" />
+                              <TextField fx:id="tf_edit_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="city" />
-                              <ComboBox prefWidth="150.0" />
+                              <Label text="City" />
+                              <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="postal code" />
-                              <TextField />
+                              <Label text="Postal code" />
+                              <TextField fx:id="tf_edit_postal_code" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="phone" />
-                              <TextField />
+                              <Label text="Phone" />
+                              <TextField fx:id="tf_edit_phone" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <CheckBox mnemonicParsing="false" text="Active" />
-                  <Button id="section_btn" mnemonicParsing="false" text="Update customer info" />
+                  <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Active" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" text="Update Customer Info" />
                </children>
             </VBox>
          </children>

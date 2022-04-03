@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
    <children>
       <VBox spacing="20.0">
          <children>
@@ -20,19 +14,19 @@
                   <VBox>
                      <children>
                         <Label text="Title" />
-                        <TextField fx:id="tf_firstname" />
+                        <TextField fx:id="tf_add_title" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Language" />
-                        <ComboBox prefWidth="150.0" />
+                        <ComboBox fx:id="cb_add_language" prefWidth="150.0" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Rental Duration" />
-                        <TextField fx:id="tf_email" />
+                        <TextField fx:id="tf_add_rental_duration" />
                      </children>
                   </VBox>
                </children>
@@ -42,13 +36,13 @@
                   <VBox>
                      <children>
                         <Label text="Rental Rate" />
-                        <TextField />
+                        <TextField fx:id="tf_add_rental_rate" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Replacement Cost" />
-                        <TextField />
+                        <TextField fx:id="tf_add_replacement_cost" />
                      </children>
                   </VBox>
                   <Button fx:id="btn_add" mnemonicParsing="false" text="Lägg till" />
@@ -65,11 +59,11 @@
                   <VBox>
                      <children>
                         <Label text="Movie Id" />
-                        <TextField fx:id="tf_firstname1" />
+                        <TextField fx:id="tf_film_id" />
                      </children>
                   </VBox>
-                  <Button fx:id="btn_add1" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="Välj" />
-                  <Button fx:id="btn_add11" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="radera" />
+                  <Button fx:id="btn_select" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="Välj" />
+                  <Button fx:id="btn_delete" mnemonicParsing="false" prefHeight="37.0" prefWidth="129.0" text="radera" />
                </children>
             </HBox>
          </children>
@@ -83,19 +77,19 @@
                   <VBox>
                      <children>
                         <Label text="Title" />
-                        <TextField fx:id="tf_firstname2" />
+                        <TextField fx:id="tf_edit_title" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Language" />
-                        <ComboBox prefWidth="150.0" />
+                        <ComboBox fx:id="cb_edit_language" prefWidth="150.0" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Rental Duration" />
-                        <TextField fx:id="tf_email1" />
+                        <TextField fx:id="tf_edit_rental_duration" />
                      </children>
                   </VBox>
                </children>
@@ -105,21 +99,21 @@
                   <VBox>
                      <children>
                         <Label text="Rental Rate" />
-                        <TextField />
+                        <TextField fx:id="tf_edit_rental_rate" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Replacement Cost" />
-                        <TextField />
+                        <TextField fx:id="tf_replacement_cost" />
                      </children>
                   </VBox>
-                  <Button fx:id="btn_add2" mnemonicParsing="false" text="Redigera" />
+                  <Button fx:id="btn_edit" mnemonicParsing="false" text="Redigera" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <ListView prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="lv_films" prefHeight="200.0" prefWidth="200.0" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
