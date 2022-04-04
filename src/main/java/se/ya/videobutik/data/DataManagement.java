@@ -31,6 +31,8 @@ public class DataManagement {
             .addAnnotatedClass(FilmActor.class)
             .addAnnotatedClass(FilmCategory.class)
             .addAnnotatedClass(Category.class)
+            .addAnnotatedClass(Rental.class)
+            .addAnnotatedClass(Inventory.class)
             .buildSessionFactory();
     private Session session = null;
 
@@ -125,7 +127,26 @@ public class DataManagement {
         try {
             session = factory.openSession();
             session.beginTransaction();
-            session.update(object);
+            if (! (object instanceof Address)) {
+                session.update(object);
+            }else {
+                NativeQuery<?> nativeQuery = session.createNativeQuery("UPDATE address\n" +
+                                "SET address.address = ?," +
+                                "district = ?," +
+                                "city_id = ?," +
+                                "postal_code = ?," +
+                                "phone = ?," +
+                                "location = ST_GeomFromText('point(17.36316 62.28842)')," +
+                                "last_update = current_timestamp()" +
+                                "WHERE address_id = ?;")
+                        .setParameter(1, ((Address) object).getAddress())
+                        .setParameter(2, ((Address) object).getDistrict())
+                        .setParameter(3, ((Address) object).getCity().getId())
+                        .setParameter(4, ((Address) object).getPostalCode())
+                        .setParameter(5, ((Address) object).getPhone())
+                        .setParameter(6, ((Address) object).getId());
+                nativeQuery.executeUpdate();
+            }
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -146,6 +167,7 @@ public class DataManagement {
             case  "film" -> queryString = "SELECT * FROM film";
             case  "staff" -> queryString = "SELECT * FROM staff";
             case  "store" -> queryString = "SELECT * FROM store";
+            case  "inventory" -> queryString = "SELECT * FROM inventory";
         }
 
         Collection<Object> outputList = new ArrayList<>();
