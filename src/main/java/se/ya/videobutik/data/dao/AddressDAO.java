@@ -12,6 +12,12 @@ public class AddressDAO {
         DataManagement data = new DataManagement();
         data.setData(address);
     }
+
+    public void AddAddress(Object[] objectData){
+        DataManagement data = new DataManagement();
+        data.setData(objectData);
+    }
+
     public Address findAddress(int id){
         DataManagement data = new DataManagement();
         return (Address) data.getData(Address.class, id);

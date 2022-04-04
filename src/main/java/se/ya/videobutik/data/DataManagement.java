@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.NativeQuery;
 import se.ya.videobutik.model.*;
 
 import java.util.ArrayList;
@@ -38,6 +39,29 @@ public class DataManagement {
             session = factory.openSession();
             session.beginTransaction();
             session.save(object);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+    }
+
+    public void setData(Object[] objectData){
+
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            NativeQuery<?> nativeQuery = session.createSQLQuery("CALL sakila.addNewAddress(?, ?, ?, ?, ?)")
+                    .addEntity(Address.class)
+                    .setParameter(1, objectData[0])
+                    .setParameter(2, objectData[1])
+                    .setParameter(3, objectData[2])
+                    .setParameter(4, objectData[3])
+                    .setParameter(5, objectData[4]);
+            nativeQuery.executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
