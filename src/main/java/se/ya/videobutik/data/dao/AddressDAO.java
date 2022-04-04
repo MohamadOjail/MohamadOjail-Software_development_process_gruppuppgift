@@ -17,7 +17,7 @@ public class AddressDAO {
 
     public void AddAddress(Object[] objectData){
         DataManagement data = new DataManagement();
-        data.setData(objectData);
+        data.setData(Address.class, objectData);
     }
 
     public Address findAddress(int id){
@@ -52,11 +52,5 @@ public class AddressDAO {
             output.add((Address) x);
         }
         return output;
-    }
-
-    public void createAddress(){
-
-
-
     }
 }

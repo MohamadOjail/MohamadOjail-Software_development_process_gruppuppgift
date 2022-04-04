@@ -26,7 +26,7 @@ public class Rental {
     private Customer customer;
 
     @Column(name = "return_date")
-    private Instant returnDate;
+    private LocalDateTime returnDate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "staff_id", nullable = false)
@@ -51,11 +51,11 @@ public class Rental {
         this.staff = staff;
     }
 
-    public Instant getReturnDate() {
+    public LocalDateTime getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Instant returnDate) {
+    public void setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
     }
 

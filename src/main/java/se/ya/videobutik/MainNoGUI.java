@@ -10,16 +10,19 @@ import java.util.Collection;
 
 public class MainNoGUI {
     public static void main(String[] args) {
-        DataManagement dataManagement = new DataManagement();
-        //address();
-        Object address = dataManagement.getAddress(Address.class, 611);
-        System.out.println(address);
+//        DataManagement dataManagement = new DataManagement();
+//        address();
+//        Object address = dataManagement.getAddress(Address.class, 611);
+//        System.out.println(address);
         //customer();
         //actor2();
        // address();
        // film1();
       // staff1();
        // store1();
+
+        Address address = getAddress(10);
+        System.out.println(address.getAddress());
 
        // dataManagement.setAddress();
     }
@@ -98,16 +101,17 @@ public class MainNoGUI {
 
     private static void address(){
         AddressDAO addressDAO = new AddressDAO();
-        DataManagement dataManagement = new DataManagement();
+//        DataManagement dataManagement = new DataManagement();
 
         Object[] objectData = {
-                "GatoGatan",
+                "XXXXXXXXXXXXX",
                 "distictooo",
                 5,
                 "123",
                 "123"
         };
-        dataManagement.createAddress(objectData);
+        addressDAO.AddAddress(objectData);
+//        dataManagement.createAddress(objectData);
         //addressDAO.AddAddress(objectData);
 
     //   Address address1 = addressDAO.findAddress(606);
@@ -115,6 +119,11 @@ public class MainNoGUI {
 
       // addressDAO.updateAddress(address1);
 
+    }
+
+    private static Address getAddress(int id){
+        AddressDAO addressDAO = new AddressDAO();
+        return addressDAO.findAddress(id);
     }
 
     private static void updateAddress(){
