@@ -6,17 +6,29 @@ Allmänt:
 * Tabeller för små.
 * Förslag på ett default null-värde på districtkolumnen i adress. Sparar också plats.
 
-Inloggningsfönster:
-* En "About" knapp som poppar en "About"-ruta som talar om information om applikationen/version.
+About-fönster:
+* En "About" knapp som poppar en "About"-ruta på inloggningssidan
+* Talar om information om applikationen/version.
 
-Adminfönster:
-* Adress-fliken i både säljare och admin känns onödig. Behövs den? Kan vi gömma den ifall den behövs?
-* I staff-fliken så saknas det val av store för staff. Det bör gå att koppla en staff till en store.
+Adress-fliken i säljarfönster:
+* Onödig?
+
+Staff-fliken i adminfönstret:
+* Saknas val av store för staff. Det bör gå att koppla en staff till en store.
 * Tabellen i staff-fliken bör vara något större så att staff-store kan synas.
-* Just nu helt tom. Vad behövs? Store-fliken. Möjlighet att skapa/redigera address samt koppla manager via staff-id.
 * När adress ska fyllas i så saknas telefonnummer på staff.
 
+Store-fliken i adminfönstret:
+* Just nu helt tom. Vad behövs?
+* Möjlighet att skapa/redigera address samt koppla manager via staff-id.
 
-Säljarfönster:
-* Film-flik: Rental duration behöver också vara tydlig med att det är antal dagar.
-* Film-flik: rental rate och replacement kost behöver vara tydlig med vilken valuta
+Film-flik i säljarfönster:
+* Rental duration behöver vara tydlig med att det är antal dagar.
+* Rental rate och Replacement kost behöver vara tydlig med vilken valuta
+* Bör ha samma design som resterande CRUD-flikar
+
+Uthyrnings-flik:
+* Möjlighet att söka kund via e-post/telefonnummer
+* Söka film via titel
+* Koppla vald film till kund
+* Inventory-status.
