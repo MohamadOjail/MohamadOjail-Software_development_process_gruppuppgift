@@ -30,7 +30,7 @@ public class Address {
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
-    @Column(name = "location", nullable = true)
+    @Column(name = "location")
     private String location;
 
     @Column(name = "last_update", nullable = false)
