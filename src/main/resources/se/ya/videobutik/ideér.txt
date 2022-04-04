@@ -1,0 +1,22 @@
+
+Allmänt:
+* Svenska eller engelska. Bestäm språkval.
+* Fönstret är för stort. Ska det vara skalbart eller ej? Säljarfönstret ej skalbart.
+* Möjlighet att välja Skapa/Redigera istället för att båda finns på respektive sida av fönstret. Sparar plats.Bara ett förslag.
+* Tabeller för små.
+* Förslag på ett default null-värde på districtkolumnen i adress. Sparar också plats.
+
+Inloggningsfönster:
+* En "About" knapp som poppar en "About"-ruta som talar om information om applikationen/version.
+
+Adminfönster:
+* Adress-fliken i både säljare och admin känns onödig. Behövs den? Kan vi gömma den ifall den behövs?
+* I staff-fliken så saknas det val av store för staff. Det bör gå att koppla en staff till en store.
+* Tabellen i staff-fliken bör vara något större så att staff-store kan synas.
+* Just nu helt tom. Vad behövs? Store-fliken. Möjlighet att skapa/redigera address samt koppla manager via staff-id.
+* När adress ska fyllas i så saknas telefonnummer på staff.
+
+
+Säljarfönster:
+* Film-flik: Rental duration behöver också vara tydlig med att det är antal dagar.
+* Film-flik: rental rate och replacement kost behöver vara tydlig med vilken valuta
