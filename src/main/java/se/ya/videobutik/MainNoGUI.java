@@ -1,5 +1,6 @@
 package se.ya.videobutik;
 
+import se.ya.videobutik.data.DataManagement;
 import se.ya.videobutik.data.dao.*;
 import se.ya.videobutik.model.*;
 
@@ -9,13 +10,18 @@ import java.util.Collection;
 
 public class MainNoGUI {
     public static void main(String[] args) {
-
+        DataManagement dataManagement = new DataManagement();
+        //address();
+        Object address = dataManagement.getAddress(Address.class, 611);
+        System.out.println(address);
         //customer();
         //actor2();
        // address();
        // film1();
-       staff1();
+      // staff1();
        // store1();
+
+       // dataManagement.setAddress();
     }
     private static void customer(){
         CustomerDAO customerDAO = new CustomerDAO();
@@ -92,6 +98,7 @@ public class MainNoGUI {
 
     private static void address(){
         AddressDAO addressDAO = new AddressDAO();
+        DataManagement dataManagement = new DataManagement();
 
         Object[] objectData = {
                 "GatoGatan",
@@ -100,14 +107,17 @@ public class MainNoGUI {
                 "123",
                 "123"
         };
-
+        dataManagement.createAddress(objectData);
         //addressDAO.AddAddress(objectData);
 
-       Address address1 = addressDAO.findAddress(606);
-       address1.setAddress("nyyyaddress");
+    //   Address address1 = addressDAO.findAddress(606);
+      // address1.setAddress("nyyyaddress");
 
-       addressDAO.updateAddress(address1);
+      // addressDAO.updateAddress(address1);
 
+    }
+
+    private static void updateAddress(){
 
 
     }

@@ -71,6 +71,53 @@ public class DataManagement {
             factory.close();
         }
     }
+    public void setAddress(){
+
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            NativeQuery<?> nativeQuery = session.createNativeQuery("insert into sakila.address(address, district,city_id, postal_code,phone, location, last_update)\n" +
+                            "values('Hermelinvägen 15', 'Västernorrland', 601, '86232', '0730972488', (ST_GeomFromText('point(17.36316 62.28842)')),current_timestamp());")
+
+           .addEntity(Address.class);
+
+            nativeQuery.executeUpdate();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+
+    }
+    public void createAddress(Object [] objectData){
+
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            NativeQuery<?> nativeQuery = session.createNativeQuery("insert into sakila.address(address, district,city_id, postal_code,phone, location, last_update)\n" +
+                            "values(?, ?, ?, ?, ?, (ST_GeomFromText('point(17.36316 62.28842)')),current_timestamp());")
+                    .setParameter(1, objectData[0])
+                    .setParameter(2, objectData[1])
+                    .setParameter(3, objectData[2])
+                    .setParameter(4, objectData[3])
+                    .setParameter(5, objectData[4])
+
+                    .addEntity(Address.class);
+
+            nativeQuery.executeUpdate();
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+
+    }
 
     public Object getData(Class<?> tableClass, int id){
         Object output = null;
@@ -78,6 +125,25 @@ public class DataManagement {
             session = factory.openSession();
             session.beginTransaction();
             output = session.find(tableClass, id);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+        return output;
+    }
+
+    public Object getAddress(Class<?> tableClass, int id){
+        Object output = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            NativeQuery nativeQuery = session.createNativeQuery("SELECT ST_X(location) AS Latitude, ST_Y(location) AS Longitude FROM sakila.address WHERE address_id = ?");
+           nativeQuery.setParameter(1,id);
+            output=nativeQuery.getSingleResult();
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
