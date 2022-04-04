@@ -13,7 +13,9 @@ public class MainNoGUI {
         //customer();
         //actor2();
        // address();
-        film();
+       // film1();
+       staff1();
+       // store1();
     }
     private static void customer(){
         CustomerDAO customerDAO = new CustomerDAO();
@@ -129,10 +131,84 @@ public class MainNoGUI {
         filmDAO.AddFilm(film1);
         Film film = filmDAO.findFilm(1001);
 
-
+        film.setTitle("newName");
+        filmDAO.updateFilm(film);
+        System.out.println(film);
 
     }
-    private void staff(){
+    private static void film1(){
+        FilmDAO fDAO = new FilmDAO();
+        Collection<Film> filmList = fDAO.getFilmList();
 
+        for(Film a : filmList){
+            if (a.getTitle().equals("newName")){
+                fDAO.deleteFilm(a);
+            }
+        }
+    }
+
+    private static void staff(){
+        StaffDAO staffDAO = new StaffDAO();
+        Staff staff = new Staff();
+
+        staff.setFirstName("a");
+        staff.setLastName("s");
+        staff.setAddress(new AddressDAO().findAddress(1));
+        staff.setStore(new StoreDAO().findStore(1));
+        staff.setActive(true);
+        staff.setUsername("sdsd");
+        staff.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+
+        staffDAO.AddStaff(staff);
+        Staff staff1 = staffDAO.findStaff(4);
+
+        staff1.setUsername("Poff");
+        staffDAO.updateStaff(staff1);
+        System.out.println(staff1);
+    }
+
+    private static void staff1(){
+        StaffDAO sDAO = new StaffDAO();
+        Collection<Staff> staffList = sDAO.getStaffList();
+
+        for(Staff a : staffList){
+            if (a.getUsername().equals("Poff")){
+                sDAO.deleteStaff(a);
+            }
+        }
+    }
+    private static void staff2(){
+        StaffDAO sDAO = new StaffDAO();
+        Collection<Staff> staffList = sDAO.getStaffList();
+
+        for(Staff a : staffList){
+            if (a.getUsername().equals("sdsd")){
+                sDAO.deleteStaff(a);
+            }
+        }
+    }
+
+
+    private static void store(){
+        StoreDAO storeDAO = new StoreDAO();
+        Store store = new Store();
+
+staff();
+        store.setAddress(new AddressDAO().findAddress(4));
+        store.setManagerStaff(new StaffDAO().findStaff(4));
+        store.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+
+        storeDAO.AddStore(store);
+        Store store1 = storeDAO.findStore(4);
+
+        store1.setAddress(new AddressDAO().findAddress(2));
+        storeDAO.updateStore(store1);
+        System.out.println(store1);
+    }
+    private static void store1(){
+        StoreDAO storeDAO = new StoreDAO();
+        Store store = storeDAO.findStore(4);
+
+        storeDAO.deleteStore(store);
     }
 }
