@@ -1,4 +1,4 @@
-package se.ya.videobutik;
+package se.ya.videobutik.data;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
