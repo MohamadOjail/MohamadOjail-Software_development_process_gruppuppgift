@@ -4,10 +4,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import se.ya.videobutik.ui.observer.login.ActionObserver;
 
 public class LogInController {
 
+    public TextField tf_admin_password;
     @FXML private Button btn_admin;
     @FXML private Button btn_salesman;
     @FXML private ComboBox<?> cb_store;
