@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
+   <children>
+      <HBox spacing="40.0">
+         <children>
+            <VBox spacing="15.0">
+               <children>
+                  <Label id="title" text="Lägg till film" />
+                  <VBox>
+                     <children>
+                        <Label text="Titel" />
+                        <TextField fx:id="tf_add_first_name" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Språk" />
+                        <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Film uthyrning" textFill="#e88709">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <VBox>
+                           <children>
+                              <Label text="Antal dagar" />
+                              <TextField fx:id="tf_add_address">
+                                 <VBox.margin>
+                                    <Insets bottom="15.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Kostnad" />
+                              <TextField fx:id="tf_add_district">
+                                 <VBox.margin>
+                                    <Insets bottom="15.0" />
+                                 </VBox.margin></TextField>
+                           </children>
+                        </VBox>
+                        <VBox />
+                        <VBox />
+                        <VBox />
+                        <VBox layoutX="10.0" layoutY="123.0">
+                           <children>
+                              <Label text="Ersättnings kostnad">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tf_add_district1" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Lägg till" />
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox>
+               <children>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label id="title" text="Sök film" />
+                        <VBox>
+                           <children>
+                              <Label text="Titel" />
+                              <TextField fx:id="tf_find_last_name">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tv_customers" prefHeight="301.0" prefWidth="382.0">
+                           <columns>
+                              <TableColumn minWidth="58.0" prefWidth="58.0" text="ID#" />
+                              <TableColumn minWidth="150.0" prefWidth="219.0" text="Titel" />
+                              <TableColumn minWidth="103.0" prefWidth="103.0" text="Språk" />
+                           </columns>
+                        </TableView>
+                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="32.0" prefWidth="381.0" text="Radera film" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox>
+               <children>
+                  <Label id="title" text="Redigera film">
+                     <VBox.margin>
+                        <Insets bottom="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <VBox>
+                     <children>
+                        <Label text="Titel" />
+                        <TextField fx:id="tf_edit_first_name">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Språk" />
+                        <ComboBox fx:id="cb_edit_city" prefWidth="150.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </ComboBox>
+                     </children>
+                  </VBox>
+                  <VBox />
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="Film uthyrning" textFill="#e88709">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <VBox>
+                           <children>
+                              <Label text="Antal dagar" />
+                              <TextField fx:id="tf_edit_address" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Kostnad" />
+                              <TextField fx:id="tf_edit_district">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="133.0">
+                           <children>
+                              <Label text="Ersättnings kostnad" />
+                              <TextField fx:id="tf_edit_district1">
+                                 <VBox.margin>
+                                    <Insets bottom="15.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" text="Redigera film" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+   </padding>
+</VBox>
