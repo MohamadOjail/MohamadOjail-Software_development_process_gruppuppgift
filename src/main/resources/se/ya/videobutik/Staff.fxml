@@ -11,23 +11,24 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="1096.0" prefWidth="1169.0" spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
+<VBox prefHeight="850.0" prefWidth="1100.0" spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
    <children>
-      <HBox spacing="30.0">
+      <HBox prefHeight="1016.0" prefWidth="1200.0" spacing="30.0">
          <children>
-            <VBox spacing="30.0">
+            <VBox prefHeight="1071.0" prefWidth="300.0" spacing="30.0">
                <children>
-                  <Label id="title" text="Add new employee" />
+                  <Label id="title" text="Lägg till ny medarbetare" />
                   <VBox>
                      <children>
-                        <Label text="First Name" />
+                        <Label text="Förnamn" />
                         <TextField fx:id="tf_add_first_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Last Name" />
+                        <Label text="Efternamn" />
                         <TextField fx:id="tf_add_last_name" />
                      </children>
                   </VBox>
@@ -39,28 +40,38 @@
                   </VBox>
                   <VBox spacing="20.0">
                      <children>
-                        <Label text="Employee address" textFill="#e88709" />
+                        <Label text="Medarbetare adress" textFill="#e88709" />
                         <VBox>
                            <children>
-                              <Label text="Address" />
+                              <Label text="Adress" />
                               <TextField fx:id="tf_add_address" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="District" />
+                              <Label text="Län" />
                               <TextField fx:id="tf_add_district" />
                            </children>
                         </VBox>
-                        <VBox>
+                        <VBox minHeight="150.0">
                            <children>
-                              <Label text="City" />
+                              <Label text="Postort" />
                               <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
+                              <Label layoutX="10.0" layoutY="10.0" text="Post nummer">
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tf_add_district1">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </TextField>
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Postal code" />
+                              <Label text="Telefon" />
                               <TextField fx:id="tf_add_postal_code" />
                            </children>
                         </VBox>
@@ -68,63 +79,64 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Employee log in" textFill="#e88709">
+                        <Label text="Medarbetare inloggning" textFill="#e88709">
                            <padding>
                               <Insets bottom="20.0" />
                            </padding>
                         </Label>
-                        <Label text="User Name" />
+                        <Label text="Användarnamn" />
                         <TextField fx:id="tf_add_user_name" layoutX="10.0" layoutY="33.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Password" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod" />
                         <TextField fx:id="tf_add_password" />
                      </children>
                   </VBox>
-                  <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Active" />
-                  <Button id="section_btn" fx:id="btn_add_employee" mnemonicParsing="false" prefWidth="300.0" text="Add Employee" />
+                  <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Aktiv" />
+                  <Button id="section_btn" fx:id="btn_add_employee" mnemonicParsing="false" prefWidth="300.0" text="Lägg till medarbetare" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox>
+            <VBox layoutX="335.0" layoutY="500.0">
                <children>
-                  <Label id="title" text="Select / Find employee">
+                  <Label id="title" text="Sök medarbetare">
                      <padding>
                         <Insets bottom="30.0" left="30.0" />
                      </padding></Label>
-                  <Label text="Last Name" />
+                  <Label text="Sök  efter efternamn" />
                   <TextField fx:id="tf_find_last_name">
                      <VBox.margin>
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </TextField>
-                  <TableView fx:id="tv_employees" prefHeight="703.0" prefWidth="306.0">
+                  <TableView fx:id="tv_employees" prefHeight="650.0" prefWidth="321.0">
                     <columns>
-                      <TableColumn prefWidth="63.0" text="id" />
-                      <TableColumn prefWidth="137.0" text="First Name" />
-                        <TableColumn prefWidth="119.0" text="Last Name" />
+                      <TableColumn prefWidth="63.0" text="id#" />
+                      <TableColumn prefWidth="137.0" text="Förnamn" />
+                        <TableColumn prefWidth="119.0" text="Efternamn" />
                     </columns>
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TableView>
-                  <Button id="section_btn" fx:id="btn_delete_employee" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Delete Employee">
+                  <Button id="section_btn" fx:id="btn_delete_employee1" layoutX="10.0" layoutY="1044.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Ta bort medarbetare">
                      <VBox.margin>
-                        <Insets top="80.0" />
-                     </VBox.margin></Button>
+                        <Insets top="220.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <VBox layoutX="10.0" layoutY="10.0" spacing="30.0">
                <children>
-                  <Label id="title" text="Update employee info" />
+                  <Label id="title" text="Redigera medarbetare" />
                   <VBox>
                      <children>
-                        <Label text="First Name" />
+                        <Label text="Förnamn" />
                         <TextField fx:id="tf_edit_first_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Last Name" />
+                        <Label text="Efternamn" />
                         <TextField fx:id="tf_edit_last_name" />
                      </children>
                   </VBox>
@@ -136,48 +148,61 @@
                   </VBox>
                   <VBox spacing="20.0">
                      <children>
-                        <Label text="Employee address" textFill="#e88709" />
+                        <Label text="Medarbetare adress" textFill="#e88709" />
                         <VBox>
                            <children>
-                              <Label text="Address" />
+                              <Label text="Adress" />
                               <TextField fx:id="tf_edit_address" />
                            </children>
                         </VBox>
-                        <VBox>
+                        <VBox prefHeight="400.0">
                            <children>
-                              <Label text="District" />
+                              <Label text="Län" />
                               <TextField fx:id="tf_edit_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="City" />
+                              <Label text="Postort" />
                               <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Postal code" />
+                              <Label text="Post nummer" />
                               <TextField fx:id="tf_edit_postal_code" />
+                              <Label text="Telefon">
+                                 <padding>
+                                    <Insets top="15.0" />
+                                 </padding></Label>
+                              <TextField fx:id="tf_add_postal_code1" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Employee log in" textFill="#e88709">
+                        <Label text="Medarbetare inloggning" textFill="#e88709">
                            <padding>
                               <Insets bottom="20.0" />
                            </padding>
                         </Label>
-                        <Label text="User Name" />
-                        <TextField fx:id="tf_edit_user_name" layoutX="10.0" layoutY="33.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Password" />
-                        <TextField fx:id="tf_edit_password" />
+                        <Label text="Användarnamn" />
+                        <TextField fx:id="tf_edit_user_name" layoutX="10.0" layoutY="33.0" prefHeight="100.0" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod" />
+                        <TextField fx:id="tf_edit_password" prefHeight="118.0" prefWidth="300.0" />
                      </children>
                   </VBox>
-                  <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Active" />
-                  <Button id="section_btn" fx:id="btn_edit_employee" mnemonicParsing="false" prefWidth="300.0" text="Update Employee Info" />
+                  <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
+                  <Button id="section_btn" fx:id="btn_delete_employee" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Spara ändringar">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
+                  <Label text="ver 1.0-2022-04-05">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>
