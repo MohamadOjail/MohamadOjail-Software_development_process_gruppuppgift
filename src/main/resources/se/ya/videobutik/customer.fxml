@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -88,10 +88,11 @@
                               <TextField fx:id="tf_find_last_name" />
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_customers" prefHeight="660.0" prefWidth="382.0">
+                        <TableView fx:id="tv_customers" prefHeight="571.0">
                           <columns>
                             <TableColumn minWidth="80.0" text="id" />
                             <TableColumn minWidth="150.0" prefWidth="150.0" text="First Name" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Last Name" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Last Name" />
                           </columns>
                         </TableView>

@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import se.ya.videobutik.data.dao.StoreDAO;
+import se.ya.videobutik.model.Store;
 import se.ya.videobutik.ui.observer.login.ActionObserver;
 
 public class LogInController {
@@ -12,7 +14,7 @@ public class LogInController {
     public TextField tf_admin_password;
     @FXML private Button btn_admin;
     @FXML private Button btn_salesman;
-    @FXML private ComboBox<?> cb_store;
+    @FXML private ComboBox<Store> cb_store;
 
 
     // Getters
@@ -32,5 +34,6 @@ public class LogInController {
         ActionObserver observer = new ActionObserver(this);
         btn_admin.setOnAction(observer);
         btn_salesman.setOnAction(observer);
+        cb_store.getItems().addAll(new StoreDAO().getStoreList());
     }
 }

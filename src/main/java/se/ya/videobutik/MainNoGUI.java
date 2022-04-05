@@ -1,6 +1,6 @@
 package se.ya.videobutik;
 
-import se.ya.videobutik.data.DataManagement;
+import se.ya.videobutik.data.TestRental;
 import se.ya.videobutik.data.dao.*;
 import se.ya.videobutik.model.*;
 
@@ -10,22 +10,67 @@ import java.util.Collection;
 
 public class MainNoGUI {
     public static void main(String[] args) {
-//        DataManagement dataManagement = new DataManagement();
-//        address();
-//        Object address = dataManagement.getAddress(Address.class, 611);
-//        System.out.println(address);
-        //customer();
-        //actor2();
-       // address();
-       // film1();
-      // staff1();
-       // store1();
 
-        Address address = getAddress(10);
-        System.out.println(address.getAddress());
+        // uthyrnings process går så här:
 
-       // dataManagement.setAddress();
+        // den här klassen är en temp utility klass som ska raderas efter att ni har läst och förståt hur den fungerar
+        TestRental testRental = new TestRental();
+
+        // metoden kollar om filmen är tillgänglig att hyras ut och returnerar ett antal kopior som finns i butiken
+        int b = testRental.getAvailableFilmCount(1, 1);
+        // skriv ut antalet
+        System.out.println(b);
+
+        // om antalet är inte 0 ...
+        if (b > 0){
+
+            // skapa instanser av DAO klasser som behövs för att hantera uthyrning
+            InventoryDAO inventoryDAO = new InventoryDAO();
+            RentalDAO rentalDAO = new RentalDAO();
+            StaffDAO staffDAO = new StaffDAO();
+            CustomerDAO customerDAO = new CustomerDAO();
+
+            // objekt instanser som behövs
+            Customer customer = customerDAO.findCustomer(12);
+            Staff staff = staffDAO.findStaff(1);
+
+            // hämta Inventory id
+            Collection<Inventory> inventoryList = inventoryDAO.getInventoryList();
+            int inventoryId = -1;
+            for (Inventory inventory : inventoryList){
+                if (inventory.getFilm().getId() == 4){
+                    inventoryId = inventory.getId();
+                    break;
+                }
+            }
+
+            // om inventory id är inte -1 betyder det att filmen finns i denna butiken
+            if (inventoryId != -1){
+
+                // hämta inventoryn
+                Inventory inventory = inventoryDAO.findInventory(inventoryId);
+
+                // skapa ett temp Rental och fixa setters
+                Rental rental = new Rental();
+                rental.setCustomer(customer);
+                rental.setRentalDate(LocalDateTime.now());
+                rental.setInventory(inventory);
+                rental.setStaff(staff);
+                rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+
+                // lägga till en ny Rental i DB:en
+                rentalDAO.AddRental(rental);
+
+            }
+
+            System.out.println(inventoryId);
+
+            // TODO viktig info:
+            // om man vill kolla om Rental utfördes kan man använda WorkBenchen med följande query:
+            // "SELECT * FROM sakila.rental WHERE inventory_id = 16 and customer_id = 12;"
+        }
     }
+
     private static void customer(){
         CustomerDAO customerDAO = new CustomerDAO();
         Customer customer = new Customer();
@@ -101,23 +146,19 @@ public class MainNoGUI {
 
     private static void address(){
         AddressDAO addressDAO = new AddressDAO();
-//        DataManagement dataManagement = new DataManagement();
+//        Object[] objectData = {
+//                "XXXXXXXXXXXXX",
+//                "distictooo",
+//                5,
+//                "123",
+//                "123"
+//        };
+//        addressDAO.AddAddress(objectData);
 
-        Object[] objectData = {
-                "XXXXXXXXXXXXX",
-                "distictooo",
-                5,
-                "123",
-                "123"
-        };
-        addressDAO.AddAddress(objectData);
-//        dataManagement.createAddress(objectData);
-        //addressDAO.AddAddress(objectData);
+       Address address1 = addressDAO.findAddress(606);
+       address1.setAddress("nyyyaddress");
 
-    //   Address address1 = addressDAO.findAddress(606);
-      // address1.setAddress("nyyyaddress");
-
-      // addressDAO.updateAddress(address1);
+       addressDAO.updateAddress(address1);
 
     }
 
