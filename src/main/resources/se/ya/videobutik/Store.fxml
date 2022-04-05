@@ -1,16 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
    <children>
-      <Label layoutX="231.0" layoutY="164.0" text="Store">
-         <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
+      <HBox spacing="15.0">
+         <children>
+            <VBox spacing="15.0">
+               <children>
+                  <Label id="title" text="Lägg till butik" />
+                  <VBox>
+                     <children>
+                        <Label text="Chef" />
+                        <ComboBox prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="Adress" textFill="#e88709" />
+                        <VBox>
+                           <children>
+                              <Label text="Gatuadress" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Län" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Postort" />
+                              <ComboBox prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Postnummer" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label layoutX="10.0" layoutY="10.0" text="Telefon/mobil" />
+                        <TextField layoutX="10.0" layoutY="33.0" />
+                     </children>
+                  </VBox>
+                  <Button id="section_btn" mnemonicParsing="false" prefWidth="300.0" text="Lägg till butik" />
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox>
+               <children>
+                  <Label id="title" text="Sök butik">
+                     <padding>
+                        <Insets bottom="15.0" left="30.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Last Name" />
+                  <TextField>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </TextField>
+                  <TableView prefHeight="338.0" prefWidth="381.0">
+                     <columns>
+                        <TableColumn prefWidth="63.0" text="ID#" />
+                        <TableColumn prefWidth="137.0" text="Chef" />
+                        <TableColumn prefWidth="156.0" text="Adress" />
+                     </columns>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </TableView>
+                  <Button id="section_btn" mnemonicParsing="false" prefHeight="23.0" prefWidth="380.0" text="Radera butik">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <VBox prefHeight="477.0" prefWidth="300.0" spacing="15.0">
+               <children>
+                  <Label id="title" text="Redigera butik" />
+                  <VBox>
+                     <children>
+                        <Label text="Chef" />
+                        <ComboBox prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="Adress" textFill="#e88709" />
+                        <VBox>
+                           <children>
+                              <Label text="Gatuadress" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Län" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Postort" />
+                              <ComboBox prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label text="Postnummer" />
+                              <TextField />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label layoutX="10.0" layoutY="10.0" text="Telefon/mobil" />
+                        <TextField layoutX="10.0" layoutY="33.0" />
+                     </children>
+                  </VBox>
+                  <Button id="section_btn" mnemonicParsing="false" prefHeight="12.0" prefWidth="300.0" text="Redigera butik" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+   </padding>
+</VBox>
