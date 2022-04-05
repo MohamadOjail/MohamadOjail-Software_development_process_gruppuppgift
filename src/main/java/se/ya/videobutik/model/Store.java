@@ -1,5 +1,8 @@
 package se.ya.videobutik.model;
 
+import se.ya.videobutik.data.dao.AddressDAO;
+import se.ya.videobutik.data.dao.CityDAO;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -53,5 +56,14 @@ public class Store {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        AddressDAO addressDAO = new AddressDAO();
+        CityDAO cityDAO = new CityDAO();
+        Address address = addressDAO.findAddress(this.address.getId());
+        City city = cityDAO.findCity(address.getCity().getId());
+        return "Store id: " + id + " - " + city.getCity();
     }
 }
