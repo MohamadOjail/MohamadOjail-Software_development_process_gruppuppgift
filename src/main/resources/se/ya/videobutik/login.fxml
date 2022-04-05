@@ -47,6 +47,7 @@
                      </children>
                   </VBox>
                   <Button id="loginBtn" fx:id="btn_admin" mnemonicParsing="false" text="Admin" />
+                  <Label text="ver 1.0-2022-04-05" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -59,6 +60,7 @@
                      </children>
                   </VBox>
                   <Button id="loginBtn" fx:id="btn_salesman" mnemonicParsing="false" text="Säljare" />
+                  <Label />
                </children>
             </VBox>
          </children>

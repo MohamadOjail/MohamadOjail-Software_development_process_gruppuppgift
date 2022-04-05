@@ -105,7 +105,6 @@
           
                           </columns>
                         </TableView>
-                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Ta bort Kund" />
                      </children>
                   </VBox>
                </children>
@@ -168,12 +167,13 @@
                      </children>
                   </VBox>
                   <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Uppdatera Kund" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Spara Kund" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer1" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Ta bort   Kund" />
                </children>
             </VBox>
          </children>
       </HBox>
-      <Label text="ver 1.0-2022-04-05" textAlignment="RIGHT">
+      <Label text="ver 1.01-2022-04-05" textAlignment="RIGHT">
          <font>
             <Font size="10.0" />
          </font>
