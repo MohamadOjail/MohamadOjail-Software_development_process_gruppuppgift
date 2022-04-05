@@ -11,158 +11,172 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
    <children>
       <HBox spacing="40.0">
          <children>
-            <VBox spacing="30.0">
+            <VBox spacing="15.0">
                <children>
-                  <Label id="title" text="Add new customer" />
+                  <Label id="title" text="Lägg till ny kund" />
                   <VBox>
                      <children>
-                        <Label text="First Name" />
+                        <Label text="Förnamn">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
                         <TextField fx:id="tf_add_first_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Last Name" />
+                        <Label text="Efternamn" />
                         <TextField fx:id="tf_add_last_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="E-mail" />
+                        <Label text="E-post" />
                         <TextField fx:id="tf_add_email" />
                      </children>
                   </VBox>
-                  <VBox spacing="20.0">
+                  <VBox spacing="15.0">
                      <children>
-                        <Label text="Customer address" textFill="#e88709" />
+                        <Label text="Adress" textFill="#e88709" />
                         <VBox>
                            <children>
-                              <Label text="Address" />
+                              <Label text="Gatuadress" />
                               <TextField fx:id="tf_add_address" />
                            </children>
                         </VBox>
+                        <Label text="Län " />
                         <VBox>
                            <children>
-                              <Label text="District" />
                               <TextField fx:id="tf_add_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="City" />
+                              <Label text="Postort" />
                               <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Postal code" />
+                              <Label text="Postnummer" />
                               <TextField fx:id="tf_add_postal_code" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Phone" />
+                              <Label text="Telefon/mobil" />
                               <TextField fx:id="tf_add_phone" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Active" />
-                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Add Costumer" />
+                  <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Aktiv" />
+                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Lägg till Kund" />
                </children>
             </VBox>
-            <Separator orientation="VERTICAL" prefHeight="200.0" />
+            <Separator orientation="VERTICAL" prefHeight="775.0" prefWidth="0.0" />
             <VBox>
                <children>
                   <VBox spacing="30.0">
                      <children>
-                        <Label id="title" text="Select / Find customer" />
+                        <Label id="title" text="Sök kund" />
                         <VBox>
                            <children>
-                              <Label text="Last Name" />
+                              <Label prefHeight="23.0" prefWidth="183.0" text="Sök efter efternamn">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Label>
                               <TextField fx:id="tf_find_last_name" />
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_customers" prefHeight="660.0" prefWidth="382.0">
+                        <TableView fx:id="tv_customers" prefHeight="550.0" prefWidth="700.0">
                           <columns>
-                            <TableColumn minWidth="80.0" text="id" />
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="First Name" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Last Name" />
+                            <TableColumn minWidth="80.0" text="id #" />
+                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Förnamn" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Efternamn" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Adress" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postort" />
                           </columns>
                         </TableView>
-                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Delete Customer" />
+                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Ta bort Kund" />
                      </children>
                   </VBox>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox spacing="30.0">
+            <VBox spacing="15.0">
                <children>
-                  <Label id="title" text="Update customer info" />
+                  <Label id="title" text="Redigera kund" />
                   <VBox>
                      <children>
-                        <Label text="First Name" />
+                        <Label text="Förnamn" />
                         <TextField fx:id="tf_edit_first_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Last Name" />
+                        <Label text="Efternamn" />
                         <TextField fx:id="tf_edit_last_name" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="E-mail" />
+                        <Label text="E-post" />
                         <TextField fx:id="tf_edit_email" />
                      </children>
                   </VBox>
                   <VBox spacing="20.0">
                      <children>
-                        <Label text="Customer address" textFill="#e88709" />
+                        <Label text="Adress" textFill="#e88709" />
                         <VBox>
                            <children>
-                              <Label text="Address" />
+                              <Label text="Gatuadress" />
                               <TextField fx:id="tf_edit_address" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="District" />
+                              <Label text="Län" />
                               <TextField fx:id="tf_edit_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="City" />
+                              <Label text="Postort" />
                               <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Postal code" />
+                              <Label text="Postnummer" />
                               <TextField fx:id="tf_edit_postal_code" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Phone" />
+                              <Label text="Telefon/mobil" />
                               <TextField fx:id="tf_edit_phone" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Active" />
-                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" text="Update Customer Info" />
+                  <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Uppdatera Kund" />
                </children>
             </VBox>
          </children>
       </HBox>
+      <Label text="ver 1.0-2022-04-05" textAlignment="RIGHT">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
    <padding>
       <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
