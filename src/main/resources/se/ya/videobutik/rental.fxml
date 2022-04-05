@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.Rental2">
+   <children>
+      <HBox spacing="40.0">
+         <children>
+            <VBox spacing="15.0">
+               <children>
+                  <Label id="title" text="Välj kund" />
+                  <VBox>
+                     <children>
+                        <Label text="Sök efter efternamn" />
+                        <TextField fx:id="tf_find_last_name1" />
+                     </children>
+                  </VBox>
+                  <TableView fx:id="tv_customers1" prefHeight="105.0" prefWidth="532.0">
+                     <columns>
+                        <TableColumn minWidth="80.0" text="ID#" />
+                        <TableColumn minWidth="150.0" prefWidth="150.0" text="Förnamn" />
+                        <TableColumn minWidth="150.0" prefWidth="150.0" text="Efternamn" />
+                        <TableColumn minWidth="150.0" prefWidth="150.0" text="Adress" />
+                     </columns>
+                  </TableView>
+                  <Button id="section_btn" fx:id="btn_delete_costumer1" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Välj kund" />
+               </children>
+            </VBox>
+            <VBox>
+               <children>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label id="title" text="Välj film" />
+                        <VBox>
+                           <children>
+                              <Label text="Sök efter titel" />
+                              <TextField fx:id="tf_find_last_name" />
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tv_customers" prefHeight="105.0" prefWidth="532.0">
+                           <columns>
+                              <TableColumn minWidth="145.0" prefWidth="145.0" text="Titel" />
+                              <TableColumn minWidth="150.0" prefWidth="155.0" text="Utgivningsdatum" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Lagerstatus" />
+                              <TableColumn minWidth="80.0" text="Kostnad" />
+                           </columns>
+                        </TableView>
+                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Hyr film" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <VBox prefHeight="352.0" prefWidth="760.0" spacing="15.0">
+         <children>
+            <Label id="title" text="Uthyrningar" />
+            <VBox>
+               <children>
+                  <Label text="Sök efter kund-ID " />
+                  <TextField fx:id="tf_find_last_name11" />
+               </children>
+            </VBox>
+            <TableView fx:id="tv_customers11" prefHeight="200.0" prefWidth="714.0">
+               <columns>
+                  <TableColumn minWidth="75.0" prefWidth="75.0" text="ID#" />
+                  <TableColumn minWidth="150.0" prefWidth="246.0" text="Uthyrningsdatum" />
+                  <TableColumn minWidth="150.0" prefWidth="150.0" text="Lager-ID" />
+                  <TableColumn minWidth="150.0" prefWidth="150.0" text="Kund-ID" />
+                  <TableColumn minWidth="150.0" prefWidth="150.0" text="Medarbetare-ID" />
+                  <TableColumn minWidth="150.0" prefWidth="150.0" text="Återlämningsdatum" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <Button id="section_btn" fx:id="btn_delete_costumer11" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Lämna tillbaka" />
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+   </padding>
+</VBox>
