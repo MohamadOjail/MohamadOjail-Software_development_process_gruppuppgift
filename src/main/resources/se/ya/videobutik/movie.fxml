@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -102,13 +101,12 @@
                               <TableColumn minWidth="103.0" prefWidth="103.0" text="Språk" />
                            </columns>
                         </TableView>
-                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="32.0" prefWidth="381.0" text="Radera film" />
                      </children>
                   </VBox>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox>
+            <VBox prefHeight="465.0" prefWidth="300.0">
                <children>
                   <Label id="title" text="Redigera film">
                      <VBox.margin>
@@ -174,7 +172,15 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" text="Redigera film" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" text="Redigera film">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding></Button>
+                  <Button id="section_btn" fx:id="btn_edit_costumer1" layoutX="10.0" layoutY="412.0" mnemonicParsing="false" text="Ta bort  film">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Button>
                </children>
             </VBox>
          </children>

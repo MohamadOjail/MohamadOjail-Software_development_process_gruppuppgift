@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -33,13 +33,13 @@
                   <VBox>
                      <children>
                         <Label text="Postnummer" />
-                        <TextField fx:id="tf_add_email" />
+                        <TextField fx:id="tf_add_email2" layoutX="10.0" layoutY="30.0" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Land" />
-                        <ComboBox />
+                        <Label text="Telefon" />
+                        <TextField fx:id="tf_add_email" />
                      </children>
                   </VBox>
                   <VBox>
@@ -49,6 +49,7 @@
                      </children>
                   </VBox>
                   <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Lägg till" />
+                  <Label text="ver 1.01 -2022-04-05" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -63,7 +64,7 @@
                               <TextField fx:id="tf_find_last_name" />
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_customers" prefHeight="200.0">
+                        <TableView fx:id="tv_customers" prefHeight="314.0" prefWidth="682.0">
                            <columns>
                               <TableColumn minWidth="80.0" text="ID#" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Gata" />
@@ -72,7 +73,6 @@
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Land" />
                            </columns>
                         </TableView>
-                        <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Radera adress" />
                      </children>
                   </VBox>
                </children>
@@ -101,17 +101,18 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Land" />
-                        <ComboBox />
+                        <Label text="Telefon" />
                      </children>
                   </VBox>
+                  <TextField fx:id="tf_add_email11" />
                   <VBox>
                      <children>
-                        <Label text="Stad" />
+                        <Label text="Postort" />
                         <ComboBox fx:id="cb_add_city1" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_add_costumer1" mnemonicParsing="false" text="Uppdatera" />
+                  <Button id="section_btn" fx:id="btn_add_costumer1" mnemonicParsing="false" text="Spara adress" />
+                  <Button id="section_btn" fx:id="btn_add_costumer11" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" text="Ta bort adress" />
                </children>
             </VBox>
          </children>
