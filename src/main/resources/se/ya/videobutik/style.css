@@ -1,6 +1,6 @@
 
 #btn_roll{
-    -fx-font-size: 20;
+    -fx-font-size: 16;
     -fx-cursor: hand;
     -fx-min-width: 300;
     -fx-min-height: 80;
@@ -17,7 +17,7 @@
 }
 
 #btn_home{
-    -fx-font-size: 20;
+    -fx-font-size: 16;
     -fx-cursor: hand;
     -fx-min-width: 300;
     -fx-min-height: 80;
@@ -34,16 +34,16 @@
 }
 
 #info, ComboBox, TextField {
-    -fx-font-size: 20;
+    -fx-font-size: 16;
     -fx-min-width: 200;
 }
 #title{
-    -fx-font-size: 28;
+    -fx-font-size: 18;
     -fx-text-fill: #8e0a32;
 }
 
 #loginBtn{
-    -fx-font-size: 20;
+    -fx-font-size: 16;
     -fx-cursor: hand;
     -fx-min-width: 200;
     -fx-min-height: 60;

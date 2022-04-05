@@ -102,6 +102,7 @@
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Efternamn" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Adress" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Postort" />
+          
                           </columns>
                         </TableView>
                         <Button id="section_btn" fx:id="btn_delete_costumer" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Ta bort Kund" />

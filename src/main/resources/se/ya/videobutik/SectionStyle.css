@@ -1,6 +1,6 @@
 *{
     -fx-font-family: SansSerif;
-    -fx-font-size: 20;
+    -fx-font-size: 16;
 }
 
 #section_btn{
@@ -28,6 +28,6 @@ ComboBox{
 
 #title{
     -fx-text-fill: #0b58ae;
-    -fx-font-size: 24;
+    -fx-font-size: 28;
     -fx-font-weight: bold;
 }

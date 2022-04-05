@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
+import org.jetbrains.annotations.NotNull;
 import se.ya.videobutik.model.*;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class DataManagement {
             .addAnnotatedClass(FilmActor.class)
             .addAnnotatedClass(FilmCategory.class)
             .addAnnotatedClass(Category.class)
+            .addAnnotatedClass(Rental.class)
+            .addAnnotatedClass(Inventory.class)
             .buildSessionFactory();
     private Session session = null;
 
@@ -49,19 +52,28 @@ public class DataManagement {
         }
     }
 
-    public void setData(Object[] objectData){
+    public void setData(@NotNull Class<?> tableClass, Object[] objectData){
 
         try {
             session = factory.openSession();
             session.beginTransaction();
-            NativeQuery<?> nativeQuery = session.createSQLQuery("CALL sakila.addNewAddress(?, ?, ?, ?, ?)")
-                    .addEntity(Address.class)
-                    .setParameter(1, objectData[0])
-                    .setParameter(2, objectData[1])
-                    .setParameter(3, objectData[2])
-                    .setParameter(4, objectData[3])
-                    .setParameter(5, objectData[4]);
-            nativeQuery.executeUpdate();
+            switch (tableClass.getSimpleName().toLowerCase(Locale.ROOT)){
+                case "address" ->{
+                    NativeQuery<?> nativeQuery = session.createNativeQuery("insert into sakila.address(address, district,city_id, postal_code,phone, location, last_update)\n" +
+                                    "values(?, ?, ?, ?, ?, (ST_GeomFromText('point(17.36316 62.28842)')),current_timestamp());")
+                            .setParameter(1, objectData[0])
+                            .setParameter(2, objectData[1])
+                            .setParameter(3, objectData[2])
+                            .setParameter(4, objectData[3])
+                            .setParameter(5, objectData[4])
+                            .addEntity(Address.class);
+                    nativeQuery.executeUpdate();
+                }
+                case "xx" -> {
+                    //TODO if needed
+                }
+            }
+
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -77,7 +89,14 @@ public class DataManagement {
         try {
             session = factory.openSession();
             session.beginTransaction();
-            output = session.find(tableClass, id);
+            if (!tableClass.getSimpleName().toLowerCase(Locale.ROOT).equals("address")) {
+                output = session.find(tableClass, id);
+            }else {
+//                NativeQuery nativeQuery = session.createNativeQuery("SELECT ST_X(location) AS Latitude, ST_Y(location) AS Longitude FROM sakila.address WHERE address_id = ?")
+                NativeQuery<?> nativeQuery = session.createNativeQuery("SELECT * FROM sakila.address WHERE address_id = ?", Address.class)
+                        .setParameter(1, id);
+                output = nativeQuery.getSingleResult();
+            }
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -108,7 +127,26 @@ public class DataManagement {
         try {
             session = factory.openSession();
             session.beginTransaction();
-            session.update(object);
+            if (! (object instanceof Address)) {
+                session.update(object);
+            }else {
+                NativeQuery<?> nativeQuery = session.createNativeQuery("UPDATE address\n" +
+                                "SET address.address = ?," +
+                                "district = ?," +
+                                "city_id = ?," +
+                                "postal_code = ?," +
+                                "phone = ?," +
+                                "location = ST_GeomFromText('point(17.36316 62.28842)')," +
+                                "last_update = current_timestamp()" +
+                                "WHERE address_id = ?;")
+                        .setParameter(1, ((Address) object).getAddress())
+                        .setParameter(2, ((Address) object).getDistrict())
+                        .setParameter(3, ((Address) object).getCity().getId())
+                        .setParameter(4, ((Address) object).getPostalCode())
+                        .setParameter(5, ((Address) object).getPhone())
+                        .setParameter(6, ((Address) object).getId());
+                nativeQuery.executeUpdate();
+            }
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -129,6 +167,7 @@ public class DataManagement {
             case  "film" -> queryString = "SELECT * FROM film";
             case  "staff" -> queryString = "SELECT * FROM staff";
             case  "store" -> queryString = "SELECT * FROM store";
+            case  "inventory" -> queryString = "SELECT * FROM inventory";
         }
 
         Collection<Object> outputList = new ArrayList<>();

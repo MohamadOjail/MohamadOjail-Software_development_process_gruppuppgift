@@ -1,8 +1,10 @@
 package se.ya.videobutik.data.dao;
 
+import org.hibernate.SessionFactory;
 import se.ya.videobutik.data.DataManagement;
 import se.ya.videobutik.model.Address;
 
+import javax.security.auth.login.Configuration;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,7 +17,7 @@ public class AddressDAO {
 
     public void AddAddress(Object[] objectData){
         DataManagement data = new DataManagement();
-        data.setData(objectData);
+        data.setData(Address.class, objectData);
     }
 
     public Address findAddress(int id){

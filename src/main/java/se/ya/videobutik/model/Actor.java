@@ -2,6 +2,7 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 public class Actor {
@@ -18,7 +19,7 @@ public class Actor {
     private String lastName;
 
     @Column(name = "last_update")
-    private Date lastUpdate;
+    private Timestamp lastUpdate;
 
     public int getActorId() {
         return actorId;
@@ -44,11 +45,11 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    public Date getLastUpdate() {
+    public Timestamp getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(Timestamp lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 }
