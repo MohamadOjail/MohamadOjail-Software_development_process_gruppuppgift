@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.CrudDesignUthyrning">
+   <children>
+      <Button layoutX="13.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #357e1c;" text="Ny hyra" textFill="#222322">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="164.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #74cf43;" text="Återlämna" textFill="#121212">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="30.0" layoutY="342.0" mnemonicParsing="false" style="-fx-background-color: #cf1818;" text="Bokför" textFill="#efdfdf">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="519.0" layoutY="347.0" mnemonicParsing="false" style="-fx-background-color: #a662b9;" text="Avsluta" textFill="#201f20">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField layoutX="26.0" layoutY="101.0" prefHeight="26.0" prefWidth="201.0" />
+      <ListView layoutX="247.0" layoutY="54.0" prefHeight="266.0" prefWidth="336.0" />
+      <Label layoutX="26.0" layoutY="75.0" text="kundnamn el nr">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="146.0" layoutY="71.0" mnemonicParsing="false" style="-fx-background-color: #e4e403;" text="Sök" textFill="#262624">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField layoutX="32.0" layoutY="187.0" prefHeight="26.0" prefWidth="195.0" />
+      <Label layoutX="31.0" layoutY="164.0" text="filmtitel">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="133.0" layoutY="346.0" mnemonicParsing="false" text="försen återläning">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <CheckBox layoutX="26.0" layoutY="133.0" mnemonicParsing="false" text="har pågåend hyra">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <Label layoutX="256.0" layoutY="25.0" text="sökresultat namn alt film">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="191.0" layoutY="71.0" mnemonicParsing="false" style="-fx-background-color: #242694;" text="Ny" textFill="#eaeaf2">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Button>
+      <TextField layoutX="42.0" layoutY="239.0" prefHeight="26.0" prefWidth="41.0" />
+      <TextField layoutX="129.0" layoutY="241.0" prefHeight="26.0" prefWidth="41.0" />
+      <TextField layoutX="32.0" layoutY="294.0" />
+      <Label layoutX="273.0" layoutY="325.0" text="Förseningsavgift">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="221.0" text="Pris">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="127.0" layoutY="224.0" text="lånetid dgr">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="81.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #7d2a76;" text="Hyra om" textFill="#1a1919">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <TextField layoutX="277.0" layoutY="342.0" prefHeight="26.0" prefWidth="94.0" />
+      <Label layoutX="31.0" layoutY="276.0" prefHeight="18.0" prefWidth="90.0" text="Åter senast">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="152.0" layoutY="156.0" mnemonicParsing="false" style="-fx-background-color: #e4e403;" text="Sök" textFill="#262624">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label layoutX="520.0" layoutY="325.0" text="Klart">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="476.0" layoutY="377.0" text="ver 0.0 2022-04-05" />
+   </children>
+</AnchorPane>
