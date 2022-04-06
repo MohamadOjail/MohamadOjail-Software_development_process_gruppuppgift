@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.ActorController">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.ActorController">
    <children>
       <HBox prefHeight="562.0" prefWidth="1153.0" spacing="40.0">
          <children>
@@ -53,14 +53,13 @@
                               <TextField fx:id="tf_find_last_name" />
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_actor" prefHeight="363.0" prefWidth="381.0">
+                        <TableView fx:id="tv_actor" prefHeight="413.0" prefWidth="382.0">
                            <columns>
                               <TableColumn fx:id="column_id" minWidth="61.0" prefWidth="61.0" text="ID#" />
                               <TableColumn fx:id="column_first_name" minWidth="150.0" prefWidth="169.0" text="Förnamn" />
                               <TableColumn fx:id="column_last_name" minWidth="150.0" prefWidth="150.0" text="Efternamn" />
                            </columns>
                         </TableView>
-                        <Button id="section_btn" fx:id="btn_select_actor" mnemonicParsing="false" onAction="#btn_select_actor" prefHeight="37.0" prefWidth="381.0" text="Välj skådespelare" />
                      </children>
                   </VBox>
                </children>

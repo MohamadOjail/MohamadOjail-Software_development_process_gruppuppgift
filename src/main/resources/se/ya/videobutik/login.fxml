@@ -28,7 +28,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Om.." GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+            <Button mnemonicParsing="false" text="Om.." visible="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
             <Label id="title" prefHeight="40.0" prefWidth="169.0" text="Logga in som:" textAlignment="CENTER" textFill="#183ed7" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
@@ -47,7 +47,7 @@
                      </children>
                   </VBox>
                   <Button id="loginBtn" fx:id="btn_admin" mnemonicParsing="false" text="Admin" />
-                  <Label text="ver 1.0-2022-04-05" />
+                  <Label text="ver 1.01-2022-04-05" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />

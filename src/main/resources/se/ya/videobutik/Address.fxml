@@ -68,7 +68,7 @@
                            <columns>
                               <TableColumn minWidth="80.0" text="ID#" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Gata" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Stad" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postort/Stad" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Postnummer" />
                               <TableColumn minWidth="150.0" prefWidth="150.0" text="Land" />
                            </columns>
