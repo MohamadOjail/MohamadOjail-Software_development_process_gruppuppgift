@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -22,13 +22,13 @@
                   <VBox>
                      <children>
                         <Label text="Titel" />
-                        <TextField fx:id="tf_add_first_name" />
+                        <TextField fx:id="tf_add_title" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
                         <Label text="Språk" />
-                        <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
+                        <ComboBox fx:id="cb_add_language" prefWidth="150.0" />
                      </children>
                   </VBox>
                   <VBox>
@@ -44,7 +44,7 @@
                         <VBox>
                            <children>
                               <Label text="Antal dagar" />
-                              <TextField fx:id="tf_add_address">
+                              <TextField fx:id="tf_add_rental_duration">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -57,7 +57,7 @@
                         <VBox>
                            <children>
                               <Label text="Kostnad kr.öre" />
-                              <TextField fx:id="tf_add_district">
+                              <TextField fx:id="tf_add_rental_rate">
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -74,12 +74,12 @@
                                     <Insets />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tf_add_district1" />
+                              <TextField fx:id="tf_add_replacement_cost" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Lägg till" />
+                  <Button id="section_btn" fx:id="btn_add_movie" mnemonicParsing="false" onAction="#btn_add_movie" text="Lägg till" />
                   <Label text="ver 1.0 -2022-04-05" />
                </children>
             </VBox>
@@ -92,18 +92,18 @@
                         <VBox>
                            <children>
                               <Label text="Titel" />
-                              <TextField fx:id="tf_find_last_name">
+                              <TextField fx:id="tf_find_title">
                                  <VBox.margin>
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </TextField>
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_customers" prefHeight="358.0" prefWidth="382.0">
+                        <TableView fx:id="tv_film" prefHeight="358.0" prefWidth="382.0">
                            <columns>
-                              <TableColumn minWidth="58.0" prefWidth="58.0" text="ID#" />
-                              <TableColumn minWidth="150.0" prefWidth="219.0" text="Titel" />
-                              <TableColumn minWidth="103.0" prefWidth="103.0" text="Språk" />
+                              <TableColumn fx:id="column_id" minWidth="58.0" prefWidth="58.0" text="ID#" />
+                              <TableColumn fx:id="column_title" minWidth="150.0" prefWidth="219.0" text="Titel" />
+                              <TableColumn fx:id="column_release" minWidth="103.0" prefWidth="103.0" text="release Date" />
                            </columns>
                         </TableView>
                      </children>
@@ -121,7 +121,7 @@
                   <VBox>
                      <children>
                         <Label text="Titel" />
-                        <TextField fx:id="tf_edit_first_name">
+                        <TextField fx:id="tf_edit_title">
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -131,7 +131,7 @@
                   <VBox>
                      <children>
                         <Label text="Språk" />
-                        <ComboBox fx:id="cb_edit_city" prefWidth="150.0">
+                        <ComboBox fx:id="cb_edit_language" prefWidth="150.0">
                            <VBox.margin>
                               <Insets bottom="15.0" />
                            </VBox.margin>
@@ -149,13 +149,13 @@
                         <VBox>
                            <children>
                               <Label text="Antal dagar" />
-                              <TextField fx:id="tf_edit_address" />
+                              <TextField fx:id="tf_edit_rental_duration" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Kostnad kr.öre" />
-                              <TextField fx:id="tf_edit_district">
+                              <TextField fx:id="tf_edit_rental_rate">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -167,8 +167,13 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="133.0">
                            <children>
+<<<<<<< GUI_hans_redigerade
                               <Label text="Ersättnings kostnad  kr . öre" />
                               <TextField fx:id="tf_edit_district1">
+=======
+                              <Label text="Ersättnings kostnad  kr.öre" />
+                              <TextField fx:id="tf_edit_replacement_cost">
+>>>>>>> master
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
@@ -177,11 +182,11 @@
                         </VBox>
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" text="Redigera film">
+                  <Button id="section_btn" fx:id="btn_edit_movie" mnemonicParsing="false" onAction="#btn_edit_movie" text="Redigera film">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding></Button>
-                  <Button id="section_btn" fx:id="btn_edit_costumer1" layoutX="10.0" layoutY="412.0" mnemonicParsing="false" text="Ta bort  film">
+                  <Button id="section_btn" fx:id="btn_delete_movie" layoutX="10.0" layoutY="412.0" mnemonicParsing="false" onAction="#btn_delete_movie" text="Ta bort  film">
                      <padding>
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
