@@ -14,9 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import se.ya.videobutik.data.dao.ActorDAO;
 import se.ya.videobutik.model.Actor;
 
-/*
-        TODO: Göra klart add, delete och update metod. Testa.
- */
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class ActorController {
 
@@ -55,11 +54,22 @@ public class ActorController {
         column_first_name.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         column_last_name.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         column_id.setCellValueFactory(new PropertyValueFactory<>("actorId"));
+
         tf_find_last_name.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 actorList.clear();
-               findActorByLastName(t1);
+                findActorByLastName(t1);
+            }
+        });
+
+        tv_actor.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Actor>() {
+            @Override
+            public void changed(ObservableValue<? extends Actor> observableValue, Actor actor, Actor t1) {
+                if (t1 != null) {
+                    actor = t1;
+                    setEditActorFields();
+                }
             }
         });
     }
@@ -69,6 +79,7 @@ public class ActorController {
         Actor actor = new Actor();
         actor.setFirstName(tf_add_first_name.getText());
         actor.setLastName(tf_add_last_name.getText());
+        actor.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         actorDAO.AddActor(actor);
     }
 
@@ -76,6 +87,9 @@ public class ActorController {
     void btn_delete_actor(ActionEvent event) {
         Actor actor = tv_actor.getSelectionModel().getSelectedItem();
         actorDAO.deleteActor(actor);
+        tf_find_last_name.clear();
+        tv_actor.getItems().clear();
+        clearEditActorFields();
     }
 
     @FXML
@@ -86,8 +100,24 @@ public class ActorController {
         actorDAO.updateActor(actor);
     }
 
-    public void findActorByLastName(String input) {
+    private void findActorByLastName(String input) {
         actorList.addAll(actorDAO.getActorList(input));
+    }
+
+    private void setEditActorFields() {
+        Actor actor = tv_actor.getSelectionModel().getSelectedItem();
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        tf_edit_first_name.setText(actor.getFirstName());
+        tf_edit_last_name.setText(actor.getLastName());
+    }
+
+    private void clearEditActorFields() {
+        tf_edit_first_name.clear();
+        tf_edit_last_name.clear();
     }
 }
 
