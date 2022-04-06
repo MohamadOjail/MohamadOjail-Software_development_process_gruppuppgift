@@ -1,26 +1,26 @@
 package se.ya.videobutik.ui.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import se.ya.videobutik.data.dao.AddressDAO;
 import se.ya.videobutik.data.dao.CityDAO;
 import se.ya.videobutik.model.Address;
 import se.ya.videobutik.model.City;
 
 
-
-
 public class AddressController {
 
-    private Address address;
+
     private AddressDAO addressDAO;
 
-    private CityDAO cityDAO;
-
-    ObservableList<City> cities = FXCollections.observableArrayList();
-
+    private ObservableList<City> cities = FXCollections.observableArrayList();
+    private ObservableList<Address> addressList = FXCollections.observableArrayList();
 
     @FXML private Button btn_add_address;
     @FXML private Button btn_delete_address;
@@ -50,9 +50,25 @@ public class AddressController {
     @FXML private TextField tf_edit_phone;
     @FXML private TextField tf_edit_postal_code;
 
+    @FXML public void initialize() {
+        setCb_add_city();
+        cb_add_city.setItems(cities);
+        cb_edit_city.setItems(cities);
 
-    public void Address_add_button_push(javafx.scene.input.MouseEvent mouseEvent){
+        tv_addresses.setItems(addressList);
+        tc_address_id.setCellValueFactory(new PropertyValueFactory<>("address_id"));
+        tc_address.setCellValueFactory(new PropertyValueFactory<>("address"));
 
+        tc_postal_code.setCellValueFactory(new PropertyValueFactory<>("postal_code"));
+        tf_find_address.textProperty().addListener(new ChangeListener<String>() {
+            @Override public void changed(ObservableValue<? extends String> observableValue, String s, String t1)
+            {addressList.clear();
+                findaddress(t1);}
+        }
+        );
+    }
+
+   @FXML void Address_add_button_push(ActionEvent event){
 
         addressDAO = new AddressDAO();
 
@@ -63,10 +79,9 @@ public class AddressController {
         String phone = String.valueOf(tf_add_phone.getText());
 
        Object[] objectData = {
-               address,
-               district,
-               5,           //TODO tabort när det går att välja city i CB
-               //city,    TODO läsa in city till combobox för att kunna välja
+                address,
+                district,
+                city,
                 postal_code,
                 phone
         };
@@ -74,27 +89,29 @@ public class AddressController {
     }
 
 
-
-  /*  @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        comboBoxCity();
-        cb_add_city.setItems(cities);
-
-
+    @FXML void findaddress(String x){
+        addressList.addAll(addressDAO.getAddressList(x));
     }
 
+    @FXML void setCb_add_city () {
+        CityDAO cityDAO = new CityDAO();
+        cities.addAll(cityDAO.getCityList());
+    }
 
-   public void comboBoxCity(){
-        cityDAO = new CityDAO();
+    @FXML public void save_address(ActionEvent event){
+            Address address = tv_addresses.getSelectionModel().getSelectedItem();
+            address.setAddress(tf_edit_address.getText());
+            address.setDistrict(tf_edit_district.getText());
+            address.setCity(cb_edit_city.getValue());
+            address.setPostalCode(tf_edit_postal_code.getText());
+            address.setPhone(tf_edit_phone.getText());
+            addressDAO.updateAddress(address);
+        }
 
-       Collection<City> citys = new ArrayList<>();
+     @FXML public void delete_address(){
+        Address address = tv_addresses.getSelectionModel().getSelectedItem();
+        addressDAO.deleteAddress(address);
 
-       citys.addAll(cityDAO.getCityList());
-
-       for (City c: citys
-            ) {
-           cities.add(c);
-       }
-    }*/
-
+     }
 }
+
