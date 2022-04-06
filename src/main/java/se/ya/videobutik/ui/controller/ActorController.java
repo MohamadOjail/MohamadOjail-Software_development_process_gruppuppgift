@@ -54,7 +54,8 @@ public class ActorController {
         tf_find_last_name.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-               findActorByLastName();
+                actorList.clear();
+               findActorByLastName(t1);
             }
         });
     }
@@ -81,9 +82,8 @@ public class ActorController {
         actorDAO.updateActor(actor);
     }
 
-    public void findActorByLastName() {
-        actorList.clear();
-        actorList.addAll(actorDAO.getActorList(tf_find_last_name.getText()));
+    public void findActorByLastName(String input) {
+        actorList.addAll(actorDAO.getActorList(input));
     }
 }
 

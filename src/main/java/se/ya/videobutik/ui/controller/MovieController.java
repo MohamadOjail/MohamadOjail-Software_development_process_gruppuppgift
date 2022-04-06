@@ -18,6 +18,9 @@ import se.ya.videobutik.model.Actor;
 import se.ya.videobutik.model.Film;
 import se.ya.videobutik.model.Language;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 public class MovieController {
 
     private FilmDAO filmDAO = new FilmDAO();
@@ -37,7 +40,7 @@ public class MovieController {
     @FXML
     private TableColumn<Film, Integer> column_id;
     @FXML
-    private TableColumn<Film, Language> column_language;
+    private TableColumn<Film, Integer> column_release;
     @FXML
     private TableColumn<Film, String> column_title;
     @FXML
@@ -70,7 +73,7 @@ public class MovieController {
         languageList.addAll(languageDAO.getLanguageList());
         tv_film.setItems(filmList);
         column_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        column_language.setCellValueFactory(new PropertyValueFactory<>("language"));
+        column_release.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
         column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         cb_add_language.setItems(languageList);
@@ -79,6 +82,7 @@ public class MovieController {
         tf_find_title.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                filmList.clear();
                 searchFilmByTitle(t1);
             }
         });
@@ -93,6 +97,8 @@ public class MovieController {
         film.setRentalDuration(Integer.valueOf(tf_add_rental_duration.getText()));
         film.setRentalRate(Double.parseDouble(tf_add_rental_rate.getText()));
         film.setReplacementCost(Double.parseDouble(tf_add_replacement_cost.getText()));
+        film.setReleaseYear(1922);
+        film.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         filmDAO.AddFilm(film);
     }
 
@@ -116,7 +122,6 @@ public class MovieController {
     }
 
     public void searchFilmByTitle(String x) {
-        filmList.clear();
         filmList.addAll(filmDAO.getFilmList(x));
     }
 

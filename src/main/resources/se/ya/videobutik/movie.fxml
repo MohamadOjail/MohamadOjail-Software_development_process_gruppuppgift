@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -103,7 +103,7 @@
                            <columns>
                               <TableColumn fx:id="column_id" minWidth="58.0" prefWidth="58.0" text="ID#" />
                               <TableColumn fx:id="column_title" minWidth="150.0" prefWidth="219.0" text="Titel" />
-                              <TableColumn fx:id="column_language" minWidth="103.0" prefWidth="103.0" text="Språk" />
+                              <TableColumn fx:id="column_release" minWidth="103.0" prefWidth="103.0" text="release Date" />
                            </columns>
                         </TableView>
                      </children>
