@@ -168,6 +168,7 @@ public class DataManagement {
             case  "staff" -> queryString = "SELECT * FROM staff";
             case  "store" -> queryString = "SELECT * FROM store";
             case  "inventory" -> queryString = "SELECT * FROM inventory";
+            case  "country" -> queryString = "SELECT * FROM country";
             case  "language" -> queryString = "SELECT * FROM language";
             case  "city" -> queryString = "SELECT * FROM city";
         }
