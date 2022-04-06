@@ -12,10 +12,15 @@ public class MainController {
     @FXML private Label lbl_customer;
     @FXML private Label lbl_film;
     @FXML private BorderPane main_pane;
-    @FXML private Label lbl_uthyrning;
+    @FXML private Label lbl_rental;
     @FXML private Label lbl_home;
+    @FXML private Label lbl_actor;
 
     // getters
+
+    public Label getLbl_actor() {
+        return lbl_actor;
+    }
     public Label getLbl_address() {
         return lbl_address;
     }
@@ -24,8 +29,8 @@ public class MainController {
         return lbl_home;
     }
 
-    public Label getLbl_uthyrning() {
-        return lbl_uthyrning;
+    public Label getLbl_rental() {
+        return lbl_rental;
     }
 
     public Label getLbl_customer() {
@@ -47,7 +52,8 @@ public class MainController {
         lbl_customer.setOnMouseClicked(observer);
         lbl_film.setOnMouseClicked(observer);
         lbl_address.setOnMouseClicked(observer);
-        lbl_uthyrning.setOnMouseClicked(observer);
+        lbl_rental.setOnMouseClicked(observer);
         lbl_home.setOnMouseClicked(observer);
+        lbl_actor.setOnMouseClicked(observer);
     }
 }

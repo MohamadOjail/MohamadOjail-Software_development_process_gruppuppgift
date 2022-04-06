@@ -14,13 +14,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import se.ya.videobutik.data.dao.FilmDAO;
 import se.ya.videobutik.data.dao.LanguageDAO;
-import se.ya.videobutik.model.Actor;
 import se.ya.videobutik.model.Film;
 import se.ya.videobutik.model.Language;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+/*
+        TODO: Göra klart deletemetod samt update metod. Add fungerar. Testa.
+ */
 public class MovieController {
 
     private FilmDAO filmDAO = new FilmDAO();

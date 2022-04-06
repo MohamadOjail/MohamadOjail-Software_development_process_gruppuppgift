@@ -14,6 +14,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import se.ya.videobutik.data.dao.ActorDAO;
 import se.ya.videobutik.model.Actor;
 
+/*
+        TODO: Göra klart add, delete och update metod. Testa.
+ */
+
 public class ActorController {
 
     private ActorDAO actorDAO = new ActorDAO();
