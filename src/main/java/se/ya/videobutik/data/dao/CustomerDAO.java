@@ -45,4 +45,15 @@ public class CustomerDAO {
         }
         return output;
     }
+
+    public Collection<Customer> getCustomerList(String text, int storeId){
+
+        Collection<Customer> output = new ArrayList<>();
+        DataManagement data = new DataManagement();
+        Collection<Object> dataList = data.getDataList(Customer.class, text, storeId, true);
+        for (Object x : dataList){
+            output.add((Customer) x);
+        }
+        return output;
+    }
 }

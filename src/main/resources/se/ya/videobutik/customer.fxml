@@ -58,6 +58,12 @@
                         </VBox>
                         <VBox>
                            <children>
+                              <Label text="Land" />
+                              <ComboBox fx:id="cb_add_country" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
                               <Label text="Postort" />
                               <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
                            </children>
@@ -77,7 +83,7 @@
                      </children>
                   </VBox>
                   <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" text="Lägg till Kund" />
+                  <Button id="section_btn" fx:id="btn_add_costumer" mnemonicParsing="false" onAction="#Customer_add_button_push" text="Lägg till Kund" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="775.0" prefWidth="0.0" />
@@ -97,11 +103,10 @@
                         </VBox>
                         <TableView fx:id="tv_customers" prefHeight="550.0" prefWidth="700.0">
                           <columns>
-                            <TableColumn minWidth="80.0" text="id #" />
-                            <TableColumn minWidth="150.0" prefWidth="150.0" text="Förnamn" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Efternamn" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Adress" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postort" />
+                            <TableColumn fx:id="col_id" minWidth="80.0" text="id #" />
+                            <TableColumn fx:id="col_first_name" minWidth="150.0" prefWidth="150.0" text="Förnamn" />
+                              <TableColumn fx:id="col_last_name" minWidth="150.0" prefWidth="150.0" text="Efternamn" />
+                              <TableColumn fx:id="col_address" minWidth="150.0" prefWidth="290.0" text="Adress" />
           
                           </columns>
                         </TableView>
@@ -148,6 +153,12 @@
                         </VBox>
                         <VBox>
                            <children>
+                              <Label text="Land" />
+                              <ComboBox fx:id="cb_edit_country" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
                               <Label text="Postort" />
                               <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                            </children>
@@ -167,8 +178,8 @@
                      </children>
                   </VBox>
                   <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Spara Kund" />
-                  <Button id="section_btn" fx:id="btn_edit_costumer1" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Radera  Kund" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="40.0" prefWidth="300.0" text="Spara Kund" />
+                  <Button id="section_btn" fx:id="btn_delete" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="40.0" prefWidth="300.0" text="Radera  Kund" />
                </children>
             </VBox>
          </children>

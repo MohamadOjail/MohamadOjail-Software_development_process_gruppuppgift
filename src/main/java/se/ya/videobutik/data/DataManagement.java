@@ -108,6 +108,38 @@ public class DataManagement {
         return output;
     }
 
+    public Object getData(Class<?> tableClass, Object[] objectData){
+        Object output = null;
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+
+            switch (tableClass.getSimpleName().toLowerCase(Locale.ROOT)){
+                case "address" -> {
+                    //address, district,city_id
+                    NativeQuery<?> nativeQuery = session.createNativeQuery("SELECT * FROM sakila.address WHERE address.address = ? and district = ? and city_id = ?", Address.class)
+                            .setParameter(1, objectData[0])
+                            .setParameter(2, objectData[1])
+                            .setParameter(3, objectData[2]);
+                    output = nativeQuery.getSingleResult();
+                }
+                case "x" -> {
+                    //Todo
+                }
+            }
+
+
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+        return output;
+    }
+
     public void removeData(Object object){
         try {
             session = factory.openSession();
@@ -200,6 +232,37 @@ public class DataManagement {
             case "customer" -> queryString = "SELECT * FROM customer WHERE last_name LIKE '" + parameterText + "%'";
             case "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
             case "staff" -> queryString = "SELECT * FROM staff WHERE staff.last_name LIKE '" + parameterText + "%'";
+            case "city" -> queryString = "SELECT * FROM city WHERE country_id = " + parameterText;
+        }
+
+        Collection<Object> outputList = new ArrayList<>();
+
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            outputList.addAll(session.createNativeQuery(queryString, tableClass).getResultList());
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+            factory.close();
+        }
+        return outputList;
+    }
+
+    public Collection<Object> getDataList(Class<?> tableClass, String parameterText, int storeId, boolean wildcard){
+
+        String queryString = "";
+
+        switch (tableClass.getSimpleName().toLowerCase(Locale.ROOT)){
+            case "actor" -> queryString = "SELECT * FROM actor WHERE actor.last_name LIKE '" + parameterText + "%'";
+            case "address" -> queryString = "SELECT * FROM address WHERE address.address LIKE '" + parameterText + "%'";
+            case "customer" -> queryString = "SELECT * FROM customer WHERE last_name LIKE '" + parameterText + "%' AND store_id = " + storeId;
+            case "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
+            case "staff" -> queryString = "SELECT * FROM staff WHERE staff.last_name LIKE '" + parameterText + "%'";
+            case "city" -> queryString = "SELECT * FROM city WHERE city.city LIKE '" + parameterText + "%'";
         }
 
         Collection<Object> outputList = new ArrayList<>();

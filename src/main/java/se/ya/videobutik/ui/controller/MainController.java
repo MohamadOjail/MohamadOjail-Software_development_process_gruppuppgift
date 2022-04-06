@@ -3,6 +3,7 @@ package se.ya.videobutik.ui.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import se.ya.videobutik.model.Store;
 import se.ya.videobutik.ui.Switcher;
 import se.ya.videobutik.ui.observer.main.ActionObserver;
 
@@ -14,6 +15,12 @@ public class MainController {
     @FXML private BorderPane main_pane;
     @FXML private Label lbl_uthyrning;
     @FXML private Label lbl_home;
+
+    private int storeId;
+
+    public int getStore() {
+        return storeId;
+    }
 
     // getters
     public Label getLbl_address() {
@@ -49,5 +56,12 @@ public class MainController {
         lbl_address.setOnMouseClicked(observer);
         lbl_uthyrning.setOnMouseClicked(observer);
         lbl_home.setOnMouseClicked(observer);
+
+
+    }
+
+    public void setStoreId(int storeId) {
+        this.storeId = storeId;
+        System.out.println("Called" + this.storeId);
     }
 }

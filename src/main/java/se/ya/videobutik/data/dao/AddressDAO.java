@@ -24,6 +24,12 @@ public class AddressDAO {
         DataManagement data = new DataManagement();
         return (Address) data.getData(Address.class, id);
     }
+
+    public Address findAddress(Object[] objectData){
+        DataManagement data = new DataManagement();
+        return (Address) data.getData(Address.class, objectData);
+    }
+
     public void deleteAddress(Address address){
         DataManagement data = new DataManagement();
         data.removeData(address);
