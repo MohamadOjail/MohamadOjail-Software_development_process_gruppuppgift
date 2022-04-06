@@ -21,7 +21,7 @@
                   <VBox>
                      <children>
                         <Label text="Chef" />
-                        <ComboBox prefWidth="150.0" />
+                        <ComboBox fx:id="cb_add_manager" prefWidth="150.0" />
                      </children>
                   </VBox>
                   <VBox spacing="15.0">
@@ -30,25 +30,25 @@
                         <VBox>
                            <children>
                               <Label text="Gatuadress" />
-                              <TextField />
+                              <TextField fx:id="tf_add_address" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Län" />
-                              <TextField />
+                              <TextField fx:id="tf_add_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Postort" />
-                              <ComboBox prefWidth="150.0" />
+                              <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Postnummer" />
-                              <TextField />
+                              <TextField fx:id="tf_add_postal_code" />
                            </children>
                         </VBox>
                      </children>
@@ -56,11 +56,11 @@
                   <VBox>
                      <children>
                         <Label layoutX="10.0" layoutY="10.0" text="Telefon/mobil" />
-                        <TextField layoutX="10.0" layoutY="33.0" />
+                        <TextField fx:id="tf_add_phone" layoutX="10.0" layoutY="33.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" mnemonicParsing="false" prefWidth="300.0" text="Lägg till butik" />
-                  <Label text="Ver 1.0-2022-04-05" />
+                  <Button id="section_btn" fx:id="btn_add_store" mnemonicParsing="false" prefWidth="300.0" text="Lägg till butik" />
+                  <Label text="Ver 1.01-2022-04-05" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -68,20 +68,20 @@
                <children>
                   <Label id="title" text="Sök butik">
                      <padding>
-                        <Insets bottom="15.0" left="30.0" />
+                        <Insets bottom="15.0" />
                      </padding>
                   </Label>
-                  <Label text="Last Name" />
-                  <TextField>
+                  <Label text="Sök med Chefsnamn" />
+                  <TextField fx:id="tf_find_store">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                   </TextField>
-                  <TableView prefHeight="433.0" prefWidth="382.0">
+                  <TableView fx:id="tv_stores" prefHeight="433.0" prefWidth="382.0">
                      <columns>
-                        <TableColumn prefWidth="63.0" text="ID#" />
-                        <TableColumn prefWidth="137.0" text="Chef" />
-                        <TableColumn prefWidth="156.0" text="Adress" />
+                        <TableColumn fx:id="tv_column_id" prefWidth="63.0" text="ID#" />
+                        <TableColumn fx:id="tv_column_chef" prefWidth="137.0" text="Chef" />
+                        <TableColumn fx:id="tv_column_address" prefWidth="156.0" text="Adress" />
                      </columns>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -96,7 +96,7 @@
                   <VBox>
                      <children>
                         <Label text="Chef" />
-                        <ComboBox prefWidth="150.0" />
+                        <ComboBox fx:id="cb_edit_manager" prefWidth="150.0" />
                      </children>
                   </VBox>
                   <VBox spacing="15.0">
@@ -105,25 +105,25 @@
                         <VBox>
                            <children>
                               <Label text="Gatuadress" />
-                              <TextField />
+                              <TextField fx:id="tf_edit_address" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Län" />
-                              <TextField />
+                              <TextField fx:id="tf_edit_district" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Postort" />
-                              <ComboBox prefWidth="150.0" />
+                              <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
                               <Label text="Postnummer" />
-                              <TextField />
+                              <TextField fx:id="tf_edit_postal_code" />
                            </children>
                         </VBox>
                      </children>
@@ -131,11 +131,11 @@
                   <VBox>
                      <children>
                         <Label layoutX="10.0" layoutY="10.0" text="Telefon/mobil" />
-                        <TextField layoutX="10.0" layoutY="33.0" />
+                        <TextField fx:id="tf_edit_phone" layoutX="10.0" layoutY="33.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" mnemonicParsing="false" prefHeight="12.0" prefWidth="300.0" text="Spara ändringar" />
-                  <Button id="section_btn" layoutX="10.0" layoutY="479.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="300.0" text="Ta bort butik">
+                  <Button id="section_btn" fx:id="btn_save_store" mnemonicParsing="false" prefHeight="12.0" prefWidth="300.0" text="Spara ändringar" />
+                  <Button id="section_btn" fx:id="btn_delete_store" layoutX="10.0" layoutY="479.0" mnemonicParsing="false" prefHeight="12.0" prefWidth="300.0" text="Ta bort butik">
                      <opaqueInsets>
                         <Insets bottom="10.0" top="10.0" />
                      </opaqueInsets>
