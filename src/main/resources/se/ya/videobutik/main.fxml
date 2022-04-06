@@ -19,15 +19,16 @@
                   <Separator prefWidth="200.0" />
                   <Label id="btn_roll" fx:id="lbl_customer" text="Kunder" />
                   <Separator prefWidth="200.0" />
-                  <Label id="btn_roll" fx:id="lbl_film" text="Filmer" />
-                  <Separator prefWidth="200.0" />
                   <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
+                  <Label id="btn_roll" fx:id="lbl_film" text="Filmer" />
+                  <Label id="btn_roll" fx:id="lbl_film1" layoutX="10.0" layoutY="256.0" text="Skådespelare" />
+                  <Separator prefWidth="200.0" />
                   <Separator prefWidth="200.0" />
                   <Label id="btn_home" fx:id="lbl_home" text="Back to main menu">
                      <effect>
                         <ColorAdjust hue="-0.04" />
                      </effect></Label>
-                  <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="503.0" text="ver 1.0-2022-04-05">
+                  <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="503.0" text="ver 1.1-2022-04-06">
                      <effect>
                         <ColorAdjust hue="-0.06" saturation="-0.01" />
                      </effect></Label>
