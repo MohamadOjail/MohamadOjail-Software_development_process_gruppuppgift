@@ -19,7 +19,7 @@ public class Store {
     @JoinColumn(name = "manager_staff_id", nullable = false)
     private Staff managerStaff;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
