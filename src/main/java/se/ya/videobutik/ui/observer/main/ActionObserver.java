@@ -17,9 +17,8 @@ public class ActionObserver implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent e) {
 
+        if (e.getSource() == ctrlr.getLbl_rental()){
 
-
-        if (e.getSource() == ctrlr.getLbl_uthyrning()){
             Switcher.get().loadScene(0, ctrlr.getMain_pane());
         }
 
@@ -41,6 +40,10 @@ public class ActionObserver implements EventHandler<MouseEvent> {
             Switcher.get().backToMain(ctrlr.getLbl_home());
         }
 
+        if(e.getSource() == ctrlr.getLbl_actor()) {
+            Switcher.get().loadScene(6,ctrlr.getMain_pane());
+        }
+
         setStyle(e);
     }
 
@@ -48,7 +51,7 @@ public class ActionObserver implements EventHandler<MouseEvent> {
         styleIt(ctrlr.getLbl_address(), e.getSource() == ctrlr.getLbl_address());
         styleIt(ctrlr.getLbl_customer(), e.getSource() == ctrlr.getLbl_customer());
         styleIt(ctrlr.getLbl_film(), e.getSource() == ctrlr.getLbl_film());
-        styleIt(ctrlr.getLbl_uthyrning(), e.getSource() == ctrlr.getLbl_uthyrning());
+        styleIt(ctrlr.getLbl_rental(), e.getSource() == ctrlr.getLbl_rental());
     }
     private void styleIt(Node node, boolean selected){
         if (selected) node.setStyle("-fx-background-color: rgba(13,235,83,0.2);");

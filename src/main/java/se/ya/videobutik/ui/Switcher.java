@@ -77,6 +77,10 @@ public class Switcher {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("../Store.fxml"));
                     root = loader.load();
                 }
+                case 6 ->{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../actor.fxml"));
+                    root = loader.load();
+                }
             }
             borderPane.setCenter(root);
         } catch (Exception e) {
