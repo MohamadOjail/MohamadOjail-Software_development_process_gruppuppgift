@@ -11,7 +11,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="850.0" prefWidth="1100.0" spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
    <children>
@@ -79,19 +78,25 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Medarbetare inloggning" textFill="#e88709">
+                        <Label text="Användarnamn">
                            <padding>
-                              <Insets bottom="20.0" />
-                           </padding>
-                        </Label>
-                        <Label text="Användarnamn" />
+                              <Insets bottom="10.0" />
+                           </padding></Label>
                         <TextField fx:id="tf_add_user_name" layoutX="10.0" layoutY="33.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod">
+                           <padding>
+                              <Insets bottom="10.0" top="10.0" />
+                           </padding></Label>
                         <TextField fx:id="tf_add_password" />
                      </children>
                   </VBox>
                   <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Aktiv" />
                   <Button id="section_btn" fx:id="btn_add_employee" mnemonicParsing="false" prefWidth="300.0" text="Lägg till medarbetare" />
+                  <Label text="Ver 1.0-2022-04-05" textFill="#262523">
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </Label>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -107,7 +112,7 @@
                         <Insets bottom="30.0" />
                      </VBox.margin>
                   </TextField>
-                  <TableView fx:id="tv_employees" prefHeight="650.0" prefWidth="321.0">
+                  <TableView fx:id="tv_employees" minWidth="400.0" prefHeight="913.0" prefWidth="400.0">
                     <columns>
                       <TableColumn prefWidth="63.0" text="id#" />
                       <TableColumn prefWidth="137.0" text="Förnamn" />
@@ -117,11 +122,6 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </TableView>
-                  <Button id="section_btn" fx:id="btn_delete_employee1" layoutX="10.0" layoutY="1044.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Ta bort medarbetare">
-                     <VBox.margin>
-                        <Insets top="220.0" />
-                     </VBox.margin>
-                  </Button>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -187,9 +187,18 @@
                               <Insets bottom="20.0" />
                            </padding>
                         </Label>
-                        <Label text="Användarnamn" />
+                        <Label text="Användarnamn">
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding></Label>
                         <TextField fx:id="tf_edit_user_name" layoutX="10.0" layoutY="33.0" prefHeight="100.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod" />
+                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding></Label>
                         <TextField fx:id="tf_edit_password" prefHeight="118.0" prefWidth="300.0" />
                      </children>
                   </VBox>
@@ -198,11 +207,7 @@
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Label text="ver 1.0-2022-04-05">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
+                  <Button id="section_btn" fx:id="btn_delete_employee2" layoutX="10.0" layoutY="944.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Radera medarbetare" />
                </children>
             </VBox>
          </children>

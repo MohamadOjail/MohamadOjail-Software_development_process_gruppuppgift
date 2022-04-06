@@ -59,11 +59,12 @@
                         </VBox>
                         <TableView fx:id="tv_addresses" prefHeight="314.0" prefWidth="682.0">
                            <columns>
-                              <TableColumn fx:id="tc_address_id" minWidth="80.0" text="ID#" />
-                              <TableColumn fx:id="tc_address" minWidth="150.0" prefWidth="150.0" text="Gata" />
-                              <TableColumn fx:id="tc_city" minWidth="150.0" prefWidth="150.0" text="Stad" />
-                              <TableColumn fx:id="tc_postal_code" minWidth="150.0" prefWidth="150.0" text="Postnummer" />
-                              <TableColumn fx:id="tc_country" minWidth="150.0" prefWidth="150.0" text="Land" />
+                              <TableColumn minWidth="80.0" text="ID#" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Gata" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postort/Stad" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postnummer" />
+                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Land" />
+
                            </columns>
                         </TableView>
                      </children>

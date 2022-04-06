@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -22,8 +23,14 @@
                   <Separator prefWidth="200.0" />
                   <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
                   <Separator prefWidth="200.0" />
-                  <Label id="btn_home" fx:id="lbl_home" text="Back to main menu" />
-                  <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="503.0" text="ver 1.0-2022-04-05" />
+                  <Label id="btn_home" fx:id="lbl_home" text="Back to main menu">
+                     <effect>
+                        <ColorAdjust hue="-0.04" />
+                     </effect></Label>
+                  <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="503.0" text="ver 1.0-2022-04-05">
+                     <effect>
+                        <ColorAdjust hue="-0.06" saturation="-0.01" />
+                     </effect></Label>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />

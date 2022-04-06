@@ -13,7 +13,7 @@
             <Label id="btn_roll" fx:id="lbl_store" text="Butiker" />
             <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
             <Label id="btn_home" fx:id="lbl_home" text="Tillbaks" />
-            <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="310.0" text="ver 1.0-2022-04-05" textFill="#0d0c0c">
+            <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="310.0" stylesheets="@style.css" text="ver 1.0-2022-04-05" textFill="#0d0c0c">
                <font>
                   <Font size="10.0" />
                </font>

@@ -168,7 +168,7 @@
                   </VBox>
                   <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
                   <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Spara Kund" />
-                  <Button id="section_btn" fx:id="btn_edit_costumer1" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Ta bort   Kund" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer1" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Radera  Kund" />
                </children>
             </VBox>
          </children>
