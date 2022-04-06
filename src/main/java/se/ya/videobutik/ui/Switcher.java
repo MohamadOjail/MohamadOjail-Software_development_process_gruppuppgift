@@ -38,7 +38,7 @@ public class Switcher {
         try {
             switch (id){
                 case 0 -> {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../Uthyrning.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../rental.fxml"));
                     root = loader.load();
                 }
                 case 1 -> {

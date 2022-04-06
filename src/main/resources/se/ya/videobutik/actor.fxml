@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.ActorController">
+<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.ActorController">
    <children>
       <HBox prefHeight="562.0" prefWidth="1153.0" spacing="40.0">
          <children>
@@ -84,7 +84,7 @@
                         <TextField fx:id="tf_edit_last_name" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_save_actor" mnemonicParsing="false" onAction="#btn_select_actor" text="Spara skådespelare" />
+                  <Button id="section_btn" fx:id="btn_save_actor" mnemonicParsing="false" onAction="#btn_save_actor" text="Spara skådespelare" />
                   <Button id="section_btn" fx:id="btn_delete_actor" mnemonicParsing="false" onAction="#btn_delete_actor" text="Radera skådespelare" />
                </children>
             </VBox>
