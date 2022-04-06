@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import se.ya.videobutik.model.LoginStoreSelector;
 import se.ya.videobutik.model.Store;
 import se.ya.videobutik.ui.controller.LogInController;
 import se.ya.videobutik.ui.controller.MainController;
@@ -44,7 +45,7 @@ public class ActionObserver implements EventHandler<ActionEvent> {
             try {
                 root = loader.load();
                 MainController mainController = loader.getController();
-                mainController.setStoreId(((Store) ctrlr.getCb_store().getSelectionModel().getSelectedItem()).getId() );
+                mainController.setStoreId(((LoginStoreSelector) ctrlr.getCb_store().getSelectionModel().getSelectedItem()).getId() );
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
