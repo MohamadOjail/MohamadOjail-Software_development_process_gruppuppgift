@@ -17,7 +17,7 @@ public class City {
     @Column(name = "city", nullable = false, length = 50)
     private String city;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "country_id", nullable = false)
     private Country country;
 
@@ -67,4 +67,8 @@ public class City {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return city;
+    }
 }

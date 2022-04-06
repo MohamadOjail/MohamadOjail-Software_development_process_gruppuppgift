@@ -45,4 +45,15 @@ public class CityDAO {
         }
         return output;
     }
+
+    public Collection<City> getCityList(String text, int storeId, boolean wildcard){
+
+        Collection<City> output = new ArrayList<>();
+        DataManagement data = new DataManagement();
+        Collection<Object> dataList = data.getDataList(City.class, text, storeId, wildcard);
+        for (Object x : dataList){
+            output.add((City) x);
+        }
+        return output;
+    }
 }
