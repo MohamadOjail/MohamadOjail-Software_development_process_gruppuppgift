@@ -61,7 +61,7 @@
                                     <Insets top="25.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tf_add_district1">
+                              <TextField fx:id="tf_add_postal_code">
                                  <VBox.margin>
                                     <Insets top="5.0" />
                                  </VBox.margin>
@@ -71,7 +71,7 @@
                         <VBox>
                            <children>
                               <Label text="Telefon" />
-                              <TextField fx:id="tf_add_postal_code" />
+                              <TextField fx:id="tf_add_phone" />
                            </children>
                         </VBox>
                      </children>
@@ -92,7 +92,7 @@
                   </VBox>
                   <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Aktiv" />
                   <Button id="section_btn" fx:id="btn_add_employee" mnemonicParsing="false" prefWidth="300.0" text="Lägg till medarbetare" />
-                  <Label text="Ver 1.0-2022-04-05" textFill="#262523">
+                  <Label text="Ver 1.01-2022-04-05" textFill="#262523">
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
@@ -114,9 +114,9 @@
                   </TextField>
                   <TableView fx:id="tv_employees" minWidth="400.0" prefHeight="913.0" prefWidth="400.0">
                     <columns>
-                      <TableColumn prefWidth="63.0" text="id#" />
-                      <TableColumn prefWidth="137.0" text="Förnamn" />
-                        <TableColumn prefWidth="119.0" text="Efternamn" />
+                      <TableColumn fx:id="tv_column_id" prefWidth="63.0" text="id#" />
+                      <TableColumn fx:id="tv_column_first_name" prefWidth="137.0" text="Förnamn" />
+                        <TableColumn fx:id="tv_column_last_name" prefWidth="119.0" text="Efternamn" />
                     </columns>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -175,7 +175,7 @@
                                  <padding>
                                     <Insets top="15.0" />
                                  </padding></Label>
-                              <TextField fx:id="tf_add_postal_code1" />
+                              <TextField fx:id="tf_edit_phone" />
                            </children>
                         </VBox>
                      </children>
@@ -203,11 +203,11 @@
                      </children>
                   </VBox>
                   <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_delete_employee" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Spara ändringar">
+                  <Button id="section_btn" fx:id="btn_save_employee" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Spara ändringar">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Button id="section_btn" fx:id="btn_delete_employee2" layoutX="10.0" layoutY="944.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Radera medarbetare" />
+                  <Button id="section_btn" fx:id="btn_delete_employee" layoutX="10.0" layoutY="944.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Radera medarbetare" />
                </children>
             </VBox>
          </children>
