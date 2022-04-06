@@ -168,6 +168,8 @@ public class DataManagement {
             case  "staff" -> queryString = "SELECT * FROM staff";
             case  "store" -> queryString = "SELECT * FROM store";
             case  "inventory" -> queryString = "SELECT * FROM inventory";
+            case  "language" -> queryString = "SELECT * FROM language";
+            case  "city" -> queryString = "SELECT * FROM city";
         }
 
         Collection<Object> outputList = new ArrayList<>();

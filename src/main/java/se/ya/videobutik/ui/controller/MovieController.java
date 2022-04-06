@@ -1,31 +1,123 @@
 package se.ya.videobutik.ui.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import se.ya.videobutik.data.dao.FilmDAO;
+import se.ya.videobutik.data.dao.LanguageDAO;
+import se.ya.videobutik.model.Actor;
+import se.ya.videobutik.model.Film;
+import se.ya.videobutik.model.Language;
 
 public class MovieController {
-    @FXML private Button btn_add;
-    @FXML private Button btn_delete;
-    @FXML private Button btn_edit;
-    @FXML private Button btn_select;
 
-    @FXML private ComboBox<?> cb_add_language;
-    @FXML private ComboBox<?> cb_edit_language;
+    private FilmDAO filmDAO = new FilmDAO();
+    private LanguageDAO languageDAO = new LanguageDAO();
 
-    @FXML private ListView<?> lv_films;
 
-    @FXML private TextField tf_add_rental_duration;
-    @FXML private TextField tf_add_rental_rate;
-    @FXML private TextField tf_add_replacement_cost;
-    @FXML private TextField tf_add_title;
-    @FXML private TextField tf_edit_rental_duration;
-    @FXML private TextField tf_edit_rental_rate;
-    @FXML private TextField tf_edit_title;
-    @FXML private TextField tf_film_id;
-    @FXML private TextField tf_replacement_cost;
+    @FXML
+    private Button btn_add_movie;
+    @FXML
+    private Button btn_delete_movie;
+    @FXML
+    private Button btn_edit_movie;
+    @FXML
+    private ComboBox<Language> cb_add_language;
+    @FXML
+    private ComboBox<Language> cb_edit_language;
+    @FXML
+    private TableColumn<Film, Integer> column_id;
+    @FXML
+    private TableColumn<Film, Language> column_language;
+    @FXML
+    private TableColumn<Film, String> column_title;
+    @FXML
+    private TextField tf_add_rental_duration;
+    @FXML
+    private TextField tf_add_rental_rate;
+    @FXML
+    private TextField tf_add_replacement_cost;
+    @FXML
+    private TextField tf_add_title;
+    @FXML
+    private TextField tf_edit_rental_duration;
+    @FXML
+    private TextField tf_edit_rental_rate;
+    @FXML
+    private TextField tf_edit_replacement_cost;
+    @FXML
+    private TextField tf_edit_title;
+    @FXML
+    private TextField tf_find_title;
+    @FXML
+    private TableView<Film> tv_film;
 
+    private ObservableList<Film> filmList = FXCollections.observableArrayList();
+    private ObservableList<Language> languageList = FXCollections.observableArrayList();
+
+    @FXML
+    public void initialize() {
+
+        languageList.addAll(languageDAO.getLanguageList());
+        tv_film.setItems(filmList);
+        column_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        column_language.setCellValueFactory(new PropertyValueFactory<>("language"));
+        column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        cb_add_language.setItems(languageList);
+        cb_edit_language.setItems(languageList);
+
+        tf_find_title.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                searchFilmByTitle(t1);
+            }
+        });
+    }
+
+    @FXML
+    public void btn_add_movie(ActionEvent event) {
+
+        Film film = new Film();
+        film.setTitle(tf_add_title.getText());
+        film.setLanguage(cb_add_language.getValue());
+        film.setRentalDuration(Integer.valueOf(tf_add_rental_duration.getText()));
+        film.setRentalRate(Double.parseDouble(tf_add_rental_rate.getText()));
+        film.setReplacementCost(Double.parseDouble(tf_add_replacement_cost.getText()));
+        filmDAO.AddFilm(film);
+    }
+
+    @FXML
+    public void btn_delete_movie(ActionEvent event) {
+
+        Film film = tv_film.getSelectionModel().getSelectedItem();
+        filmDAO.deleteFilm(film);
+    }
+
+    @FXML
+    public void btn_edit_movie(ActionEvent event) {
+
+        Film film = tv_film.getSelectionModel().getSelectedItem();
+        film.setTitle(tf_edit_title.getText());
+        film.setLanguage(cb_edit_language.getValue());
+        film.setRentalDuration(Integer.valueOf(tf_edit_rental_duration.getText()));
+        film.setRentalRate(Double.parseDouble(tf_edit_rental_rate.getText()));
+        film.setReplacementCost(Double.parseDouble(tf_edit_replacement_cost.getText()));
+        filmDAO.updateFilm(film);
+    }
+
+    public void searchFilmByTitle(String x) {
+        filmList.clear();
+        filmList.addAll(filmDAO.getFilmList(x));
+    }
 
 }
