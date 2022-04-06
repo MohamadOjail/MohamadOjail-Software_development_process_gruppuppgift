@@ -167,13 +167,10 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="133.0">
                            <children>
-<<<<<<< GUI_hans_redigerade
                               <Label text="Ersättnings kostnad  kr . öre" />
-                              <TextField fx:id="tf_edit_district1">
-=======
+                              <TextField fx:id="tf_edit_district1"/>
                               <Label text="Ersättnings kostnad  kr.öre" />
                               <TextField fx:id="tf_edit_replacement_cost">
->>>>>>> master
                                  <VBox.margin>
                                     <Insets bottom="15.0" />
                                  </VBox.margin>
