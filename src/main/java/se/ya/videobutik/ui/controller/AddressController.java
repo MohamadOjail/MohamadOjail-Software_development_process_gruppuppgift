@@ -56,10 +56,11 @@ public class AddressController {
         cb_edit_city.setItems(cities);
 
         tv_addresses.setItems(addressList);
-        tc_address_id.setCellValueFactory(new PropertyValueFactory<>("address_id"));
-        tc_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+//        tc_address_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+//        tc_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+//
+//        tc_postal_code.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 
-        tc_postal_code.setCellValueFactory(new PropertyValueFactory<>("postal_code"));
         tf_find_address.textProperty().addListener(new ChangeListener<String>() {
             @Override public void changed(ObservableValue<? extends String> observableValue, String s, String t1)
             {addressList.clear();
