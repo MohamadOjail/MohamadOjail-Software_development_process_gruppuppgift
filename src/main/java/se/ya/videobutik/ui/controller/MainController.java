@@ -67,6 +67,5 @@ public class MainController {
 
     public void setStoreId(int storeId) {
         this.storeId = storeId;
-        System.out.println("Called" + this.storeId);
     }
 }

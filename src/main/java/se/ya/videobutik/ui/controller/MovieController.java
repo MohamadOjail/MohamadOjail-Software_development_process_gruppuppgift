@@ -77,21 +77,15 @@ public class MovieController {
         cb_add_language.setItems(languageList);
         cb_edit_language.setItems(languageList);
 
-        tf_find_title.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                filmList.clear();
-                searchFilmByTitle(t1);
-            }
+        tf_find_title.textProperty().addListener((observableValue, s, t1) -> {
+            filmList.clear();
+            searchFilmByTitle(t1);
         });
 
-        tv_film.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Film>() {
-            @Override
-            public void changed(ObservableValue<? extends Film> observableValue, Film film, Film t1) {
-                if (t1 != null) {
-                    film = t1;
-                    setEditFilmFields();
-                }
+        tv_film.getSelectionModel().selectedItemProperty().addListener((observableValue, film, t1) -> {
+            if (t1 != null) {
+                film = t1;
+                setEditFilmFields();
             }
         });
     }
