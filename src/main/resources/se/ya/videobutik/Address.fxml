@@ -41,7 +41,7 @@
                         <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_add_address" mnemonicParsing="false" onMouseClicked="#Address_add_button_push" text="Lägg till" />
+                  <Button id="section_btn" fx:id="btn_add_address" mnemonicParsing="false" onAction="#Address_add_button_push" text="Lägg till" />
                   <Label text="ver 1.01 -2022-04-05" />
                </children>
             </VBox>
@@ -105,8 +105,8 @@
                         <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_save_address" mnemonicParsing="false" text="Spara adress" />
-                  <Button id="section_btn" fx:id="btn_delete_address" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" text="Ta bort adress" />
+                  <Button id="section_btn" fx:id="btn_save_address" mnemonicParsing="false" onAction="#save_address" text="Spara adress" />
+                  <Button id="section_btn" fx:id="btn_delete_address" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" onAction="#delete_address" text="Ta bort adress" />
                </children>
             </VBox>
          </children>
