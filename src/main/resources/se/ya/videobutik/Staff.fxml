@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
@@ -12,11 +11,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="850.0" prefWidth="1100.0" spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
+<VBox prefHeight="850.0" prefWidth="1100.0" spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.StaffController">
    <children>
       <HBox prefHeight="1016.0" prefWidth="1200.0" spacing="30.0">
          <children>
-            <VBox prefHeight="1071.0" prefWidth="300.0" spacing="30.0">
+            <VBox prefHeight="1071.0" prefWidth="300.0" spacing="15.0">
                <children>
                   <Label id="title" text="Lägg till ny medarbetare" />
                   <VBox>
@@ -33,11 +32,11 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="E-mail" />
+                        <Label text="E-post" />
                         <TextField fx:id="tf_add_email" />
                      </children>
                   </VBox>
-                  <VBox spacing="20.0">
+                  <VBox spacing="15.0">
                      <children>
                         <Label text="Medarbetare adress" textFill="#e88709" />
                         <VBox>
@@ -54,9 +53,11 @@
                         </VBox>
                         <VBox minHeight="150.0">
                            <children>
+                              <Label text="Land" />
+                              <ComboBox fx:id="cb_add_country" prefWidth="150.0" />
                               <Label text="Postort" />
                               <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
-                              <Label layoutX="10.0" layoutY="10.0" text="Post nummer">
+                              <Label layoutX="10.0" layoutY="10.0" text="Postnummer">
                                  <VBox.margin>
                                     <Insets top="25.0" />
                                  </VBox.margin>
@@ -83,15 +84,9 @@
                               <Insets bottom="10.0" />
                            </padding></Label>
                         <TextField fx:id="tf_add_user_name" layoutX="10.0" layoutY="33.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod">
-                           <padding>
-                              <Insets bottom="10.0" top="10.0" />
-                           </padding></Label>
-                        <TextField fx:id="tf_add_password" />
                      </children>
                   </VBox>
-                  <CheckBox fx:id="checkb_add_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_add_employee" mnemonicParsing="false" prefWidth="300.0" text="Lägg till medarbetare" />
+                  <Button id="section_btn" fx:id="btn_add_employee" mnemonicParsing="false" onAction="#btn_add_employee" prefWidth="300.0" text="Lägg till medarbetare" />
                   <Label text="Ver 1.01-2022-04-05" textFill="#262523">
                      <padding>
                         <Insets bottom="20.0" />
@@ -102,10 +97,7 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <VBox layoutX="335.0" layoutY="500.0">
                <children>
-                  <Label id="title" text="Sök medarbetare">
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" />
-                     </padding></Label>
+                  <Label id="title" text="Sök medarbetare" />
                   <Label text="Sök  efter efternamn" />
                   <TextField fx:id="tf_find_last_name">
                      <VBox.margin>
@@ -114,9 +106,10 @@
                   </TextField>
                   <TableView fx:id="tv_employees" minWidth="400.0" prefHeight="913.0" prefWidth="400.0">
                     <columns>
-                      <TableColumn fx:id="tv_column_id" prefWidth="63.0" text="id#" />
-                      <TableColumn fx:id="tv_column_first_name" prefWidth="137.0" text="Förnamn" />
-                        <TableColumn fx:id="tv_column_last_name" prefWidth="119.0" text="Efternamn" />
+                      <TableColumn fx:id="tv_column_id" prefWidth="42.0" text="ID#" />
+                      <TableColumn fx:id="tv_column_first_name" prefWidth="135.0" text="Förnamn" />
+                        <TableColumn fx:id="tv_column_last_name" prefWidth="100.0" text="Efternamn" />
+                        <TableColumn fx:id="tv_column_address" prefWidth="122.0" text="Adress" />
                     </columns>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -125,7 +118,7 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox layoutX="10.0" layoutY="10.0" spacing="30.0">
+            <VBox layoutX="10.0" layoutY="10.0" spacing="15.0">
                <children>
                   <Label id="title" text="Redigera medarbetare" />
                   <VBox>
@@ -142,11 +135,11 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="E-mail" />
+                        <Label text="E-post" />
                         <TextField fx:id="tf_edit_email" />
                      </children>
                   </VBox>
-                  <VBox spacing="20.0">
+                  <VBox spacing="15.0">
                      <children>
                         <Label text="Medarbetare adress" textFill="#e88709" />
                         <VBox>
@@ -163,13 +156,15 @@
                         </VBox>
                         <VBox>
                            <children>
+                              <Label text="Land" />
+                              <ComboBox fx:id="cb_edit_country" prefWidth="150.0" />
                               <Label text="Postort" />
                               <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox>
                            <children>
-                              <Label text="Post nummer" />
+                              <Label text="Postnummer" />
                               <TextField fx:id="tf_edit_postal_code" />
                               <Label text="Telefon">
                                  <padding>
@@ -182,32 +177,18 @@
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Medarbetare inloggning" textFill="#e88709">
-                           <padding>
-                              <Insets bottom="20.0" />
-                           </padding>
-                        </Label>
                         <Label text="Användarnamn">
                            <padding>
                               <Insets bottom="10.0" />
                            </padding></Label>
                         <TextField fx:id="tf_edit_user_name" layoutX="10.0" layoutY="33.0" prefHeight="100.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Loginkod">
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="10.0" />
-                           </padding></Label>
-                        <TextField fx:id="tf_edit_password" prefHeight="118.0" prefWidth="300.0" />
                      </children>
                   </VBox>
-                  <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_save_employee" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Spara ändringar">
+                  <Button id="section_btn" fx:id="btn_save_employee" minHeight="-Infinity" mnemonicParsing="false" onAction="#btn_save_changes" prefHeight="37.0" prefWidth="381.0" text="Spara ändringar">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Button id="section_btn" fx:id="btn_delete_employee" layoutX="10.0" layoutY="944.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="37.0" prefWidth="381.0" text="Radera medarbetare" />
+                  <Button id="section_btn" fx:id="btn_delete_employee" layoutX="10.0" layoutY="944.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#btn_delete" prefHeight="37.0" prefWidth="381.0" text="Radera medarbetare" />
                </children>
             </VBox>
          </children>
