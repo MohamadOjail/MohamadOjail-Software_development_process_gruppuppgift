@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="admin_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.AdminController">
-   <left>
-      <VBox spacing="20.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="btn_roll" fx:id="lbl_staff" text="Medarbetare" />
-            <Label id="btn_roll" fx:id="lbl_store" text="Butiker" />
-            <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
-            <Label id="btn_home" fx:id="lbl_home" text="Tillbaks" />
-            <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="310.0" stylesheets="@style.css" text="ver 1.0-2022-04-05" textFill="#0d0c0c">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
-   </left>
-</BorderPane>
+
+<ScrollPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.AdminController">
+   <content>
+      <BorderPane fx:id="admin_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="1000.0" stylesheets="@style.css">
+         <left>
+            <VBox spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label id="btn_roll" fx:id="lbl_staff" text="Medarbetare" />
+                  <Label id="btn_roll" fx:id="lbl_store" text="Butiker" />
+                  <Label id="btn_roll" fx:id="lbl_address" text="Adress" />
+                  <Label id="btn_home" fx:id="lbl_home" text="Tillbaks" />
+                  <Label id="btn_home" fx:id="lbl_home1" layoutX="10.0" layoutY="310.0" stylesheets="@style.css" text="ver 1.0-2022-04-05" textFill="#0d0c0c">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </content>
+</ScrollPane>
