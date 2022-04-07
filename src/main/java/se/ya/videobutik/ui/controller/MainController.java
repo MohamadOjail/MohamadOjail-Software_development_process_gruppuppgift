@@ -3,7 +3,6 @@ package se.ya.videobutik.ui.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import se.ya.videobutik.model.Store;
 import se.ya.videobutik.ui.Switcher;
 import se.ya.videobutik.ui.observer.main.ActionObserver;
 
@@ -19,7 +18,7 @@ public class MainController {
 
     private int storeId;
 
-    public int getStore() {
+    public int getStoreId() {
         return storeId;
     }
 

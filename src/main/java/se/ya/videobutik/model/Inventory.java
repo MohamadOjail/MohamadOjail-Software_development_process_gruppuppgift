@@ -12,7 +12,7 @@ public class Inventory {
     @Column(name = "inventory_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "film_id")
     private Film film;
 
@@ -55,4 +55,8 @@ public class Inventory {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return film.getTitle();
+    }
 }
