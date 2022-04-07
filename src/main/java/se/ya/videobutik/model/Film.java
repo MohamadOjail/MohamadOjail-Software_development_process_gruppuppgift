@@ -56,7 +56,7 @@ public class Film {
     @Column(name = "last_update", nullable = false)
     private Timestamp lastUpdate;
 
-    @OneToMany(mappedBy = "film")
+    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER)
     private Set<Inventory> inventories = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "film")

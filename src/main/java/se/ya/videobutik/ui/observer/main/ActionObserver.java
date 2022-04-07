@@ -27,8 +27,8 @@ public class ActionObserver implements EventHandler<MouseEvent> {
         }
 
         if (e.getSource() == ctrlr.getLbl_customer()){
-            Switcher.get().setStoreId(ctrlr.getStore());
-            System.out.println(ctrlr.getStore());
+            Switcher.get().setStoreId(ctrlr.getStoreId());
+            System.out.println(ctrlr.getStoreId());
             Switcher.get().loadScene(1, ctrlr.getMain_pane());
         }
 

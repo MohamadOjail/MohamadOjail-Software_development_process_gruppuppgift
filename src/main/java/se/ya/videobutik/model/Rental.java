@@ -17,11 +17,11 @@ public class Rental {
     @Column(name = "rental_date", nullable = false)
     private LocalDateTime rentalDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "inventory_id", nullable = false)
     private Inventory inventory;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 

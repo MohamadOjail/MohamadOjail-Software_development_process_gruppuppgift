@@ -44,7 +44,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private Set<Payment> payments = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private Set<Rental> rentals = new LinkedHashSet<>();
 
     public Set<Rental> getRentals() {
