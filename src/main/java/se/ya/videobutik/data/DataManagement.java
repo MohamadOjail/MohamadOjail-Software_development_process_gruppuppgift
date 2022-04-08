@@ -233,6 +233,7 @@ public class DataManagement {
             case "film" -> queryString = "SELECT * FROM film WHERE film.title LIKE '" + parameterText + "%'";
             case "staff" -> queryString = "SELECT * FROM staff WHERE staff.last_name LIKE '" + parameterText + "%'";
             case "city" -> queryString = "SELECT * FROM city WHERE country_id = " + parameterText;
+            case "store" -> queryString = "SELECT * FROM store WHERE store_id = " + parameterText;
         }
 
         Collection<Object> outputList = new ArrayList<>();

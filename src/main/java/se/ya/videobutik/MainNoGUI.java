@@ -30,6 +30,8 @@ public class MainNoGUI {
             StaffDAO staffDAO = new StaffDAO();
             CustomerDAO customerDAO = new CustomerDAO();
 
+
+
             // objekt instanser som behövs
             Customer customer = customerDAO.findCustomer(12);
             Staff staff = staffDAO.findStaff(1);
