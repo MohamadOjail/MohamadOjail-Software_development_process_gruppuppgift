@@ -23,58 +23,29 @@ public class RentalController {
     StaffDAO staffDAO = new StaffDAO();
     StoreDAO storeDAO = new StoreDAO();
 
+    @FXML private TableColumn<Customer, Address> col_address_cust;
+    @FXML private TableColumn<Film, Double> col_cost;
+    @FXML private TableColumn<Customer, String> col_first_name_cust;
+    @FXML private TableColumn<Customer, Integer> col_id_custo;
+    @FXML private TableColumn<Customer, String> col_last_name_cust;
+    @FXML private TableColumn<Rental, LocalDateTime> col_rent_date;
+    @FXML private TableColumn<Rental, Inventory> col_rent_title;
+    @FXML private TableColumn<Rental, LocalDateTime> col_return_date;
+    @FXML private TableColumn<Film, String> col_title;
+    @FXML private TableColumn<Film, Integer> col_year;
+    @FXML private TextField tf_find_last_name, tf_find_title;
+    @FXML private TableView<Customer> tv_customers;
+    @FXML private TableView<Rental> tv_rental;
+    @FXML private TableView<Film> tv_film;
 
-    @FXML
-    private TableColumn<Customer, Address> col_address_cust;
+    private final ObservableList<Rental> rentalList = FXCollections.observableArrayList();
+    private final ObservableList<Film> filmList = FXCollections.observableArrayList();
+    private final ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
-    @FXML
-    private TableColumn<Film, Double> col_cost;
+    private Customer currentCustomer;
 
-    @FXML
-    private TableColumn<Customer, String> col_first_name_cust;
 
-    @FXML
-    private TableColumn<Customer, Integer> col_id_custo;
-
-    @FXML
-    private TableColumn<Customer, String> col_last_name_cust;
-
-    @FXML
-    private TableColumn<Rental, LocalDateTime> col_rent_date;
-
-    @FXML
-    private TableColumn<Rental, Inventory> col_rent_title;
-
-    @FXML
-    private TableColumn<Rental, LocalDateTime> col_return_date;
-
-    @FXML
-    private TableColumn<Film, String> col_title;
-
-    @FXML
-    private TableColumn<Film, Integer> col_year;
-
-    @FXML
-    private TextField tf_find_last_name;
-
-    @FXML
-    private TextField tf_find_title;
-
-    @FXML
-    private TableView<Customer> tv_customers;
-
-    @FXML
-    private TableView<Rental> tv_rental;
-
-    @FXML
-    private TableView<Film> tv_film;
-
-    private ObservableList<Rental> rentalList = FXCollections.observableArrayList();
-    private ObservableList<Film> filmList = FXCollections.observableArrayList();
-    private ObservableList<Customer> customerList = FXCollections.observableArrayList();
-
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
 
         tv_customers.setItems(customerList);
         tv_film.setItems(filmList);
@@ -94,70 +65,60 @@ public class RentalController {
         col_return_date.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
 
         tf_find_title.textProperty().addListener((observableValue, s, t1) -> {
-            filmList.clear();
-            searchFilmByTitle(t1);
+            if (t1 != null && !t1.isEmpty()) {
+                filmList.clear();
+                filmList.addAll(filmDAO.getFilmList(t1));
+            }else filmList.clear();
         });
 
         tf_find_last_name.textProperty().addListener((observableValue, s, t1) -> {
-            if (t1 != null) {
+            if (t1 != null && !t1.isEmpty()) {
                 customerList.clear();
-                searchCustomerByLastName(t1);
-            }else customerList.clear();
+                customerList.addAll(customerDAO.getCustomerList(t1));
+            } else customerList.clear();
         });
 
         tv_customers.getSelectionModel().selectedItemProperty().addListener((observableValue, customer, t1) -> {
             if (t1 != null) {
+                currentCustomer = t1;
                 rentalList.clear();
-                setUpRentTable();
-            }
-            else {
-                rentalList.clear();
-            }
+                rentalList.addAll(tv_customers.getSelectionModel().getSelectedItem().getRentals());
+            } else rentalList.clear();
         });
 
     }
 
-    @FXML
-    void btn_rent_film(ActionEvent event) {
+    @FXML void btn_rent_film(ActionEvent event) {
         Film film = tv_film.getSelectionModel().getSelectedItem();
-        Customer customer = tv_customers.getSelectionModel().getSelectedItem();
         Staff staff = staffDAO.findStaff(1);
 
+        Rental rental = new Rental();
+        rental.setRentalDate(LocalDateTime.now());
+        rental.setCustomer(currentCustomer);
+        try {
+            rental.setInventory(film.getInventories().stream().findFirst().get());
+        } catch (Exception e) {
+            alerter(e.getMessage(), Alert.AlertType.ERROR);
+        }
 
+        rental.setStaff(staff);
+        rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+        rentalDAO.AddRental(rental);
 
+        String message = "Movie: " + film.getTitle() + "\nuthyrd till: " + currentCustomer.getFirstName() + " " + currentCustomer.getLastName();
+        alerter(message, Alert.AlertType.INFORMATION);
 
-
-            Rental rental = new Rental();
-            rental.setRentalDate(LocalDateTime.now());
-            rental.setCustomer(customer);
-            try {
-
-                rental.setInventory(film.getInventories().stream().findFirst().get());
-            }
-            catch (Exception e) {
-               alerter();
-            }
-
-
-            rental.setStaff(staff);
-            rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
-            rentalDAO.AddRental(rental);
-
-
-
-
-//        rentalList.clear();
-//        rentalList.addAll(tv_customers.getSelectionModel().getSelectedItem().getRentals());
-//        setUpRentTable();
+        rentalList.clear();
+        currentCustomer = customerDAO.findCustomer(currentCustomer.getId());
+        rentalList.addAll(currentCustomer.getRentals());
     }
 
-    private Film getInventory(String title){
+    private Film getInventory(String title) {
         Object[] object = {title};
         return filmDAO.findFilm(object);
     }
 
-    @FXML
-    void btn_return_film(ActionEvent event) {
+    @FXML void btn_return_film(ActionEvent event) {
         Rental rental = tv_rental.getSelectionModel().getSelectedItem();
         System.out.println("hej hej");
         if (rental.getReturnDate() == null) {
@@ -167,29 +128,10 @@ public class RentalController {
         }
 
     }
-
-    private void searchFilmByTitle(String x) {
-        filmList.addAll(filmDAO.getFilmList(x));
-    }
-
-    private void searchCustomerByLastName(String x) {
-        if (!x.isEmpty()) {
-            customerList.clear();
-            customerList.addAll(customerDAO.getCustomerList(x));
-        }else customerList.clear();
-    }
-
-    private void setUpRentTable() {
-        rentalList.addAll(tv_customers.getSelectionModel().getSelectedItem().getRentals());
-
-    }  private void alerter(){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("Varning");
-        alert.setContentText("Bokniningen fallerat !!!!");
+    private void alerter(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(type.name());
+        alert.setContentText(text);
         alert.showAndWait();
     }
-
-
-
-
 }
