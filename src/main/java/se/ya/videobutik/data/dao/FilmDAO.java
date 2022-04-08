@@ -16,6 +16,12 @@ public class FilmDAO {
         DataManagement data = new DataManagement();
         return (Film) data.getData(Film.class, id);
     }
+
+    public Film findFilm(Object[] objectData){
+        DataManagement data = new DataManagement();
+        return (Film) data.getData(Film.class, objectData);
+    }
+
     public void deleteFilm(Film film){
         DataManagement data = new DataManagement();
         data.removeData(film);

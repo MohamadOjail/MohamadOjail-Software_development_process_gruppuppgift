@@ -44,7 +44,7 @@ public class Switcher {
 
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
-//        this.storeId = mainController.getStore();
+        this.storeId = mainController.getStoreId();
     }
 
     public void loadScene(int id, BorderPane borderPane){

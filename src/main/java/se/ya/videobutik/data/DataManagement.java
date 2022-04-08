@@ -123,8 +123,10 @@ public class DataManagement {
                             .setParameter(3, objectData[2]);
                     output = nativeQuery.getSingleResult();
                 }
-                case "x" -> {
-                    //Todo
+                case "film" -> {
+                    NativeQuery<?> nativeQuery = session.createNativeQuery("SELECT * FROM sakila.film WHERE film.title = ? ", Film.class)
+                            .setParameter(1, objectData[0]);
+                    output = nativeQuery.getSingleResult();
                 }
             }
 
