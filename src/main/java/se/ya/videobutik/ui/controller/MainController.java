@@ -8,6 +8,7 @@ import se.ya.videobutik.ui.observer.main.ActionObserver;
 
 public class MainController {
 
+    public Label lbl_head_titel;
     @FXML private Label lbl_address;
     @FXML private Label lbl_customer;
     @FXML private Label lbl_film;
