@@ -88,13 +88,13 @@ public class StoreController {
     @FXML
     private TableView<Store> tv_stores;
 
-    StoreDAO storeDAO = new StoreDAO();
-    AddressDAO addressDAO = new AddressDAO();
-    StaffDAO staffDAO = new StaffDAO();
-    CityDAO cityDAO = new CityDAO();
-    CountryDAO countryDAO = new CountryDAO();
-    Address address;
-    Store store = new Store();
+    private StoreDAO storeDAO = new StoreDAO();
+    private AddressDAO addressDAO = new AddressDAO();
+    private StaffDAO staffDAO = new StaffDAO();
+    private CityDAO cityDAO = new CityDAO();
+    private  CountryDAO countryDAO = new CountryDAO();
+    private Address address;
+    private  Store store = new Store();
 
     @FXML
     void btn_add_store(ActionEvent event) {
@@ -150,9 +150,9 @@ public class StoreController {
 
         tv_stores.setItems(stores);
 
-      //  tv_column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        //tv_column_chef.setCellValueFactory(new PropertyValueFactory<>("managerStaff"));
-        //tv_column_address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        tv_column_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tv_column_chef.setCellValueFactory(new PropertyValueFactory<>("managerStaff"));
+        tv_column_address.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         cb_add_country.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Country>() {
             @Override
@@ -177,8 +177,8 @@ public class StoreController {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 if(t1 != null){
-                    staffList.clear();
-                    setStaffList(t1);
+                    stores.clear();
+                    setStoreList(t1);
                 }else{
                     staffList.clear();
                 }
@@ -187,6 +187,10 @@ public class StoreController {
 
     }
 
+    private void setStoreList(String t1) {
+        this.stores.clear();
+        this.stores.addAll(storeDAO.getStoreList(t1));
+    }
     private void setStaffList(String t1) {
         this.staffList.clear();
         this.staffList.addAll(staffDAO.getStaffList(t1));
@@ -200,7 +204,6 @@ public class StoreController {
 
 
     private void clearAddSection() {
-
         cb_add_manager.getSelectionModel().select(null);
         cb_add_city.getSelectionModel().select(null);
         cb_add_country.getSelectionModel().select(null);
@@ -209,11 +212,9 @@ public class StoreController {
         tf_add_district.clear();
         tf_add_postal_code.clear();
         tf_add_phone.clear();
-
     }
 
     private void clearEditSection() {
-
         cb_edit_manager.getSelectionModel().select(null);
         cb_edit_city.getSelectionModel().select(null);
         cb_edit_country.getSelectionModel().select(null);
@@ -222,12 +223,14 @@ public class StoreController {
         tf_edit_district.clear();
         tf_edit_postal_code.clear();
         tf_edit_phone.clear();
-
     }
 
     @FXML
     void btn_delete_store(ActionEvent event) {
-
+//       Store store = tv_stores.getSelectionModel().getSelectedItem();
+//       storeDAO.deleteStore(store);
+//       clearEditSection();
+//       setStaffList(tf_find_store.getText());
     }
 
     @FXML
