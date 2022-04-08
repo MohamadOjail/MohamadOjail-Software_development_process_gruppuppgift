@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.RentalController">
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.RentalController">
    <children>
-      <HBox alignment="CENTER" prefHeight="259.0" prefWidth="1099.0" spacing="40.0">
+      <HBox spacing="40.0">
          <children>
             <VBox nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" spacing="15.0">
                <children>
@@ -23,7 +23,7 @@
                         <TextField fx:id="tf_find_last_name" nodeOrientation="LEFT_TO_RIGHT" />
                      </children>
                   </VBox>
-                  <TableView fx:id="tv_customers" nodeOrientation="LEFT_TO_RIGHT" prefHeight="159.0" prefWidth="532.0">
+                  <TableView fx:id="tv_customers" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0">
                      <columns>
                         <TableColumn fx:id="col_id_custo" minWidth="80.0" text="ID#" />
                         <TableColumn fx:id="col_first_name_cust" minWidth="150.0" prefWidth="150.0" text="Förnamn" />
@@ -33,13 +33,15 @@
                   </TableView>
                </children>
             </VBox>
-            <VBox />
          </children>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
       </HBox>
       <Separator prefWidth="200.0" />
       <HBox spacing="20.0">
          <children>
-            <VBox prefHeight="352.0" prefWidth="496.0" spacing="15.0">
+            <VBox spacing="15.0">
                <children>
                   <Label id="title" text="Välj film att hyra" />
                   <VBox>
@@ -48,28 +50,31 @@
                         <TextField fx:id="tf_find_title" />
                      </children>
                   </VBox>
-                  <TableView fx:id="tv_film" prefHeight="137.0" prefWidth="496.0">
+                  <TableView fx:id="tv_film" prefHeight="250.0">
                      <columns>
-                        <TableColumn fx:id="col_title" minWidth="145.0" prefWidth="214.0" text="Titel" />
-                        <TableColumn fx:id="col_year" minWidth="106.0" prefWidth="143.0" text="Utgivningsdatum" />
-                        <TableColumn fx:id="col_cost" minWidth="48.0" prefWidth="78.0" text="Kostnad" />
+                        <TableColumn fx:id="col_title" minWidth="220.0" prefWidth="220.0" text="Titel" />
+                        <TableColumn fx:id="col_year" minWidth="150.0" prefWidth="150.0" text="Utgivningsdatum" />
+                        <TableColumn fx:id="col_cost" minWidth="48.0" prefWidth="120.0" text="Kostnad" />
                      </columns>
                   </TableView>
-                  <Button id="section_btn" mnemonicParsing="false" onAction="#btn_rent_film" prefHeight="37.0" prefWidth="381.0" text="Hyr film" />
+                  <Button id="section_btn" mnemonicParsing="false" onAction="#btn_rent_film" text="Hyr film" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox prefHeight="352.0" prefWidth="448.0" spacing="15.0">
+            <VBox spacing="15.0">
                <children>
                   <Label id="title" text="Uthyrningar" />
-                  <TableView fx:id="tv_rental" prefHeight="200.0" prefWidth="480.0">
+                  <TableView fx:id="tv_rental" prefHeight="250.0">
                      <columns>
                         <TableColumn fx:id="col_rent_title" minWidth="72.0" prefWidth="214.0" text="Titel" />
                         <TableColumn fx:id="col_rent_date" minWidth="103.0" prefWidth="122.0" text="Uthyrd" />
                         <TableColumn fx:id="col_return_date" minWidth="110.0" prefWidth="111.0" text="Åter" />
                      </columns>
+                     <VBox.margin>
+                        <Insets top="65.0" />
+                     </VBox.margin>
                   </TableView>
-                  <Button id="section_btn" mnemonicParsing="false" onAction="#btn_return_film" prefHeight="37.0" prefWidth="381.0" text="Lämna tillbaka" />
+                  <Button id="section_btn" mnemonicParsing="false" onAction="#btn_return_film" text="Lämna tillbaka" />
                </children>
             </VBox>
          </children>
@@ -77,6 +82,6 @@
       <Label text="Ver 1.1- 2022-04-07" />
    </children>
    <padding>
-      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
 </VBox>

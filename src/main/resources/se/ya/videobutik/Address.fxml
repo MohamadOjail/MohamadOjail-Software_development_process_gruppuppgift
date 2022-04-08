@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.AddressController">
+<VBox stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.AddressController">
    <children>
-      <HBox spacing="40.0">
+      <HBox spacing="15.0">
          <children>
             <VBox spacing="15.0">
                <children>
@@ -37,11 +44,17 @@
                   </VBox>
                   <VBox>
                      <children>
+                        <Label text="Land" />
+                        <ComboBox fx:id="cb_add_land" prefWidth="150.0" />
+                     </children>
+                  </VBox>
+                  <VBox>
+                     <children>
                         <Label text="Postort" />
                         <ComboBox fx:id="cb_add_city" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_add_address" mnemonicParsing="false" onAction="#Address_add_button_push" text="Lägg till" />
+                  <Button id="section_btn" mnemonicParsing="false" onAction="#createNewAddress" text="Lägg till" />
                   <Label text="ver 1.01 -2022-04-05" />
                </children>
             </VBox>
@@ -57,13 +70,12 @@
                               <TextField fx:id="tf_find_address" />
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_addresses" prefHeight="314.0" prefWidth="682.0">
+                        <TableView fx:id="tv_addresses" prefHeight="300.0">
                            <columns>
-                              <TableColumn minWidth="80.0" text="ID#" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Gata" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postort/Stad" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Postnummer" />
-                              <TableColumn minWidth="150.0" prefWidth="150.0" text="Land" />
+                              <TableColumn fx:id="col_id" minWidth="80.0" text="ID#" />
+                              <TableColumn fx:id="col_street" minWidth="150.0" prefWidth="150.0" text="Gata" />
+                              <TableColumn fx:id="col_city" minWidth="200.0" prefWidth="100.0" text="Stad" />
+                              <TableColumn fx:id="col_zip" minWidth="120.0" prefWidth="120.0" text="Postnummer" />
 
                            </columns>
                         </TableView>
@@ -96,23 +108,29 @@
                   <VBox>
                      <children>
                         <Label text="Telefon" />
+                        <TextField fx:id="tf_edit_phone" />
                      </children>
                   </VBox>
-                  <TextField fx:id="tf_edit_phone" />
+                  <VBox>
+                     <children>
+                        <Label text="Land" />
+                        <ComboBox fx:id="cb_edit_land" prefWidth="150.0" />
+                     </children>
+                  </VBox>
                   <VBox>
                      <children>
                         <Label text="Postort" />
                         <ComboBox fx:id="cb_edit_city" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <Button id="section_btn" fx:id="btn_save_address" mnemonicParsing="false" onAction="#save_address" text="Spara adress" />
-                  <Button id="section_btn" fx:id="btn_delete_address" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" onAction="#delete_address" text="Ta bort adress" />
+                  <Button id="section_btn" mnemonicParsing="false" onAction="#save_address" text="Spara adress" />
+                  <Button id="section_btn" layoutX="10.0" layoutY="377.0" mnemonicParsing="false" onAction="#delete_address" text="Ta bort adress" />
                </children>
             </VBox>
          </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
       </HBox>
    </children>
-   <padding>
-      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-   </padding>
 </VBox>

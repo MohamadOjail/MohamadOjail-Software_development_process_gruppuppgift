@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.ActorController">
+<VBox stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.ActorController">
    <children>
-      <HBox prefHeight="562.0" prefWidth="1153.0" spacing="40.0">
+      <HBox spacing="15.0">
          <children>
             <VBox spacing="15.0">
                <children>
@@ -38,30 +38,26 @@
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="775.0" prefWidth="0.0" />
-            <VBox>
+            <VBox spacing="15.0">
                <children>
-                  <VBox spacing="15.0">
+                  <Label id="title" text="Sök skådespelare" />
+                  <VBox>
                      <children>
-                        <Label id="title" text="Sök skådespelare" />
-                        <VBox>
-                           <children>
-                              <Label prefHeight="23.0" prefWidth="183.0" text="Sök efter efternamn">
-                                 <font>
-                                    <Font name="System Bold" size="12.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="tf_find_last_name" />
-                           </children>
-                        </VBox>
-                        <TableView fx:id="tv_actor" prefHeight="413.0" prefWidth="382.0">
-                           <columns>
-                              <TableColumn fx:id="column_id" minWidth="61.0" prefWidth="61.0" text="ID#" />
-                              <TableColumn fx:id="column_first_name" minWidth="150.0" prefWidth="169.0" text="Förnamn" />
-                              <TableColumn fx:id="column_last_name" minWidth="150.0" prefWidth="150.0" text="Efternamn" />
-                           </columns>
-                        </TableView>
+                        <Label prefHeight="23.0" prefWidth="183.0" text="Sök efter efternamn">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_find_last_name" />
                      </children>
                   </VBox>
+                  <TableView fx:id="tv_actor">
+                     <columns>
+                        <TableColumn fx:id="column_id" minWidth="70.0" prefWidth="61.0" text="ID#" />
+                        <TableColumn fx:id="column_first_name" minWidth="150.0" prefWidth="160.0" text="Förnamn" />
+                        <TableColumn fx:id="column_last_name" minWidth="160.0" prefWidth="160.0" text="Efternamn" />
+                     </columns>
+                  </TableView>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -89,6 +85,9 @@
                </children>
             </VBox>
          </children>
+         <VBox.margin>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </VBox.margin>
       </HBox>
       <Label text="ver 1.0-2022-04-05" textAlignment="RIGHT">
          <font>
@@ -96,7 +95,4 @@
          </font>
       </Label>
    </children>
-   <padding>
-      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-   </padding>
 </VBox>

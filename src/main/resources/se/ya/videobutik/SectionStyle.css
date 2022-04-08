@@ -5,7 +5,7 @@
 
 #section_btn{
     -fx-cursor: hand;
-    -fx-min-width: 300;
+    -fx-min-width: 200;
     -fx-background-color: rgba(255, 150, 4, 0.2);
 }
 
@@ -19,11 +19,11 @@
 }
 
 TextField{
-    -fx-max-width: 300;
+    -fx-max-width: 200;
 }
 
 ComboBox{
-    -fx-min-width: 300;
+    -fx-min-width: 200;
 }
 
 #title{

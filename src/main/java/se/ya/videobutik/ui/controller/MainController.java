@@ -8,7 +8,7 @@ import se.ya.videobutik.ui.observer.main.ActionObserver;
 
 public class MainController {
 
-    public Label lbl_head_titel;
+    @FXML public Label lbl_head_titel;
     @FXML private Label lbl_address;
     @FXML private Label lbl_customer;
     @FXML private Label lbl_film;
@@ -24,20 +24,12 @@ public class MainController {
     }
 
     // getters
-
-    public Label getLbl_actor() {
-        return lbl_actor;
+    public Label getLbl_head_titel() {
+        return lbl_head_titel;
     }
+
     public Label getLbl_address() {
         return lbl_address;
-    }
-
-    public Label getLbl_home() {
-        return lbl_home;
-    }
-
-    public Label getLbl_rental() {
-        return lbl_rental;
     }
 
     public Label getLbl_customer() {
@@ -52,10 +44,22 @@ public class MainController {
         return main_pane;
     }
 
+    public Label getLbl_rental() {
+        return lbl_rental;
+    }
+
+    public Label getLbl_home() {
+        return lbl_home;
+    }
+
+    public Label getLbl_actor() {
+        return lbl_actor;
+    }
+
     @FXML private void initialize(){
         Switcher.get().loadScene(0, main_pane);
         lbl_rental.setStyle("-fx-background-color: rgba(13,235,83,0.2);");
-
+        lbl_head_titel.setText("-- Uthyrning --");
         ActionObserver observer = new ActionObserver(this);
         lbl_customer.setOnMouseClicked(observer);
         lbl_film.setOnMouseClicked(observer);

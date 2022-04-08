@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
+<VBox stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.CustomerController">
    <children>
-      <HBox spacing="40.0">
+      <HBox spacing="15.0">
          <children>
             <VBox spacing="15.0">
                <children>
@@ -101,7 +101,7 @@
                               <TextField fx:id="tf_find_last_name" />
                            </children>
                         </VBox>
-                        <TableView fx:id="tv_customers" prefHeight="550.0" prefWidth="700.0">
+                        <TableView fx:id="tv_customers">
                           <columns>
                             <TableColumn fx:id="col_id" minWidth="80.0" text="id #" />
                             <TableColumn fx:id="col_first_name" minWidth="150.0" prefWidth="150.0" text="Förnamn" />
@@ -178,8 +178,8 @@
                      </children>
                   </VBox>
                   <CheckBox fx:id="checkb_edit_active" mnemonicParsing="false" text="Aktiv" />
-                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" onAction="#updateCustomer" prefHeight="40.0" prefWidth="300.0" text="Spara Kund" />
-                  <Button id="section_btn" fx:id="btn_delete" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" onAction="#deleteCustomer" prefHeight="40.0" prefWidth="300.0" text="Radera  Kund" />
+                  <Button id="section_btn" fx:id="btn_edit_costumer" mnemonicParsing="false" onAction="#updateCustomer" text="Spara Kund" />
+                  <Button id="section_btn" fx:id="btn_delete" layoutX="10.0" layoutY="673.0" mnemonicParsing="false" onAction="#deleteCustomer" text="Radera  Kund" />
                </children>
             </VBox>
          </children>
@@ -191,6 +191,6 @@
       </Label>
    </children>
    <padding>
-      <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
 </VBox>
