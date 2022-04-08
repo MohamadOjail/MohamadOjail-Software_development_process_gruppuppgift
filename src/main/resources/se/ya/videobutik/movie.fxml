@@ -167,8 +167,6 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="133.0">
                            <children>
-                              <Label text="Ersättnings kostnad  kr . öre" />
-                              <TextField fx:id="tf_edit_district1" />
                               <Label text="Ersättnings kostnad  kr.öre" />
                               <TextField fx:id="tf_edit_replacement_cost">
                                  <VBox.margin>
