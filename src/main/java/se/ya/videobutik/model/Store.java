@@ -15,7 +15,7 @@ public class Store {
     @Column(name = "store_id", nullable = false)
     private Integer id;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "manager_staff_id", nullable = false)
     private Staff managerStaff;
 

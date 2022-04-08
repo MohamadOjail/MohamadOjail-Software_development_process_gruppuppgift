@@ -28,7 +28,7 @@ public class Staff {
     @Column(name = "email", length = 50)
     private String email;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
@@ -130,5 +130,10 @@ public class Staff {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
     }
 }

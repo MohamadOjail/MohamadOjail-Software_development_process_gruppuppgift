@@ -24,7 +24,8 @@ public class StaffController {
     private StoreDAO storeDAO = new StoreDAO();
     private StaffDAO staffDAO = new StaffDAO();
     private Staff staff = new Staff();
-
+    private AddressDAO addressDAO = new AddressDAO();
+    private CountryDAO countryDAO = new CountryDAO();
 
     @FXML
     private Button btn_add_employee;
@@ -116,10 +117,9 @@ public class StaffController {
     @FXML
     void btn_add_employee(ActionEvent event) {
 
-        StaffDAO staffDAO = new StaffDAO();
-        AddressDAO addressDAO = new AddressDAO();
-        CityDAO cityDAO = new CityDAO();
-        City city = cityDAO.findCity(cb_add_city.getSelectionModel().getSelectedItem().getId());
+
+
+        City city = (cb_add_city.getSelectionModel().getSelectedItem());
         Object[] addressData = {
                 tf_add_address.getText(),
                 tf_add_district.getText(),
@@ -155,7 +155,7 @@ public class StaffController {
     private ObservableList <Staff> staffList = FXCollections.observableArrayList();
     @FXML
     private void initialize(){
-        CountryDAO countryDAO = new CountryDAO();
+
 
         countries.addAll(countryDAO.getCountryList());
 
@@ -236,6 +236,7 @@ public class StaffController {
     void btn_delete(ActionEvent event) {
         staffDAO.deleteStaff(tv_employees.getSelectionModel().getSelectedItem());
         clearEditSection();
+        tf_find_last_name.clear();
         setStaffList(tf_find_last_name.getText());
 
     }
@@ -277,13 +278,11 @@ public class StaffController {
 
     @FXML
     void btn_save_changes(ActionEvent event) {
-        AddressDAO addressDAO = new AddressDAO();
-        Address address = new Address();
+
         updateAddress();
         staff.setFirstName(tf_edit_first_name.getText());
         staff.setLastName(tf_edit_last_name.getText());
         staff.setEmail(tf_edit_email.getText());
-        staff.setAddress(address);
         staff.setUsername(tf_edit_user_name.getText());
         staff.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         staff.setStore(storeDAO.findStore(1));
@@ -296,14 +295,13 @@ public class StaffController {
     }
 
     private void updateAddress(){
-        AddressDAO addressDAO = new AddressDAO();
 
         staff.getAddress().setAddress(tf_edit_address.getText());
         staff.getAddress().setDistrict(tf_edit_district.getText());
         staff.getAddress().setCity(cb_edit_city.getValue());
         staff.getAddress().setPostalCode(tf_edit_postal_code.getText());
         staff.getAddress().setPhone(tf_edit_phone.getText());
-      //  addressDAO.updateAddress(staff.getAddress());
+        addressDAO.updateAddress(staff.getAddress());
     }
 
 }

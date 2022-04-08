@@ -201,9 +201,22 @@ public class StoreController {
 
     private void clearAddSection() {
 
-        cb_add_manager.getItems().clear();
-        cb_add_city.getItems().clear();
-        cb_add_country.getItems().clear();
+        cb_add_manager.getSelectionModel().select(null);
+        cb_add_city.getSelectionModel().select(null);
+        cb_add_country.getSelectionModel().select(null);
+
+        tf_add_address.clear();
+        tf_add_district.clear();
+        tf_add_postal_code.clear();
+        tf_add_phone.clear();
+
+    }
+
+    private void clearEditSection() {
+
+        cb_edit_manager.getSelectionModel().select(null);
+        cb_edit_city.getSelectionModel().select(null);
+        cb_edit_country.getSelectionModel().select(null);
 
         tf_edit_address.clear();
         tf_edit_district.clear();
