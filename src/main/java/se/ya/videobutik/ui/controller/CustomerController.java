@@ -163,6 +163,11 @@ public class CustomerController {
         Store store = storeDAO.findStore(this.storeId);
         customer.setStore(store);
         customerDAO.AddCustomer(customer);
+
+
+        // popup info
+        alerter("Kund lagts till databasen", Alert.AlertType.INFORMATION);
+
     }
 
     private void setEditCustomerSection(){
@@ -201,6 +206,10 @@ public class CustomerController {
         customerDAO.deleteCustomer(tv_customers.getSelectionModel().getSelectedItem());
         clearEditCustomerSection();
         setCustomerList(tf_find_last_name.getText());
+
+        // popup info
+        alerter("Kund raderades", Alert.AlertType.INFORMATION);
+
     }
 
     @FXML public void updateCustomer(ActionEvent e){
@@ -212,6 +221,10 @@ public class CustomerController {
         customerDAO.updateCustomer(currentCustomer);
         clearEditCustomerSection();
         setCustomerList(tf_find_last_name.getText());
+
+        // popup info
+        alerter("Kund uppdaterades", Alert.AlertType.INFORMATION);
+
     }
 
     private void updateAddress(){
@@ -222,5 +235,16 @@ public class CustomerController {
         currentCustomer.getAddress().setPhone(tf_edit_phone.getText());
         addressDAO.updateAddress(currentCustomer.getAddress());
     }
+
+
+
+    private void alerter(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(type.name());
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
+
 }
 

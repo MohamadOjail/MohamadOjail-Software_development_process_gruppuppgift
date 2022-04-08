@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,7 +34,9 @@ public class ActorController {
     private final ObservableList<Actor> actorList = FXCollections.observableArrayList();
 
     @FXML public void initialize() {
+
         tv_actor.setItems(actorList);
+
         column_first_name.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         column_last_name.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         column_id.setCellValueFactory(new PropertyValueFactory<>("actorId"));
@@ -63,6 +66,10 @@ public class ActorController {
         actor.setLastName(tf_add_last_name.getText());
         actor.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         actorDAO.AddActor(actor);
+
+        // popup info
+        alerter("skådespelare lagts till databasen", Alert.AlertType.INFORMATION);
+
     }
 
     @FXML void btn_delete_actor(ActionEvent event) {
@@ -71,6 +78,11 @@ public class ActorController {
         tf_find_last_name.clear();
         tv_actor.getItems().clear();
         clearEditActorFields();
+
+
+        // popup info
+        alerter("skådespelare raderades", Alert.AlertType.WARNING);
+
     }
 
     @FXML void btn_save_actor(ActionEvent event) {
@@ -78,6 +90,10 @@ public class ActorController {
         actor.setFirstName(tf_edit_first_name.getText());
         actor.setLastName(tf_edit_last_name.getText());
         actorDAO.updateActor(actor);
+
+        // popup info
+        alerter("skådespelare uppdaterades", Alert.AlertType.INFORMATION);
+
     }
 
     private void findActorByLastName(String input) {
@@ -99,5 +115,16 @@ public class ActorController {
         tf_edit_first_name.clear();
         tf_edit_last_name.clear();
     }
+
+
+
+    private void alerter(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(type.name());
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
+
 }
 

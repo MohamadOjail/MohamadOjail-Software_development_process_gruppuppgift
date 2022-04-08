@@ -25,48 +25,29 @@ public class MovieController {
     private InventoryDAO inventoryDAO = new InventoryDAO();
     private StoreDAO storeDAO = new StoreDAO();
 
-    @FXML
-    private Button btn_add_movie;
-    @FXML
-    private Button btn_delete_movie;
-    @FXML
-    private Button btn_edit_movie;
-    @FXML
-    private ComboBox<Language> cb_add_language;
-    @FXML
-    private ComboBox<Language> cb_edit_language;
-    @FXML
-    private TableColumn<Film, Integer> column_id;
-    @FXML
-    private TableColumn<Film, Integer> column_release;
-    @FXML
-    private TableColumn<Film, String> column_title;
-    @FXML
-    private TextField tf_add_rental_duration;
-    @FXML
-    private TextField tf_add_rental_rate;
-    @FXML
-    private TextField tf_add_replacement_cost;
-    @FXML
-    private TextField tf_add_title;
-    @FXML
-    private TextField tf_edit_rental_duration;
-    @FXML
-    private TextField tf_edit_rental_rate;
-    @FXML
-    private TextField tf_edit_replacement_cost;
-    @FXML
-    private TextField tf_edit_title;
-    @FXML
-    private TextField tf_find_title;
-    @FXML
-    private TableView<Film> tv_film;
+    @FXML private Button btn_add_movie;
+    @FXML private Button btn_delete_movie;
+    @FXML private Button btn_edit_movie;
+    @FXML private ComboBox<Language> cb_add_language;
+    @FXML private ComboBox<Language> cb_edit_language;
+    @FXML private TableColumn<Film, Integer> column_id;
+    @FXML private TableColumn<Film, Integer> column_release;
+    @FXML private TableColumn<Film, String> column_title;
+    @FXML private TextField tf_add_rental_duration;
+    @FXML private TextField tf_add_rental_rate;
+    @FXML private TextField tf_add_replacement_cost;
+    @FXML private TextField tf_add_title;
+    @FXML private TextField tf_edit_rental_duration;
+    @FXML private TextField tf_edit_rental_rate;
+    @FXML private TextField tf_edit_replacement_cost;
+    @FXML private TextField tf_edit_title;
+    @FXML private TextField tf_find_title;
+    @FXML private TableView<Film> tv_film;
 
     private ObservableList<Film> filmList = FXCollections.observableArrayList();
     private ObservableList<Language> languageList = FXCollections.observableArrayList();
 
-    @FXML
-    public void initialize() {
+    @FXML public void initialize() {
 
         languageList.addAll(languageDAO.getLanguageList());
         tv_film.setItems(filmList);
@@ -90,8 +71,7 @@ public class MovieController {
         });
     }
 
-    @FXML
-    public void btn_add_movie(ActionEvent event) {
+    @FXML public void btn_add_movie(ActionEvent event) {
         Film film = new Film();
         film.setTitle(tf_add_title.getText());
         film.setLanguage(cb_add_language.getValue());
@@ -104,6 +84,11 @@ public class MovieController {
         Film movie = getMovie(film.getTitle());
         createInventory(movie,1);
         clearAddFilmFields();
+
+
+        // popup info
+        alerter("Kund lagts till databasen", Alert.AlertType.INFORMATION);
+
     }
 
     private Film getMovie(String title){
@@ -120,17 +105,19 @@ public class MovieController {
         inventoryDAO.AddInventory(inventory);
     }
 
-    @FXML
-    public void btn_delete_movie(ActionEvent event) {
+    @FXML public void btn_delete_movie(ActionEvent event) {
         Film film = tv_film.getSelectionModel().getSelectedItem();
         filmDAO.deleteFilm(film);
         tf_find_title.clear();
         tv_film.getItems().clear();
         clearEditFilmFields();
+
+        // popup info
+        alerter("Kund raderades", Alert.AlertType.INFORMATION);
+
     }
 
-    @FXML
-    public void btn_edit_movie(ActionEvent event) {
+    @FXML public void btn_edit_movie(ActionEvent event) {
         Film film = tv_film.getSelectionModel().getSelectedItem();
         film.setTitle(tf_edit_title.getText());
         film.setLanguage(cb_edit_language.getValue());
@@ -138,6 +125,10 @@ public class MovieController {
         film.setRentalRate(Double.parseDouble(tf_edit_rental_rate.getText()));
         film.setReplacementCost(Double.parseDouble(tf_edit_replacement_cost.getText()));
         filmDAO.updateFilm(film);
+
+        // popup info
+        alerter("Film uppdaterades", Alert.AlertType.INFORMATION);
+
     }
 
     private void searchFilmByTitle(String x) {
@@ -176,5 +167,14 @@ public class MovieController {
         tf_add_rental_rate.clear();
         tf_add_replacement_cost.clear();
     }
+
+
+    private void alerter(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(type.name());
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
 
 }

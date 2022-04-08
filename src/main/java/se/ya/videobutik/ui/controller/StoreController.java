@@ -119,6 +119,10 @@ public class StoreController {
         storeDAO.AddStore(store);
         clearAddSection();
 
+        // popup info
+        alerter("Kund lagts till databasen", Alert.AlertType.INFORMATION);
+
+
     }
 
     private ObservableList <Staff> staffList = FXCollections.observableArrayList();
@@ -226,11 +230,32 @@ public class StoreController {
 //       storeDAO.deleteStore(store);
 //       clearEditSection();
 //       setStaffList(tf_find_store.getText());
+
+        //TODO ...
+
+        // popup info
+        alerter("Kund raderades", Alert.AlertType.INFORMATION);
+
     }
 
     @FXML
     void btn_save_store(ActionEvent event) {
 
+        //TODO ...
+
+        // popup info
+        alerter("Butik uppdaterades", Alert.AlertType.INFORMATION);
+
+    }
+
+
+
+
+    private void alerter(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(type.name());
+        alert.setContentText(text);
+        alert.showAndWait();
     }
 
 

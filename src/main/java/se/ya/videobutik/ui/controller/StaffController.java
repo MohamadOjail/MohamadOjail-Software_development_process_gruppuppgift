@@ -148,6 +148,10 @@ public class StaffController {
         clearAddSection();
 
 
+        // popup info
+        alerter("Medarbetare lagts till databasen", Alert.AlertType.INFORMATION);
+
+
     }
     private ObservableList <Country> countries = FXCollections.observableArrayList();
     private ObservableList <City> cities = FXCollections.observableArrayList();
@@ -238,6 +242,10 @@ public class StaffController {
         tf_find_last_name.clear();
         setStaffList(tf_find_last_name.getText());
 
+
+        // popup info
+        alerter("Medarbetare raderades", Alert.AlertType.INFORMATION);
+
     }
 
     private void setStaffList(String text) {
@@ -291,6 +299,9 @@ public class StaffController {
         setStaffList(tf_find_last_name.getText());
 
 
+        // popup info
+        alerter("Medarbetare uppdaterades", Alert.AlertType.INFORMATION);
+
     }
 
     private void updateAddress(){
@@ -302,6 +313,17 @@ public class StaffController {
         staff.getAddress().setPhone(tf_edit_phone.getText());
         addressDAO.updateAddress(staff.getAddress());
     }
+
+
+
+    private void alerter(String text, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setHeaderText(type.name());
+        alert.setContentText(text);
+        alert.showAndWait();
+    }
+
+
 
 }
 
