@@ -2,8 +2,6 @@ package se.ya.videobutik.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

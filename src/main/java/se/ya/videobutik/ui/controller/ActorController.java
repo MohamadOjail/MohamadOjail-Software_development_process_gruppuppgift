@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -19,37 +18,21 @@ import java.time.LocalDateTime;
 
 public class ActorController {
 
-    private ActorDAO actorDAO = new ActorDAO();
+    private final ActorDAO actorDAO = new ActorDAO();
 
-    @FXML
-    private Button btn_add_actor;
-    @FXML
-    private Button btn_delete_actor;
-    @FXML
-    private Button btn_save_actor;
-    @FXML
-    private TableColumn<Actor, String> column_first_name;
-    @FXML
-    private TableColumn<Actor, Integer> column_id;
-    @FXML
-    private TableColumn<Actor, String> column_last_name;
-    @FXML
-    private TextField tf_add_first_name;
-    @FXML
-    private TextField tf_add_last_name;
-    @FXML
-    private TextField tf_edit_first_name;
-    @FXML
-    private TextField tf_edit_last_name;
-    @FXML
-    private TextField tf_find_last_name;
-    @FXML
-    private TableView<Actor> tv_actor;
+    @FXML private TableColumn<Actor, String> column_first_name;
+    @FXML private TableColumn<Actor, Integer> column_id;
+    @FXML private TableColumn<Actor, String> column_last_name;
+    @FXML private TextField tf_add_first_name;
+    @FXML private TextField tf_add_last_name;
+    @FXML private TextField tf_edit_first_name;
+    @FXML private TextField tf_edit_last_name;
+    @FXML private TextField tf_find_last_name;
+    @FXML private TableView<Actor> tv_actor;
 
-    private ObservableList<Actor> actorList = FXCollections.observableArrayList();
+    private final ObservableList<Actor> actorList = FXCollections.observableArrayList();
 
-    @FXML
-    public void initialize() {
+    @FXML public void initialize() {
         tv_actor.setItems(actorList);
         column_first_name.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         column_last_name.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -74,8 +57,7 @@ public class ActorController {
         });
     }
 
-    @FXML
-    void btn_add_actor(ActionEvent event) {
+    @FXML void btn_add_actor(ActionEvent event) {
         Actor actor = new Actor();
         actor.setFirstName(tf_add_first_name.getText());
         actor.setLastName(tf_add_last_name.getText());
@@ -83,8 +65,7 @@ public class ActorController {
         actorDAO.AddActor(actor);
     }
 
-    @FXML
-    void btn_delete_actor(ActionEvent event) {
+    @FXML void btn_delete_actor(ActionEvent event) {
         Actor actor = tv_actor.getSelectionModel().getSelectedItem();
         actorDAO.deleteActor(actor);
         tf_find_last_name.clear();
@@ -92,8 +73,7 @@ public class ActorController {
         clearEditActorFields();
     }
 
-    @FXML
-    void btn_save_actor(ActionEvent event) {
+    @FXML void btn_save_actor(ActionEvent event) {
         Actor actor = tv_actor.getSelectionModel().getSelectedItem();
         actor.setFirstName(tf_edit_first_name.getText());
         actor.setLastName(tf_edit_last_name.getText());

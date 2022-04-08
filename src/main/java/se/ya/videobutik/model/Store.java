@@ -5,7 +5,6 @@ import se.ya.videobutik.data.dao.CityDAO;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.Instant;
 
 @Entity
 @Table(name = "store")

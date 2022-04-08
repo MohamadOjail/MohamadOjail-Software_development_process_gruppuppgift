@@ -10,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import se.ya.videobutik.model.LoginStoreSelector;
-import se.ya.videobutik.model.Store;
 import se.ya.videobutik.ui.controller.LogInController;
 import se.ya.videobutik.ui.controller.MainController;
 
