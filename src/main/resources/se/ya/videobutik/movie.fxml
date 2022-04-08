@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
+<VBox spacing="15.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.MovieController">
    <children>
       <HBox spacing="40.0">
          <children>
@@ -103,7 +103,7 @@
                            <columns>
                               <TableColumn fx:id="column_id" minWidth="58.0" prefWidth="58.0" text="ID#" />
                               <TableColumn fx:id="column_title" minWidth="150.0" prefWidth="219.0" text="Titel" />
-                              <TableColumn fx:id="column_release" minWidth="103.0" prefWidth="103.0" text="release Date" />
+                              <TableColumn fx:id="column_release" minWidth="103.0" prefWidth="103.0" text="Utgiven" />
                            </columns>
                         </TableView>
                      </children>
@@ -168,7 +168,7 @@
                         <VBox layoutX="10.0" layoutY="133.0">
                            <children>
                               <Label text="Ersättnings kostnad  kr . öre" />
-                              <TextField fx:id="tf_edit_district1"/>
+                              <TextField fx:id="tf_edit_district1" />
                               <Label text="Ersättnings kostnad  kr.öre" />
                               <TextField fx:id="tf_edit_replacement_cost">
                                  <VBox.margin>

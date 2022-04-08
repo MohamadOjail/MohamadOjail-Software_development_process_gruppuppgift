@@ -12,18 +12,18 @@
 
 <VBox spacing="20.0" stylesheets="@SectionStyle.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.ya.videobutik.ui.controller.RentalController">
    <children>
-      <HBox alignment="CENTER" spacing="40.0">
+      <HBox alignment="CENTER" prefHeight="259.0" prefWidth="1099.0" spacing="40.0">
          <children>
-            <VBox spacing="15.0">
+            <VBox nodeOrientation="LEFT_TO_RIGHT" snapToPixel="false" spacing="15.0">
                <children>
-                  <Label id="title" text="Välj kund" />
-                  <VBox>
+                  <Label id="title" nodeOrientation="LEFT_TO_RIGHT" text="Välj kund" />
+                  <VBox nodeOrientation="LEFT_TO_RIGHT">
                      <children>
-                        <Label text="Sök efter efternamn" />
-                        <TextField fx:id="tf_find_last_name" />
+                        <Label nodeOrientation="LEFT_TO_RIGHT" text="Sök efter efternamn" />
+                        <TextField fx:id="tf_find_last_name" nodeOrientation="LEFT_TO_RIGHT" />
                      </children>
                   </VBox>
-                  <TableView fx:id="tv_customers" prefHeight="159.0" prefWidth="532.0">
+                  <TableView fx:id="tv_customers" nodeOrientation="LEFT_TO_RIGHT" prefHeight="159.0" prefWidth="532.0">
                      <columns>
                         <TableColumn fx:id="col_id_custo" minWidth="80.0" text="ID#" />
                         <TableColumn fx:id="col_first_name_cust" minWidth="150.0" prefWidth="150.0" text="Förnamn" />
