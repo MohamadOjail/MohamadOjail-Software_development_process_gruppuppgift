@@ -54,6 +54,7 @@ public class MainController {
 
     @FXML private void initialize(){
         Switcher.get().loadScene(0, main_pane);
+        lbl_rental.setStyle("-fx-background-color: rgba(13,235,83,0.2);");
 
         ActionObserver observer = new ActionObserver(this);
         lbl_customer.setOnMouseClicked(observer);
