@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -122,14 +123,29 @@ public class RentalController {
         Customer customer = tv_customers.getSelectionModel().getSelectedItem();
         Staff staff = staffDAO.findStaff(1);
 
-        Rental rental = new Rental();
-        rental.setRentalDate(LocalDateTime.now());
-        rental.setCustomer(customer);
-        rental.setInventory(film.getInventories().stream().findFirst().get());
-        rental.setStaff(staff);
-        rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
-        rentalDAO.AddRental(rental);
-        System.out.println(tv_customers.getSelectionModel().getSelectedItem());
+
+
+
+
+            Rental rental = new Rental();
+            rental.setRentalDate(LocalDateTime.now());
+            rental.setCustomer(customer);
+            try {
+
+                rental.setInventory(film.getInventories().stream().findFirst().get());
+            }
+            catch (Exception e) {
+               alerter();
+            }
+
+
+            rental.setStaff(staff);
+            rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+            rentalDAO.AddRental(rental);
+
+
+
+
 //        rentalList.clear();
 //        rentalList.addAll(tv_customers.getSelectionModel().getSelectedItem().getRentals());
 //        setUpRentTable();
@@ -162,6 +178,15 @@ public class RentalController {
 
     private void setUpRentTable() {
         rentalList.addAll(tv_customers.getSelectionModel().getSelectedItem().getRentals());
+
+    }  private void alerter(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("Varning");
+        alert.setContentText("Bokniningen fallerat !!!!");
+        alert.showAndWait();
     }
+
+
+
 
 }
