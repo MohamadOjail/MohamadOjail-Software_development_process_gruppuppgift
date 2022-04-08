@@ -15,9 +15,6 @@ public class ActionObserver implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent e) {
-        if (e.getSource() == ctrlr.getLbl_address()){
-            Switcher.get().loadScene(3, ctrlr.getAdmin_pane());
-        }
         if (e.getSource() == ctrlr.getLbl_store()){
             Switcher.get().loadScene(5, ctrlr.getAdmin_pane());
         }
