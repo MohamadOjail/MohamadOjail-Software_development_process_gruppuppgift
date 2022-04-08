@@ -129,6 +129,15 @@ public class RentalController {
         rental.setStaff(staff);
         rental.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         rentalDAO.AddRental(rental);
+        System.out.println(tv_customers.getSelectionModel().getSelectedItem());
+//        rentalList.clear();
+//        rentalList.addAll(tv_customers.getSelectionModel().getSelectedItem().getRentals());
+//        setUpRentTable();
+    }
+
+    private Film getInventory(String title){
+        Object[] object = {title};
+        return filmDAO.findFilm(object);
     }
 
     @FXML

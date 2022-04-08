@@ -61,6 +61,7 @@ public class MainController {
         lbl_rental.setOnMouseClicked(observer);
         lbl_home.setOnMouseClicked(observer);
         lbl_actor.setOnMouseClicked(observer);
+        System.out.println(getStoreId());
 
     }
 

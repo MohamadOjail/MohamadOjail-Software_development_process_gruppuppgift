@@ -12,10 +12,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import net.bytebuddy.asm.Advice;
 import se.ya.videobutik.data.dao.FilmDAO;
+import se.ya.videobutik.data.dao.InventoryDAO;
 import se.ya.videobutik.data.dao.LanguageDAO;
+import se.ya.videobutik.data.dao.StoreDAO;
 import se.ya.videobutik.model.Film;
+import se.ya.videobutik.model.Inventory;
 import se.ya.videobutik.model.Language;
+import se.ya.videobutik.model.Store;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -24,6 +29,8 @@ public class MovieController {
 
     private FilmDAO filmDAO = new FilmDAO();
     private LanguageDAO languageDAO = new LanguageDAO();
+    private InventoryDAO inventoryDAO = new InventoryDAO();
+    private StoreDAO storeDAO = new StoreDAO();
 
     @FXML
     private Button btn_add_movie;
@@ -101,7 +108,23 @@ public class MovieController {
         film.setReleaseYear(1922);
         film.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
         filmDAO.AddFilm(film);
+        Film movie = getMovie(film.getTitle());
+        createInventory(movie,1);
         clearAddFilmFields();
+    }
+
+    private Film getMovie(String title){
+        Object[] object = {title};
+        return filmDAO.findFilm(object);
+    }
+
+    private void createInventory(Film film, int storeId) {
+        Inventory inventory = new Inventory();
+        Store store = storeDAO.findStore(storeId);
+        inventory.setFilm(film);
+        inventory.setStore(store);
+        inventory.setLastUpdate(Timestamp.valueOf(LocalDateTime.now()));
+        inventoryDAO.AddInventory(inventory);
     }
 
     @FXML
