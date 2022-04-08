@@ -134,8 +134,11 @@ public class RentalController {
     @FXML
     void btn_return_film(ActionEvent event) {
         Rental rental = tv_rental.getSelectionModel().getSelectedItem();
+        System.out.println("hej hej");
         if (rental.getReturnDate() == null) {
             rental.setReturnDate(LocalDateTime.now());
+            rentalDAO.updateRental(rental);
+            tv_rental.refresh();
         }
 
     }
