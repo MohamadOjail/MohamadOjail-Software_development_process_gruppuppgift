@@ -1,5 +1,7 @@
 package se.ya.videobutik.ui.controller;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,11 +11,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 import se.ya.videobutik.data.dao.*;
 import se.ya.videobutik.model.*;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class RentalController {
 
@@ -28,9 +32,9 @@ public class RentalController {
     @FXML private TableColumn<Customer, String> col_first_name_cust;
     @FXML private TableColumn<Customer, Integer> col_id_custo;
     @FXML private TableColumn<Customer, String> col_last_name_cust;
-    @FXML private TableColumn<Rental, LocalDateTime> col_rent_date;
+    @FXML private TableColumn<Rental, String> col_rent_date;
     @FXML private TableColumn<Rental, Inventory> col_rent_title;
-    @FXML private TableColumn<Rental, LocalDateTime> col_return_date;
+    @FXML private TableColumn<Rental, String> col_return_date;
     @FXML private TableColumn<Film, String> col_title;
     @FXML private TableColumn<Film, Integer> col_year;
     @FXML private TextField tf_find_last_name, tf_find_title;
@@ -60,9 +64,25 @@ public class RentalController {
         col_title.setCellValueFactory(new PropertyValueFactory<>("title"));
         col_year.setCellValueFactory(new PropertyValueFactory<>("releaseYear"));
 
-        col_rent_date.setCellValueFactory(new PropertyValueFactory<>("rentalDate"));
+        col_rent_date.setCellValueFactory(rental -> {
+            SimpleStringProperty property = new SimpleStringProperty();
+            LocalDateTime rentalDate = rental.getValue().getRentalDate();
+            DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("hh:mm");
+            property.setValue(rentalDate.format(dtf1) + "  kl: " + rentalDate.format(dtf2));
+            return property;
+        });
         col_rent_title.setCellValueFactory(new PropertyValueFactory<>("inventory"));
-        col_return_date.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
+        col_return_date.setCellValueFactory(rental -> {
+            SimpleStringProperty property = new SimpleStringProperty();
+            LocalDateTime returnlDate = rental.getValue().getReturnDate();
+            DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("hh:mm");
+            if (returnlDate != null) {
+                property.setValue(returnlDate.format(dtf1) + "  kl: " + returnlDate.format(dtf2));
+            }else property.setValue("");
+            return property;
+        });
 
         tf_find_title.textProperty().addListener((observableValue, s, t1) -> {
             if (t1 != null && !t1.isEmpty()) {
@@ -135,3 +155,4 @@ public class RentalController {
         alert.showAndWait();
     }
 }
+

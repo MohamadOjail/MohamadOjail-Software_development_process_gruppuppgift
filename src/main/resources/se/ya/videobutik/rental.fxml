@@ -53,7 +53,7 @@
                   <TableView fx:id="tv_film" prefHeight="250.0">
                      <columns>
                         <TableColumn fx:id="col_title" minWidth="220.0" prefWidth="220.0" text="Titel" />
-                        <TableColumn fx:id="col_year" minWidth="150.0" prefWidth="150.0" text="Utgivningsdatum" />
+                        <TableColumn fx:id="col_year" minWidth="80.0" text="År" />
                         <TableColumn fx:id="col_cost" minWidth="48.0" prefWidth="120.0" text="Kostnad" />
                      </columns>
                   </TableView>
@@ -67,8 +67,8 @@
                   <TableView fx:id="tv_rental" prefHeight="250.0">
                      <columns>
                         <TableColumn fx:id="col_rent_title" minWidth="72.0" prefWidth="214.0" text="Titel" />
-                        <TableColumn fx:id="col_rent_date" minWidth="103.0" prefWidth="122.0" text="Uthyrd" />
-                        <TableColumn fx:id="col_return_date" minWidth="110.0" prefWidth="111.0" text="Åter" />
+                        <TableColumn fx:id="col_rent_date" minWidth="180.0" prefWidth="122.0" text="Uthyrd" />
+                        <TableColumn fx:id="col_return_date" minWidth="180.0" prefWidth="180.0" text="Åter" />
                      </columns>
                      <VBox.margin>
                         <Insets top="65.0" />
