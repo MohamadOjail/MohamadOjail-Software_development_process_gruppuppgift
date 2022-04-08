@@ -83,6 +83,7 @@ public class Switcher {
                 }
             }
             borderPane.setCenter(root);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
