@@ -1,4 +1,9 @@
+#hboxen{
+   -fx-background-image: url('filmStripe.png');
+    -fx-background-repeat: no-repeat;
+   -fx-background-position: center center;
 
+}
 #btn_roll{
     -fx-font-size: 16;
     -fx-cursor: hand;
@@ -36,10 +41,17 @@
 #info, ComboBox, TextField {
     -fx-font-size: 16;
     -fx-min-width: 200;
+
+}
+
+#loginTextField, loginCombo{
+    -fx-background-color: rgb(217, 216, 216);
 }
 #title{
-    -fx-font-size: 18;
+    -fx-font-family: "Berlin Sans FB Demi";
+    -fx-font-size: 28;
     -fx-text-fill: #8e0a32;
+
 }
 
 #loginBtn{
@@ -49,7 +61,7 @@
     -fx-min-height: 60;
     -fx-padding: 20;
 
-    -fx-background-color: rgba(125, 125, 125, 0.075);
+    -fx-background-color: rgb(217, 216, 216);
     -fx-background-radius: 10;
     -fx-border-color: black;
     -fx-border-radius: 10;
@@ -59,7 +71,7 @@
     -fx-font-weight: bold;
 }
 #loginBtn:hover{
-    -fx-background-color: rgba(171, 255, 4, 0.2);
+    -fx-background-color: rgb(232, 248, 200);
 }
 #loginBtn:pressed{
     -fx-background-color: rgba(255, 4, 71, 0.2);
