@@ -102,7 +102,7 @@ public class RentalController {
             if (t1 != null) {
                 customerList.clear();
                 searchCustomerByLastName(t1);
-            }
+            }else customerList.clear();
         });
 
         tv_customers.getSelectionModel().selectedItemProperty().addListener((observableValue, customer, t1) -> {
@@ -173,7 +173,10 @@ public class RentalController {
     }
 
     private void searchCustomerByLastName(String x) {
-        customerList.addAll(customerDAO.getCustomerList(x));
+        if (!x.isEmpty()) {
+            customerList.clear();
+            customerList.addAll(customerDAO.getCustomerList(x));
+        }else customerList.clear();
     }
 
     private void setUpRentTable() {

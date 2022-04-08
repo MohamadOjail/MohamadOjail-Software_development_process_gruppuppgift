@@ -18,21 +18,24 @@ public class ActionObserver implements EventHandler<MouseEvent> {
     public void handle(MouseEvent e) {
 
         if (e.getSource() == ctrlr.getLbl_rental()){
-
+            ctrlr.lbl_head_titel.setText("-- Uthyrning --");
             Switcher.get().loadScene(0, ctrlr.getMain_pane());
         }
 
         if (e.getSource() == ctrlr.getLbl_film()){
+            ctrlr.lbl_head_titel.setText("-- Film --");
             Switcher.get().loadScene(2, ctrlr.getMain_pane());
         }
 
         if (e.getSource() == ctrlr.getLbl_customer()){
+            ctrlr.lbl_head_titel.setText("-- Kunder --");
             Switcher.get().setStoreId(ctrlr.getStoreId());
             System.out.println(ctrlr.getStoreId());
             Switcher.get().loadScene(1, ctrlr.getMain_pane());
         }
 
         if (e.getSource() == ctrlr.getLbl_address()){
+            ctrlr.lbl_head_titel.setText("-- Adress --");
             Switcher.get().loadScene(3, ctrlr.getMain_pane());
         }
 
@@ -41,6 +44,7 @@ public class ActionObserver implements EventHandler<MouseEvent> {
         }
 
         if(e.getSource() == ctrlr.getLbl_actor()) {
+            ctrlr.lbl_head_titel.setText("-- Skådespelare --");
             Switcher.get().loadScene(6,ctrlr.getMain_pane());
         }
 
