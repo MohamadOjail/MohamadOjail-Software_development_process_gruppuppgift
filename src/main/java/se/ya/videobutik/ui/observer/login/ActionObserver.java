@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import se.ya.videobutik.model.LoginStoreSelector;
@@ -30,6 +31,7 @@ public class ActionObserver implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent e) {
 
+
         if (e.getSource() == ctrlr.getBtn_admin()){
             loader = new FXMLLoader(getClass().getResource("../../../Admin.fxml"));
             try {
@@ -41,6 +43,12 @@ public class ActionObserver implements EventHandler<ActionEvent> {
         }
 
         if (e.getSource() == ctrlr.getBtn_salesman()){
+
+            if (ctrlr.getCb_store().getSelectionModel().getSelectedItem() == null){
+                alerter();
+                return;
+            }
+
             loader = new FXMLLoader(getClass().getResource("../../../main.fxml"));
             try {
                 root = loader.load();
@@ -59,5 +67,12 @@ public class ActionObserver implements EventHandler<ActionEvent> {
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
         stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
         stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+    }
+
+    private void alerter(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText("missing fields");
+        alert.setContentText("Man ska välja en butik innan man ska logga in.");
+        alert.showAndWait();
     }
 }
